@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "entryPoint": "./src/App.js",
+    "name": "nimloth-react-native",
+    "slug": "nimloth-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
