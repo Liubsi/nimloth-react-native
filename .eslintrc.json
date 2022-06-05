@@ -27,6 +27,7 @@
 			}
 		],
 		"no-shadow": "off",
-        "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+		"import/no-named-as-default": 0
 	}
 }
