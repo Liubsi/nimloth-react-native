@@ -24,6 +24,16 @@
 		"react"
 	],
 	"rules": {
+		"import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
 		"react/jsx-filename-extension": [
 			2, {
 				"extensions": [
@@ -31,8 +41,17 @@
 				]
 			}
 		],
+		"react/require-default-props": "off", 
+		"react/function-component-definition": "off", 
 		"no-shadow": "off",
     "no-unused-vars": "warn",
 		"import/no-named-as-default": 0
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	}
 }
