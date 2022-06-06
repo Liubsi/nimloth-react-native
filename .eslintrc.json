@@ -45,7 +45,8 @@
 		"react/function-component-definition": "off", 
 		"no-shadow": "off",
     "no-unused-vars": "warn",
-		"import/no-named-as-default": 0
+		"import/no-named-as-default": 0,
+		"global-require": "off"
 	},
 	"settings": {
 		"import/resolver": {
