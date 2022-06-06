@@ -41,6 +41,7 @@
 				]
 			}
 		],
+		"react/require-default-props": "off", 
 		"react/function-component-definition": "off", 
 		"no-shadow": "off",
     "no-unused-vars": "warn",
