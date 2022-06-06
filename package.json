@@ -36,7 +36,7 @@
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.18.2",
     "@types/jest": "^28.1.1",
-    "@types/react": "^18.0.12",
+    "@types/react": "~17.0.21",
     "@types/react-native": "^0.67.8",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
@@ -54,6 +54,9 @@
       "npx prettier --write",
       "npx eslint --fix"
     ]
+  },
+  "resolutions": {
+    "@types/react": "17.0.43"
   },
   "private": true
 }

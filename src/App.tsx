@@ -13,7 +13,7 @@ function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StatusBar style={{ color: 'auto' }} />
+        <StatusBar />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name='Login' component={Login} />
           <Stack.Screen name='Profile' component={Profile} />
