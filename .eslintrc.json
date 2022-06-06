@@ -31,15 +31,15 @@
 				]
 			}
 		],
-		"settings": {
-			"import/resolver": {
-				"node": {
-					"extensions": [".js", ".jsx", ".ts", ".tsx"]
-				}
-			}
-		},
 		"no-shadow": "off",
     "no-unused-vars": "warn",
 		"import/no-named-as-default": 0
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	}
 }
