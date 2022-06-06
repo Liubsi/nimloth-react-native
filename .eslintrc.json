@@ -1,12 +1,17 @@
 {
+	"root": true,
+  "parser": "@typescript-eslint/parser",
 	"env": {
 		"es2021": true,
 		"node": true
 	},
 	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"airbnb",
-		"prettier"
+		"prettier",
+		"prettier/@typescript-eslint"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -16,6 +21,7 @@
 		"sourceType": "module"
 	},
 	"plugins": [
+		"@typescript-eslint",
 		"react"
 	],
 	"rules": {
