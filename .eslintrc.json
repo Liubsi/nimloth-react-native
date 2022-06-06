@@ -25,9 +25,9 @@
 	],
 	"rules": {
 		"react/jsx-filename-extension": [
-			1, {
+			2, {
 				"extensions": [
-					".js", ".jsx"
+					".js", ".jsx", ".ts", ".tsx"
 				]
 			}
 		],

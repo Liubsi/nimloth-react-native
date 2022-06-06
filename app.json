@@ -1,6 +1,6 @@
 {
   "expo": {
-    "entryPoint": "./src/App.js",
+    "entryPoint": "./src/App.tsx",
     "name": "nimloth-react-native",
     "slug": "nimloth-react-native",
     "version": "1.0.0",
