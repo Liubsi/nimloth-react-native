@@ -10,8 +10,7 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"airbnb",
-		"prettier",
-		"prettier/@typescript-eslint"
+		"prettier"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
