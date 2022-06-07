@@ -7,6 +7,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  loginLogoOffset: {
+    paddingTop: 50,
+  },
+  loginLogo: {
+    width: 200,
+    height: 200,
+    resizeMode: 'stretch',
+  },
   logo: {
     fontWeight: 'bold',
     color: '#fb5b5a',
