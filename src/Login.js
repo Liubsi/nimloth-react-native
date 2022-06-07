@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Input, Button, Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import CustomText from './components/CustomText';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -10,9 +11,9 @@ export default function Login(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
-      <Text h1 style={styles.logo}>
+      <CustomText h1 style={styles.logo}>
         Nimloth
-      </Text>
+      </CustomText>
       <View>
         <Input
           inputContainerStyle={styles.inputContainer}
