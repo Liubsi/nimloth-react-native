@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   },
   loginLogoOffset: {
     paddingTop: 50,
+    paddingLeft: 20,
   },
   loginLogo: {
     width: 200,

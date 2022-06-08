@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View , Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { Input, Button, Text } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -17,7 +17,7 @@ export default function Login(props) {
       <View style={styles.loginLogoOffset}>
         <Image
           style={styles.loginLogo}
-          source={require('./images/nimlogo.png')}
+          source={require('../assets/images/nimlogo.png')}
         />
       </View>
       <View>
