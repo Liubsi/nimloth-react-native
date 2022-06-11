@@ -12,7 +12,7 @@ const loadFonts = () => {
     // Raleway
     'Raleway-Thin': require('../assets/fonts/Raleway/Raleway-Thin.ttf'),
     Raleway: require('../assets/fonts/Raleway/Raleway-Regular.ttf'),
-    'Raleway-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
+    'Raleway-Bold': require('../assets/fonts/Raleway/Raleway-Bold.ttf'),
   });
 
   return fontsLoaded;
