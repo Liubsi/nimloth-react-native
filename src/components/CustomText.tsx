@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { Text } from 'react-native-elements';
-import AppLoading from 'expo-app-loading'; // deprecated
+import AppLoading from 'expo-app-loading'; // deprecated, change
 import loadFonts from '../fonts';
 
 // should be temporary
