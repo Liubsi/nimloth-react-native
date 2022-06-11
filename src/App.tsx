@@ -4,9 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import LoginScreen from './Landing/Login';
-import SignInScreen from './Landing/SignIn';
-import SignUpScreen from './Landing/SignUp';
+import LoginScreen from './Screens/Landing/Login';
+import SignInScreen from './Screens/Landing/SignIn';
+import SignUpScreen from './Screens/Landing/SignUp';
 // migrate wrapper to another file
 
 const Stack = createNativeStackNavigator();
