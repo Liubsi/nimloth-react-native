@@ -5,11 +5,14 @@ import { useFonts } from 'expo-font';
 
 const loadFonts = () => {
   const [fontsLoaded] = useFonts({
-    // regular
+    // Poppins
     'Poppins-Thin': require('../assets/fonts/Poppins/Poppins-Thin.ttf'),
     Poppins: require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
-    // add italics later
+    // Raleway
+    'Raleway-Thin': require('../assets/fonts/Raleway/Raleway-Thin.ttf'),
+    Raleway: require('../assets/fonts/Raleway/Raleway-Regular.ttf'),
+    'Raleway-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
   });
 
   return fontsLoaded;
