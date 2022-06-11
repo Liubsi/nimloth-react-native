@@ -6,7 +6,11 @@ import { CustomText, SizedBox } from './components';
 import styles from './styles';
 import loadFonts from './fonts';
 
-const Login = () => {
+type LoginScreenProp = {
+  // TODO
+};
+
+const LoginScreen = () => {
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
     <LinearGradient
@@ -35,4 +39,4 @@ const Login = () => {
   ) : null;
 };
 
-export default Login;
+export default LoginScreen;

@@ -4,11 +4,13 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import Login from './Login';
+import LoginScreen from './Login';
 import Profile from './Profile';
-
 // migrate wrapper to another file
 
+type RootStackParamList = {
+  Profile: { userId: string };
+};
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -20,7 +22,7 @@ const App = () => {
         <SafeAreaProvider>
           <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name='Login' component={Login} />
+              <Stack.Screen name='Login' component={LoginScreen} />
               <Stack.Screen name='Profile' component={Profile} />
             </Stack.Navigator>
           </NavigationContainer>
