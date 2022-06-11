@@ -4,7 +4,7 @@ import { CustomText } from '../../components';
 const SignUpScreen = () => {
   return (
     <CustomText style={{ color: 'white', fontSize: 20 }} textType='regular'>
-      Nimloth
+      Nimloth Home
     </CustomText>
   );
 };

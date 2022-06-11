@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     width: 80,
   },
   linearGradient: {
+    // unused
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

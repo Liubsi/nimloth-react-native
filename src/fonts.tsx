@@ -6,9 +6,9 @@ import { useFonts } from 'expo-font';
 const loadFonts = () => {
   const [fontsLoaded] = useFonts({
     // regular
-    'Poppins-Thin': require('../assets/fonts/Poppins-Thin.ttf'),
-    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
-    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-Thin': require('../assets/fonts/Poppins/Poppins-Thin.ttf'),
+    Poppins: require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
+    'Poppins-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
     // add italics later
   });
 
