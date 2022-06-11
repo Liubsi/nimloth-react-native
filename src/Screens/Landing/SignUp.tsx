@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Input } from 'react-native-elements';
+import { Avatar, Button, Input } from '@rneui/themed';
 import { CustomText, LoginBackground } from '../../components';
 
 const SignUpScreen = () => {
@@ -10,11 +10,11 @@ const SignUpScreen = () => {
         rounded
         icon={{ name: 'user-circle', type: 'font-awesome' }}
       />
-      <Input placeholder='First name' autoCompleteType={false} />
-      <Input placeholder='Last name' autoCompleteType={false} />
-      <Input placeholder='E-mail address' autoCompleteType={false} />
-      <Input placeholder='Mobile number' autoCompleteType={false} />
-      <Input placeholder='Password' autoCompleteType={false} />
+      <Input placeholder='First name' />
+      <Input placeholder='Last name' />
+      <Input placeholder='E-mail address' />
+      <Input placeholder='Mobile number' />
+      <Input placeholder='Password' />
       <Button title='Register' />
     </LoginBackground>
   );

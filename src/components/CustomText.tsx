@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text } from '@rneui/themed';
 import AppLoading from 'expo-app-loading'; // deprecated, change
 import loadFonts from '../fonts';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button } from '@rneui/themed';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { CustomText, LoginBackground, SizedBox } from '../../components';
