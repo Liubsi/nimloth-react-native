@@ -5,12 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import LoginScreen from './Login';
-import Profile from './Profile';
+import SignInScreen from './SignIn';
+import SignUpScreen from './SignUp';
 // migrate wrapper to another file
 
-type RootStackParamList = {
-  Profile: { userId: string };
-};
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -23,7 +21,8 @@ const App = () => {
           <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
               <Stack.Screen name='Login' component={LoginScreen} />
-              <Stack.Screen name='Profile' component={Profile} />
+              <Stack.Screen name='SignIn' component={SignInScreen} />
+              <Stack.Screen name='SignUp' component={SignUpScreen} />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaProvider>
