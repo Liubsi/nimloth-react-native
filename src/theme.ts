@@ -5,7 +5,6 @@ const theme = createTheme({
     style: {
       fontFamily: 'Raleway',
       fontSize: 10,
-      color: 'white',
       backgroundColor: 'white',
       borderRadius: 10,
       textAlign: 'center',
