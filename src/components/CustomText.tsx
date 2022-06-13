@@ -3,9 +3,6 @@ import { StyleSheet, TextStyle } from 'react-native';
 import { Text } from '@rneui/themed';
 import loadFonts from '../fonts';
 
-// should be temporary
-/* eslint-disable react/jsx-props-no-spreading */
-
 type CustomTextProps = {
   style?: TextStyle | TextStyle[];
   textType?: 'light' | 'regular' | 'semibold' | 'bold';
@@ -31,7 +28,6 @@ const CustomText: React.FC<CustomTextProps> = ({
   children,
   style,
   textType,
-  ...restProps
 }) => {
   const fontsLoaded = loadFonts();
 
@@ -59,9 +55,7 @@ const CustomText: React.FC<CustomTextProps> = ({
     : style;
 
   return fontsLoaded ? (
-    <Text style={[textStyle, { ...passedStyles }]} {...restProps}>
-      {children}
-    </Text>
+    <Text style={[textStyle, { ...passedStyles }]}>{children}</Text>
   ) : null;
 };
 

@@ -8,7 +8,10 @@ type SizedBoxProps = {
   width?: number;
 };
 
-const SizedBox: React.FC<SizedBoxProps> = ({ height, width }) => {
+const SizedBox: React.FC<SizedBoxProps> = ({
+  height,
+  width,
+}: SizedBoxProps) => {
   return <View style={{ height, width }} />;
 };
 

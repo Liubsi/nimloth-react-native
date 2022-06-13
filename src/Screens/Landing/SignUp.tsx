@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Input } from '@rneui/themed';
 import { View } from 'react-native';
-import { CustomText, LoginBackground, SizedBox } from '../../components';
-import styles from '../../styles';
+import {
+  CustomText,
+  LoginBackground,
+  SizedBox,
+  AvoidKeyboardView,
+} from '../../components';
+import styles from '../styles';
 
 const SignUpScreen = () => {
   return (
@@ -12,26 +17,20 @@ const SignUpScreen = () => {
         Create account
       </CustomText>
       <SizedBox height={50} />
-      <View
-        style={{ width: '80%', justifyContent: 'center', alignItems: 'center' }}
-      >
+      <View style={styles.loginView}>
         <Input placeholder='First name' />
         <Input placeholder='Last name' />
       </View>
-      <View
-        style={{ width: '80%', justifyContent: 'center', alignItems: 'center' }}
-      >
+      <View style={styles.loginView}>
         <Input placeholder='E-mail address' />
       </View>
-      <View
-        style={{ width: '80%', justifyContent: 'center', alignItems: 'center' }}
-      >
+      <View style={styles.loginView}>
         <Input placeholder='Mobile number' />
       </View>
-      <View
-        style={{ width: '80%', justifyContent: 'center', alignItems: 'center' }}
-      >
-        <Input placeholder='Password' />
+      <View style={styles.loginView}>
+        <AvoidKeyboardView>
+          <Input placeholder='Password' />
+        </AvoidKeyboardView>
       </View>
       <SizedBox height={50} />
       <Button
