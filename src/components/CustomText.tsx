@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
+import { TextStyle } from 'react-native';
 import { Text } from '@rneui/themed';
-import { loadFonts, styles, setTextStyle } from '../fonts';
+import { loadFonts, setTextStyle } from '../fonts';
 
 type CustomTextProps = {
   style?: TextStyle | TextStyle[];
