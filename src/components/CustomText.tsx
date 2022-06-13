@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextStyle } from 'react-native';
 import { Text } from '@rneui/themed';
-import AppLoading from 'expo-app-loading'; // deprecated, change
 import loadFonts from '../fonts';
 
 // should be temporary
@@ -33,10 +32,6 @@ const CustomText: React.FC<CustomTextProps> = ({
 }) => {
   const fontsLoaded = loadFonts();
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-
   let textStyle: Record<string, unknown>;
   switch (textType) {
     case 'regular':
@@ -57,11 +52,11 @@ const CustomText: React.FC<CustomTextProps> = ({
     ? Object.assign({}, ...style)
     : style;
 
-  return (
+  return fontsLoaded ? (
     <Text style={[textStyle, { ...passedStyles }]} {...restProps}>
       {children}
     </Text>
-  );
+  ) : null;
 };
 
 export default CustomText;
