@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { CustomText, LoginBackground, SizedBox } from '../../components';
 import styles from '../styles';
-import loadFonts from '../../fonts';
+import { loadFonts } from '../../fonts';
 import { RootStackParamList } from './RootStackParams';
 
 type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
