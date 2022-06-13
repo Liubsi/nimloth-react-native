@@ -10,9 +10,15 @@ const loadFonts = () => {
     Poppins: require('../assets/fonts/Poppins/Poppins-Regular.ttf'),
     'Poppins-Bold': require('../assets/fonts/Poppins/Poppins-Bold.ttf'),
     // Raleway
+    'Raleway-ExtraLight': require('../assets/fonts/Raleway/Raleway-ExtraLight.ttf'),
+    'Raleway-Light': require('../assets/fonts/Raleway/Raleway-Light.ttf'),
     'Raleway-Thin': require('../assets/fonts/Raleway/Raleway-Thin.ttf'),
+    'Raleway-Medium': require('../assets/fonts/Raleway/Raleway-Medium.ttf'),
     Raleway: require('../assets/fonts/Raleway/Raleway-Regular.ttf'),
+    'Raleway-SemiBold': require('../assets/fonts/Raleway/Raleway-SemiBold.ttf'),
     'Raleway-Bold': require('../assets/fonts/Raleway/Raleway-Bold.ttf'),
+    'Raleway-ExtraBold': require('../assets/fonts/Raleway/Raleway-ExtraBold.ttf'),
+    'Raleway-Black': require('../assets/fonts/Raleway/Raleway-Black.ttf'),
   });
 
   return fontsLoaded;

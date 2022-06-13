@@ -8,19 +8,22 @@ import loadFonts from '../fonts';
 
 type CustomTextProps = {
   style?: TextStyle | TextStyle[];
-  textType?: 'regular' | 'bold' | 'light';
+  textType?: 'light' | 'regular' | 'semibold' | 'bold';
 };
 
 // migrate stylesheet to own file
 const styles = StyleSheet.create({
+  light: {
+    fontFamily: 'Raleway-Thin',
+  },
   regular: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Raleway',
+  },
+  semibold: {
+    fontFamily: 'Raleway-SemiBold',
   },
   bold: {
-    fontFamily: 'Poppins-Bold',
-  },
-  light: {
-    fontFamily: 'Poppins-Thin',
+    fontFamily: 'Raleway-Bold',
   },
 });
 
@@ -34,14 +37,17 @@ const CustomText: React.FC<CustomTextProps> = ({
 
   let textStyle: Record<string, unknown>;
   switch (textType) {
+    case 'light':
+      textStyle = styles.light;
+      break;
     case 'regular':
       textStyle = styles.regular;
       break;
+    case 'semibold':
+      textStyle = styles.semibold;
+      break;
     case 'bold':
       textStyle = styles.bold;
-      break;
-    case 'light':
-      textStyle = styles.light;
       break;
     default:
       textStyle = styles.regular;
