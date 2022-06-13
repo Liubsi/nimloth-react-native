@@ -15,22 +15,24 @@ const LoginScreen = () => {
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
     <LoginBackground>
-      <CustomText style={{ color: 'white', fontSize: 25 }} textType='bold'>
+      <SizedBox height={100} />
+      <CustomText style={{ color: 'white', fontSize: 35 }} textType='bold'>
         Nimloth
       </CustomText>
-      <SizedBox height={250} />
+      <SizedBox height={150} />
       <View>
         <Button
           buttonStyle={styles.button}
-          titleStyle={{ fontSize: 10, fontFamily: 'Raleway' }}
+          titleStyle={{ fontSize: 15, fontFamily: 'Raleway' }}
           title='Sign in'
           onPress={() => navigation.navigate('SignIn')}
         />
       </View>
       <View>
         <Button
+          type='clear'
           buttonStyle={styles.button}
-          titleStyle={{ fontSize: 10, fontFamily: 'Raleway' }}
+          titleStyle={{ color: 'white', fontSize: 15, fontFamily: 'Raleway' }}
           title='Sign up'
           onPress={() => navigation.navigate('SignUp')}
         />

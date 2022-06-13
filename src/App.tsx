@@ -8,6 +8,7 @@ import { ThemeProvider } from '@rneui/themed';
 import LoginScreen from './Screens/Landing/Login';
 import SignInScreen from './Screens/Landing/SignIn';
 import SignUpScreen from './Screens/Landing/SignUp';
+import theme from './theme';
 // migrate wrapper to another file
 
 const Stack = createNativeStackNavigator();
@@ -19,7 +20,7 @@ const App = () => {
       <SafeAreaView style={{ flex: 0, backgroundColor: '#9C51B6' }} />
       <SafeAreaView style={{ flex: 1, backgroundColor: '#5946B2' }}>
         <SafeAreaProvider>
-          <ThemeProvider>
+          <ThemeProvider theme={theme}>
             <NavigationContainer>
               <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Login' component={LoginScreen} />
