@@ -3,16 +3,12 @@ import { TextStyle } from 'react-native';
 import { Text } from '@rneui/themed';
 import { loadFonts, setTextStyle } from '../fonts';
 
-type CustomTextProps = {
+type Props = {
   style?: TextStyle | TextStyle[];
   textType?: 'light' | 'regular' | 'semibold' | 'bold';
 };
 
-const CustomText: React.FC<CustomTextProps> = ({
-  children,
-  style,
-  textType,
-}) => {
+const CustomText: React.FC<Props> = ({ children, style, textType }) => {
   const fontsLoaded = loadFonts();
   const textStyle = setTextStyle(textType);
 
