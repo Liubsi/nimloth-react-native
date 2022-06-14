@@ -5,8 +5,7 @@ type State = {
   phoneNumber: string;
   password: string;
   isButtonDisabled: boolean;
-  helperText: string;
-  isError: boolean;
+  isError: boolean; // unused
 };
 
 export const initialState: State = {
@@ -16,7 +15,6 @@ export const initialState: State = {
   phoneNumber: '',
   password: '',
   isButtonDisabled: true,
-  helperText: '',
   isError: false,
 };
 
@@ -66,13 +64,11 @@ export const reducer = (state: State, action: Action): State => {
     case 'signUpSuccess':
       return {
         ...state,
-        helperText: action.payload,
         isError: false,
       };
     case 'signUpFailed':
       return {
         ...state,
-        helperText: action.payload,
         isError: true,
       };
     case 'setIsError':
