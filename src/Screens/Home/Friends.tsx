@@ -1,17 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import { CustomText, LoginBackground } from '../../components';
-import NavigationBar from './navigationBar';
 
-const HomeScreen = () => {
+const FriendsScreen = () => {
   return (
     <View style={{flex: 1 ,justifyContent: "center", alignItems: "center"}}>
       <CustomText style={{ color: 'black', fontSize: 20 }} textType='regular'>
-        Nimloth Home
+        Friends Home
       </CustomText>
-      {/* <NavigationBar/> */}
     </View>
   );
 };
 
-export default HomeScreen;
+export default FriendsScreen;

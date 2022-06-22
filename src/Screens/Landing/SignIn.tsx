@@ -14,6 +14,8 @@ import { RootStackParamList } from './RootStackParams';
 
 type SignInProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
+
+
 const SignInScreen = () => {
   const navigation = useNavigation<SignInProp>();
   const fontsLoaded = loadFonts();
@@ -33,6 +35,7 @@ const SignInScreen = () => {
         buttonStyle={styles.button}
         titleStyle={{ color: 'white', fontSize: 12, fontFamily: 'Raleway' }}
         title='Sign In'
+        onPress={() => navigation.navigate('Home')}
       />
     </LoginBackground>
   );

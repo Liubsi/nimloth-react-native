@@ -14,12 +14,12 @@ import HomeScreen from './Screens/Home/Home';
 import theme from './theme';
 // migrate wrapper to another file
 // look into making touchable without feedback lower order, if possible
+// add back status bar eventually (if needed)
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <>
-      <StatusBar />
       <SafeAreaView style={{ flex: 0, backgroundColor: '#9C51B6' }} />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView style={{ flex: 1, backgroundColor: '#5946B2' }}>
