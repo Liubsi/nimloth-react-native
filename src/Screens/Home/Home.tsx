@@ -1,12 +1,14 @@
 import React from 'react';
-import { CustomText } from '../../components';
+import { CustomText, LoginBackground } from '../../components';
 
-const SignUpScreen = () => {
+const HomeScreen = () => {
   return (
-    <CustomText style={{ color: 'white', fontSize: 20 }} textType='regular'>
-      Nimloth Home
-    </CustomText>
+    <LoginBackground>
+      <CustomText style={{ color: 'white', fontSize: 20 }} textType='regular'>
+        Nimloth Home
+      </CustomText>
+    </LoginBackground>
   );
 };
 
-export default SignUpScreen;
+export default HomeScreen;
