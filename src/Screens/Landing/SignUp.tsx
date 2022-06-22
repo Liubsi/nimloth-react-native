@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { Button, Input } from '@rneui/themed';
 import {
   View,
@@ -11,7 +11,7 @@ import { reducer, initialState } from './SignUpReducer';
 
 const SignUpScreen = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const [success, setSuccess] = useState('Pending');
   useEffect(() => {
     if (
       state.firstName.trim() &&
@@ -48,14 +48,18 @@ const SignUpScreen = () => {
       state.password === 'password'
     ) {
       dispatch({
-        type: 'signUpSuccess',
-        payload: 'Sign up successful',
+        type: 'signInFailure',
+        payload: false,
       });
+      setSuccess('True');
+      console.log(state);
     } else {
       dispatch({
-        type: 'signUpFailed',
-        payload: 'Sign up failed',
+        type: 'signInFailure',
+        payload: true,
       });
+      setSuccess('False');
+      console.log(state);
     }
   };
 
@@ -107,6 +111,9 @@ const SignUpScreen = () => {
   // keyboard will cover inputs if low enough
   return (
     <LoginBackground>
+      <CustomText style={{ fontSize: 25, color: 'white' }}>
+        {success}
+      </CustomText>
       <SizedBox height={50} />
       <CustomText style={{ fontSize: 25, color: 'white' }}>
         Create account
