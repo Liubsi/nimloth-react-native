@@ -12,7 +12,10 @@ export const initialState: State = {
   isError: false,
 };
 
-type Action = | { type: 'setEmail'; payload: string } | { type: 'setIsButtonDisabled'; payload: boolean } | { type: 'setPassword'; payload: string }
+type Action =
+  | { type: 'setEmail'; payload: string }
+  | { type: 'setIsButtonDisabled'; payload: boolean }
+  | { type: 'setPassword'; payload: string }
   | { type: 'signInSuccess'; payload: string }
   | { type: 'signInFailed'; payload: string }
   | { type: 'setIsError'; payload: boolean };

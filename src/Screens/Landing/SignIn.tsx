@@ -14,8 +14,6 @@ import { RootStackParamList } from './RootStackParams';
 
 type SignInProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
-
-
 const SignInScreen = () => {
   const navigation = useNavigation<SignInProp>();
   const fontsLoaded = loadFonts();
