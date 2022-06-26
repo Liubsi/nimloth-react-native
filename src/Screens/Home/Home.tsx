@@ -60,6 +60,11 @@ const HomeScreen = () => {
   };
 
   const handleSubmit = () => {
+    // dont want to allow empty values to be sent
+    if (value === '0') {
+      console.log('empty value');
+      return;
+    }
     console.log(value);
     setValue('0');
   };
