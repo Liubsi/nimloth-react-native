@@ -6,7 +6,7 @@ const TransactionHistoryScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <CustomText style={{ color: 'black', fontSize: 20 }} textType='regular'>
-        Nimloth Home
+        Nimloth Transactions
       </CustomText>
     </View>
   );

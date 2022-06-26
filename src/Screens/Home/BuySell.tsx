@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { Text } from '@rneui/themed';
 import { CustomText, LoginBackground } from '../../components';
 
 const BuySellScreen = () => {
@@ -8,6 +9,7 @@ const BuySellScreen = () => {
       <CustomText style={{ color: 'black', fontSize: 20 }} textType='regular'>
         Buy Sell
       </CustomText>
+      <Text>Send</Text>
     </View>
   );
 };
