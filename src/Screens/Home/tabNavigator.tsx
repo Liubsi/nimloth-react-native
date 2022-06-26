@@ -12,7 +12,12 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName='Home'>
+    <Tab.Navigator
+      initialRouteName='Friends'
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen name='Charts' component={ChartsScreen} />
       <Tab.Screen name='Wallet' component={WalletScreen} />
       <Tab.Screen name='Home' component={HomeScreen} />

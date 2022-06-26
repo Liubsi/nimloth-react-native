@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native'; // replace using dimensions from react-native
+import { SafeAreaView, View, Dimensions } from 'react-native'; // replace using dimensions from react-native
 import {
   LineChart,
   BarChart,
@@ -12,7 +12,7 @@ import { CustomText, LoginBackground } from '../../components';
 
 const ChartsScreen = () => {
   return (
-    <View>
+    <SafeAreaView>
       <CustomText>Bezier Line Chart</CustomText>
       <LineChart
         data={{
@@ -57,7 +57,7 @@ const ChartsScreen = () => {
           borderRadius: 16,
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

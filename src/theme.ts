@@ -4,13 +4,21 @@ const theme = createTheme({
   Input: {
     style: {
       fontFamily: 'Raleway',
-      fontSize: 10,
       backgroundColor: 'white',
       borderRadius: 10,
-      textAlign: 'center',
     },
     inputContainerStyle: {
       borderBottomWidth: 0,
+    },
+  },
+  Button: {
+    titleStyle: {
+      fontFamily: 'Raleway',
+    },
+  },
+  Text: {
+    style: {
+      fontFamily: 'Raleway',
     },
   },
 });

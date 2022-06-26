@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { Button } from '@rneui/themed';
 import { CustomText, LoginBackground, SizedBox } from '../../components';
 // buy sell
@@ -70,7 +70,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <SizedBox height={100} />
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <CustomText style={{ color: 'black', fontSize: 30 }} textType='regular'>
@@ -90,7 +90,7 @@ const HomeScreen = () => {
         {renderPad()}
       </View>
       <Button title='Send' onPress={handleSubmit} />
-    </>
+    </SafeAreaView>
   );
 };
 
