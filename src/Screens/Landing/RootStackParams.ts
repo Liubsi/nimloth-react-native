@@ -5,3 +5,5 @@ export type RootStackParamList = {
   SignUp: undefined;
   Home: undefined; // Home is the name of the screen
 };
+
+// put in userIds

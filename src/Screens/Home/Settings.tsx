@@ -2,14 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import { CustomText, LoginBackground } from '../../components';
 
-const FriendsScreen = () => {
+const SettingsScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <CustomText style={{ color: 'black', fontSize: 20 }} textType='regular'>
-        Nimloth Wallet
+        Settings Home
       </CustomText>
     </View>
   );
 };
 
-export default FriendsScreen;
+export default SettingsScreen;
