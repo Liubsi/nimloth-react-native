@@ -2,9 +2,27 @@ import React, { useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { Button } from '@rneui/themed';
 import { CustomText, LoginBackground, SizedBox } from '../../components';
+import { Amplify } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
+import { UserAgent } from 'amazon-cognito-identity-js';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import AuthContext, { useUser } from '../../AuthContext';
+
+
+
 // buy sell
 
+
+async function signOut() {
+  try {
+      await Auth.signOut();
+  } catch (error) {
+      console.log('error signing out: ', error);
+  }
+}
+
 const HomeScreen = () => {
+  const { user } = useUser();
   const [value, setValue] = useState<string>('0');
   const padLayout = [
     '1',
@@ -20,6 +38,7 @@ const HomeScreen = () => {
     '0',
     '<',
   ];
+  
   // might want to modify to make sure we only allow 2 digits past the decimal point
   const handlePress = (item: string) => {
     // cap the value to max of 7 digits
@@ -46,6 +65,7 @@ const HomeScreen = () => {
       }
       setValue(value + item);
     }
+    
   };
 
   const renderPad = () => {
@@ -73,9 +93,14 @@ const HomeScreen = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <SizedBox height={100} />
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <CustomText style={{ color: 'black', fontSize: 30 }} textType='regular'>
+          User: {user.username}
+        </CustomText>
         <CustomText style={{ color: 'black', fontSize: 30 }} textType='regular'>
           $ {value}
         </CustomText>
+        
+       
       </View>
       <SizedBox height={50} />
       <View
@@ -89,7 +114,7 @@ const HomeScreen = () => {
       >
         {renderPad()}
       </View>
-      <Button title='Send' onPress={handleSubmit} />
+      <Button title='Send' onPress={signOut} />
     </SafeAreaView>
   );
 };

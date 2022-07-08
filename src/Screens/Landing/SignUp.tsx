@@ -1,145 +1,95 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Input } from '@rneui/themed';
 import {
   View,
   NativeSyntheticEvent,
   TextInputChangeEventData,
+  TextInput,
 } from 'react-native';
-import { CustomText, LoginBackground, SizedBox } from '../../components';
+import NavigationContainer, { getPathFromState } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import styles from '../styles';
-import { reducer, initialState } from './SignUpReducer';
+import { CustomText, LoginBackground, SizedBox } from '../../components';
+import { loadFonts } from '../../fonts';
+import { RootStackParamList } from './RootStackParams';
+import { Amplify, API } from 'aws-amplify';
+import { Alert, Authenticator } from '@aws-amplify/ui-react';
+import { Auth } from 'aws-amplify';
+import AuthContext, { useUser } from '../../AuthContext';
 
+
+
+type SignUpProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 const SignUpScreen = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [success, setSuccess] = useState('Pending');
-  useEffect(() => {
-    if (
-      state.firstName.trim() &&
-      state.lastName.trim() &&
-      state.email.trim() &&
-      state.phoneNumber.trim() &&
-      state.password.trim()
-    ) {
-      dispatch({
-        type: 'setIsButtonDisabled',
-        payload: false,
-      });
-    } else {
-      dispatch({
-        type: 'setIsButtonDisabled',
-        payload: true,
-      });
-    }
-  }, [
-    state.firstName,
-    state.lastName,
-    state.email,
-    state.phoneNumber,
-    state.password,
-  ]);
+const [username, setUsername] = useState('');
+const [password2, setPassword2] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    // change eventually
-    if (
-      state.firstName === 'first' &&
-      state.lastName === 'last' &&
-      state.email === 'email' &&
-      state.phoneNumber === 'number' &&
-      state.password === 'password'
-    ) {
-      dispatch({
-        type: 'signInFailure',
-        payload: false,
-      });
-      setSuccess('True');
-      console.log(state);
-    } else {
-      dispatch({
-        type: 'signInFailure',
-        payload: true,
-      });
-      setSuccess('False');
-      console.log(state);
-    }
-  };
+const signupfucn = () => {
+  Auth.signUp(username, password, email);
+  addUser();
+}
 
-  const handleFirstName = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    const value = event.nativeEvent.text;
-    dispatch({
-      type: 'setFirstName',
-      payload: value,
-    });
-  };
-  const handleLastName = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    const value = event.nativeEvent.text;
-    dispatch({
-      type: 'setLastName',
-      payload: value,
-    });
-  };
-  const handleEmail = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    const value = event.nativeEvent.text;
-    dispatch({
-      type: 'setEmail',
-      payload: value,
-    });
-  };
-  const handleNumber = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    const value = event.nativeEvent.text;
-    dispatch({
-      type: 'setPhoneNumber',
-      payload: value,
-    });
-  };
-  const handlePassword = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    const value = event.nativeEvent.text;
-    dispatch({
-      type: 'setPassword',
-      payload: value,
-    });
-  };
-  // keyboard will cover inputs if low enough
+async function addUser() {
+  const data = {
+    body:{
+      user: username,
+      email: email
+    }
+  }
+  const apiData = await API.post('userInfoAmplify','/addUser', data)
+  
+}
+
+
+  const navigation = useNavigation<SignUpProp>();
+  const fontsLoaded = loadFonts();
   return (
+  
     <LoginBackground>
-      <CustomText style={{ fontSize: 25, color: 'white' }}>
-        {success}
-      </CustomText>
-      <SizedBox height={50} />
-      <CustomText style={{ fontSize: 25, color: 'white' }}>
-        Create account
+     
+     <CustomText style={{ color: 'white', fontSize: 35 }} textType='bold'>
+        
+        Create New Account
       </CustomText>
       <SizedBox height={50} />
       <View style={styles.loginView}>
-        <Input placeholder='First name' onChange={handleFirstName} />
-        <Input placeholder='Last name' onChange={handleLastName} />
-        <Input placeholder='E-mail address' onChange={handleEmail} />
-        <Input placeholder='Mobile number' onChange={handleNumber} />
-        <Input placeholder='Password' onChange={handlePassword} />
+      <Input
+          placeholder="Enter username"
+          value={username}
+          onChangeText={text => setUsername(text)}
+        />
+      <Input
+          secureTextEntry={true}
+          placeholder="Enter password"
+          value={password}
+          onChangeText={text => setPassword(text)}
+        />
+      <Input
+          secureTextEntry={true}
+          placeholder="Confirm Password"
+          value={password2}
+          onChangeText={text => setPassword2(text)}
+        />
+      <Input
+          placeholder="Email"
+          value={email}
+          onChangeText={text => setEmail(text)}
+        />
       </View>
+
       <SizedBox height={50} />
       <Button
         buttonStyle={styles.button}
-        titleStyle={{ color: 'white', fontSize: 10, fontFamily: 'Raleway' }}
-        title='Create account'
-        disabled={state.isButtonDisabled}
-        onPress={() => {
-          handleSignUp();
-          setTimeout(() => {
-            console.log(state);
-          }, 1000);
-        }} // send state
+        titleStyle={{ color: 'white', fontSize: 12, fontFamily: 'Raleway' }}
+        title='Sign up(then reload page)'
+        onPress={() => signupfucn()}
       />
+      
     </LoginBackground>
+    
   );
 };
 

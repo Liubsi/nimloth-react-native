@@ -1,0 +1,10 @@
+{
+  "resourceName": "userInfoAmplify",
+  "tableName": "users",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/addUser": {
+      "name": "/addUser",
+      "lambdaFunction": "userInfoAmplify",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

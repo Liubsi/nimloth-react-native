@@ -7,7 +7,7 @@ import WalletScreen from './Wallet';
 import HomeScreen from './Home';
 import FriendsScreen from './Friends';
 import TransactionHistoryScreen from './TransactionHistory';
-
+import AuthContext from '../../AuthContext';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {

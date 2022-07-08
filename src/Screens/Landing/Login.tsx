@@ -7,7 +7,10 @@ import { CustomText, LoginBackground, SizedBox } from '../../components';
 import styles from '../styles';
 import { loadFonts } from '../../fonts';
 import { RootStackParamList } from './RootStackParams';
-
+import { Amplify } from 'aws-amplify';
+import { Auth } from 'aws-amplify';
+import { UserAgent } from 'amazon-cognito-identity-js';
+import { Authenticator } from '@aws-amplify/ui-react';
 type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const LoginScreen = () => {
@@ -15,6 +18,7 @@ const LoginScreen = () => {
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
     <LoginBackground>
+      
       <SizedBox height={100} />
       <CustomText style={{ color: 'white', fontSize: 35 }} textType='bold'>
         Nimloth
@@ -37,6 +41,7 @@ const LoginScreen = () => {
           onPress={() => navigation.navigate('SignUp')}
         />
       </View>
+      
     </LoginBackground>
   ) : null;
 };
