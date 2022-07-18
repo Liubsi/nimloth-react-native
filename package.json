@@ -13,7 +13,7 @@
     "format": "prettier --check ./src"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-env": "^7.18.9",
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/bottom-tabs": "^6.3.2",
