@@ -2,11 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CustomText, LoginBackground } from '../../components';
-import ChartsScreen from './Charts';
-import WalletScreen from './Wallet';
-import HomeScreen from './Home';
-import FriendsScreen from './Friends';
-import TransactionHistoryScreen from './TransactionHistory';
+import ChartsScreen from './MainPages/Charts/Charts';
+import WalletScreen from './MainPages/Wallet/Wallet';
+import HomeScreen from './MainPages/Home/Home';
+import FriendsScreen from './MainPages/Friends/Friends';
+import TransactionHistoryScreen from './MainPages/TransactionHistory/TransactionHistory';
 
 const Tab = createBottomTabNavigator();
 

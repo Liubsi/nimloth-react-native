@@ -2,16 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   light: {
-    fontFamily: 'Raleway-Thin',
+    fontFamily: 'Urbanist-Light',
   },
   regular: {
-    fontFamily: 'Raleway',
+    fontFamily: 'Urbanist',
+  },
+  medium: {
+    fontFamily: 'Urbanist-Medium'
   },
   semibold: {
-    fontFamily: 'Raleway-SemiBold',
+    fontFamily: 'Urbanist-SemiBold',
   },
   bold: {
-    fontFamily: 'Raleway-Bold',
+    fontFamily: 'Urbanist-Bold',
   },
 });
 
