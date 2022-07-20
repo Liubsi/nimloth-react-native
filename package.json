@@ -24,7 +24,7 @@
     "@types/babel__core": "^7.1.19",
     "@types/react-dom": "~17.0.11",
     "@types/supports-color": "^8.1.1",
-    "@typescript-eslint/parser": "^5.27.1",
+    "@typescript-eslint/parser": "^5.30.7",
     "babel-preset-expo": "~9.1.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
