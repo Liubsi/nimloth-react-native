@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { Button } from '@rneui/themed';
 import { CustomText, LoginBackground, SizedBox } from '../../../../components';
+import SendStyles from "../Send/styles"
+
 // buy sell
 
-const HomeScreen = () => {
+const SendScreen = () => {
   const [value, setValue] = useState<string>('0');
   const padLayout = [
     '1',
@@ -94,4 +96,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default SendScreen;

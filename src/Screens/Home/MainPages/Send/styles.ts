@@ -6,7 +6,7 @@ const SendStyles = StyleSheet.create({
         marginTop: 54,
         fontSize: 26,
         color: '#000',
-        fontFamily: 'Urbanist-Medium',
+        fontFamily: styles.medium,
         textAlign: "center",
         backgroundColor: '#F3F5F6'
 
@@ -22,8 +22,11 @@ const SendStyles = StyleSheet.create({
        marginHorizontal: 25, 
        backgroundColor: '#FFFFFF',
        width: 325,
-       height: 55
+       height: 55,
+       textAlign: "center", 
+       fontSize: 14,
+       color: '#9395A4'
 
     }
 });
-export default styles;
+export default SendStyles;
