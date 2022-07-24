@@ -18,10 +18,7 @@ const TabNavigator = () => {
       <Tab.Screen name='Wallet' component={WalletScreen} />
       <Tab.Screen name='Send' component={SendScreen} />
       <Tab.Screen name='Friends' component={FriendsScreen} />
-      <Tab.Screen
-        name='TransactionHistory'
-        component={TransactionHistoryScreen}
-      />
+      <Tab.Screen name='History' component={TransactionHistoryScreen} />
     </StyledTabNavigator>
   );
 };

@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
-import { Button } from '@rneui/themed';
-import { CustomText, LoginBackground, SizedBox } from '../../../../components';
-import SendStyles from './styles';
-import { TestComponent } from '../../../../components/TestComponent';
-// buy sell
+import Dropdown from '../../../../components/Dropdown';
+import {
+  SendButton,
+  PinpadButton,
+  PinpadContainer,
+  MoneyText,
+  FriendsSearchBar,
+} from './styles';
 
 const SendScreen = () => {
   const [value, setValue] = useState<string>('0');
+  const [selectedCoin, setSelectedCoin] = useState(undefined);
   const padLayout = [
     '1',
     '2',
@@ -22,47 +26,45 @@ const SendScreen = () => {
     '0',
     '<',
   ];
-  // might want to modify to make sure we only allow 2 digits past the decimal point
+
+  // TODO: Add a comma separator for thousands
+
   const handlePress = (item: string) => {
-    // cap the value to max of 7 digits
     if (value.length > 7 && item !== '<') {
       return;
     }
-
     if (value === '0' && item !== '<' && item !== '.') {
       setValue(item);
     } else {
       if (item === '.') {
-        // don't allow multiple decimals
         if (value.includes('.')) {
           return;
         }
       } else if (item === '<') {
-        // reset to 0
         if (value.length === 1) {
           setValue('0');
           return;
         }
-        setValue(value.slice(0, -1)); // remove last character
+        setValue(value.slice(0, -1));
         return;
       }
       setValue(value + item);
     }
   };
 
+  // TODO: Implement search for friends
+
+  const handleSearch = () => {
+    console.log('search');
+  };
+
   const renderPad = () => {
     return padLayout.map((item) => (
-      <Button
-        containerStyle={{ width: '25%', margin: 5, borderRadius: 20 }}
-        key={item}
-        title={item}
-        onPress={() => handlePress(item)}
-      />
+      <PinpadButton key={item} title={item} onPress={() => handlePress(item)} />
     ));
   };
 
   const handleSubmit = () => {
-    // dont want to allow empty values to be sent
     if (value === '0') {
       console.log('empty value');
       return;
@@ -70,28 +72,21 @@ const SendScreen = () => {
     console.log(value);
     setValue('0');
   };
-
+  // TODO: Replace FriendsSearchBar with SearchBar from react-native-elements
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <SizedBox height={100} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+      <FriendsSearchBar onChangeText={handleSearch} />
+
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <CustomText style={{ color: 'black', fontSize: 30 }} textType='regular'>
-          $ {value}
-        </CustomText>
+        <MoneyText>${value}</MoneyText>
       </View>
-      <SizedBox height={50} />
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {renderPad()}
-      </View>
-      <Button title='Send' onPress={handleSubmit} />
+      <Dropdown
+        label='Select random shitcoin'
+        data={[{ label: 'one', value: 'two', id: 'f23dfa2' }]}
+        onSelect={setSelectedCoin}
+      />
+      <PinpadContainer>{renderPad()}</PinpadContainer>
+      <SendButton title='Send' onPress={handleSubmit} />
     </SafeAreaView>
   );
 };

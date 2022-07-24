@@ -1,5 +1,7 @@
 import { createTheme } from '@rneui/themed';
 
+// Enforce the font across the app
+
 const theme = createTheme({
   Input: {
     style: {
