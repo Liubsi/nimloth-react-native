@@ -1,7 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { CustomText, LoginBackground } from '../../components';
-import TabNavigator from './tabNavigator';
+import TabNavigator from './TabNavigator';
 
 const MainScreen = () => {
   return <TabNavigator />;

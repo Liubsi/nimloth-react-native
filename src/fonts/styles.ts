@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Urbanist',
   },
   medium: {
-    fontFamily: 'Urbanist-Medium'
+    fontFamily: 'Urbanist-Medium',
   },
   semibold: {
     fontFamily: 'Urbanist-SemiBold',

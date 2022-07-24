@@ -3,7 +3,7 @@ import { createTheme } from '@rneui/themed';
 const theme = createTheme({
   Input: {
     style: {
-      fontFamily: 'Raleway',
+      fontFamily: 'Urbanist',
       backgroundColor: 'white',
       borderRadius: 10,
     },
@@ -13,12 +13,12 @@ const theme = createTheme({
   },
   Button: {
     titleStyle: {
-      fontFamily: 'Raleway',
+      fontFamily: 'Urbanist',
     },
   },
   Text: {
     style: {
-      fontFamily: 'Raleway',
+      fontFamily: 'Urbanist',
     },
   },
 });
