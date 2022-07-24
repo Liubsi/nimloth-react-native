@@ -12,6 +12,9 @@ const theme = createTheme({
     inputContainerStyle: {
       borderBottomWidth: 0,
     },
+    containerStyle: {
+      height: 45,
+    },
   },
   Button: {
     titleStyle: {
@@ -19,6 +22,18 @@ const theme = createTheme({
     },
   },
   Text: {
+    style: {
+      fontFamily: 'Urbanist',
+    },
+  },
+  SearchBar: {
+    lightTheme: true,
+    inputContainerStyle: {},
+    containerStyle: {
+      backgroundColor: '#FFFFFF',
+      borderBottomColor: 'transparent',
+      borderTopColor: 'transparent',
+    },
     style: {
       fontFamily: 'Urbanist',
     },

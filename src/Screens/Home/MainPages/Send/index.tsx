@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
-import Dropdown from '../../../../components/Dropdown';
 import {
   SendButton,
   PinpadButton,
@@ -8,10 +7,19 @@ import {
   MoneyText,
   FriendsSearchBar,
 } from './styles';
+import Dropdown from '../../../../components/Dropdown';
 
 const SendScreen = () => {
-  const [value, setValue] = useState<string>('0');
-  const [selectedCoin, setSelectedCoin] = useState(undefined);
+  const [money, setMoney] = useState<string>('0');
+  const [dropdownData, setDropdownData] = useState<
+    { label: string; value: string; id: string }[]
+  >([{ label: '', value: '', id: '' }]);
+  const [selectedCoin, setSelectedCoin] = useState<{
+    label: string;
+    value: string;
+    id: string;
+  }>({ label: '', value: '', id: '' });
+
   const padLayout = [
     '1',
     '2',
@@ -26,30 +34,50 @@ const SendScreen = () => {
     '0',
     '<',
   ];
+  const availableCoins = [
+    { label: 'one', value: 'two', id: 'f23dfa2' },
+    { label: 'three', value: 'four', id: 'h2fd6a2' },
+    { label: 'five', value: 'six', id: 'b23dka9' },
+  ];
+
+  // TODO: Change to monitor realtime data
+  useEffect(() => {
+    setDropdownData(availableCoins);
+  }, []);
 
   // TODO: Add a comma separator for thousands
-
   const handlePress = (item: string) => {
-    if (value.length > 7 && item !== '<') {
+    if (money.length > 7 && item !== '<') {
       return;
     }
-    if (value === '0' && item !== '<' && item !== '.') {
-      setValue(item);
+    if (money === '0' && item !== '<' && item !== '.') {
+      setMoney(item);
     } else {
       if (item === '.') {
-        if (value.includes('.')) {
+        if (money.includes('.')) {
           return;
         }
       } else if (item === '<') {
-        if (value.length === 1) {
-          setValue('0');
+        if (money.length === 1) {
+          setMoney('0');
           return;
         }
-        setValue(value.slice(0, -1));
+        setMoney(money.slice(0, -1));
         return;
       }
-      setValue(value + item);
+      setMoney(money + item);
     }
+  };
+
+  // TODO: Make sure to send selection to BE
+
+  const onDropdownSelect = (item: {
+    label: string;
+    value: string;
+    id: string;
+  }): void => {
+    setSelectedCoin(item);
+    console.log(selectedCoin); // prints the previous selected coin
   };
 
   // TODO: Implement search for friends
@@ -65,12 +93,12 @@ const SendScreen = () => {
   };
 
   const handleSubmit = () => {
-    if (value === '0') {
+    if (money === '0') {
       console.log('empty value');
       return;
     }
-    console.log(value);
-    setValue('0');
+    console.log(money);
+    setMoney('0');
   };
   // TODO: Replace FriendsSearchBar with SearchBar from react-native-elements
   return (
@@ -78,14 +106,16 @@ const SendScreen = () => {
       <FriendsSearchBar onChangeText={handleSearch} />
 
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <MoneyText>${value}</MoneyText>
+        <MoneyText>${money}</MoneyText>
       </View>
-      <Dropdown
-        label='Select random shitcoin'
-        data={[{ label: 'one', value: 'two', id: 'f23dfa2' }]}
-        onSelect={setSelectedCoin}
-      />
-      <PinpadContainer>{renderPad()}</PinpadContainer>
+      <View style={{ zIndex: 2 }}>
+        <Dropdown
+          defaultLabel='Select shit coin'
+          data={dropdownData}
+          onSelect={onDropdownSelect}
+        />
+      </View>
+      <PinpadContainer style={{ zIndex: 1 }}>{renderPad()}</PinpadContainer>
       <SendButton title='Send' onPress={handleSubmit} />
     </SafeAreaView>
   );

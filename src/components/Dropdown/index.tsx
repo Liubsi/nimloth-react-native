@@ -1,33 +1,65 @@
 import React, { useState } from 'react';
-import { FlatList, Modal, View, Pressable } from 'react-native';
-import { Text, Button } from '@rneui/themed';
+import { FlatList, TouchableOpacity } from 'react-native';
+import { Text, ListItem } from '@rneui/themed';
 import {
   ChevronDown,
   DropdownLabelContainer,
   DropdownPressable,
   DropdownContainer,
+  DropdownListContainer,
 } from './styles';
 
 interface Props {
-  label: string;
+  defaultLabel: string;
   data: Array<{ label: string; value: string; id: string }>;
-  onSelect: (item: { label: string; value: string }) => void; // TODO: Add a type for this?
+  onSelect: (item: { label: string; value: string; id: string }) => void; // TODO: Add a type for this?
 }
 
-const Dropdown = ({ label, data, onSelect }: Props) => {
+const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
   const [visible, setVisible] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState<string>('');
 
   const toggleDropdown = () => {
     setVisible(!visible);
   };
 
+  const onItemPress = (item: {
+    label: string;
+    value: string;
+    id: string;
+  }): void => {
+    setSelectedLabel(item.label);
+    setVisible(false);
+    onSelect(item);
+  };
+
   const renderDropdown = () => {
     return visible ? (
-      <View style={{ position: 'absolute', bottom: 0 }}>
-        {data.map((item) => (
-          <Text key={item.id}>Potato</Text>
-        ))}
-      </View>
+      <DropdownListContainer>
+        <FlatList
+          style={{ margin: 20, borderRadius: 8 }}
+          data={data}
+          keyExtractor={(item) => item.id}
+          decelerationRate='fast'
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => onItemPress(item)}>
+              <ListItem topDivider key={item.id}>
+                <ListItem.Content>
+                  <ListItem.Title
+                    style={{
+                      fontFamily: 'Urbanist',
+                      marginLeft: 20,
+                      marginRight: 20,
+                    }}
+                  >
+                    {item.label}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            </TouchableOpacity>
+          )}
+        />
+      </DropdownListContainer>
     ) : null;
   };
 
@@ -35,7 +67,9 @@ const Dropdown = ({ label, data, onSelect }: Props) => {
     <DropdownContainer>
       <DropdownPressable onPress={toggleDropdown}>
         <DropdownLabelContainer>
-          <Text style={{ color: '#FFFFFF' }}>{label}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 20 }}>
+            {selectedLabel || defaultLabel}
+          </Text>
           <ChevronDown />
         </DropdownLabelContainer>
       </DropdownPressable>

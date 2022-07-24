@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Button, Input } from '@rneui/themed';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 // TODO: Set global colors for buttons, text, etc...
 
@@ -59,5 +60,28 @@ export const FriendsSearchBar = styled(Input).attrs({
   },
   inputStyle: {
     textAlign: 'center',
+  },
+})``;
+
+// UNUSED, in favor of Dropdown component
+
+export const CoinDropdownPicker = styled(DropDownPicker).attrs({
+  itemProps: {
+    style: {
+      padding: 20,
+    },
+  },
+  containerProps: {
+    style: {
+      margin: 20,
+    },
+  },
+  labelProps: {
+    style: {
+      fontFamily: 'Urbanist-SemiBold',
+    },
+  },
+  dropownContainerStyle: {
+    backgroundColor: 'blue',
   },
 })``;
