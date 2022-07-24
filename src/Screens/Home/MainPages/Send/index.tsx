@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { Button } from '@rneui/themed';
 import { CustomText, LoginBackground, SizedBox } from '../../../../components';
-import SendStyles from "../Send/styles"
-
+import SendStyles from './styles';
+import { TestComponent } from '../../../../components/TestComponent';
 // buy sell
 
 const SendScreen = () => {

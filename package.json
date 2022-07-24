@@ -23,6 +23,8 @@
     "@rneui/themed": "^4.0.0-rc.4",
     "@types/babel__core": "^7.1.19",
     "@types/react-dom": "~17.0.11",
+    "@types/styled-components": "^5.1.25",
+    "@types/styled-components-react-native": "^5.1.3",
     "@types/supports-color": "^8.1.1",
     "@typescript-eslint/parser": "^5.30.7",
     "babel-preset-expo": "~9.1.0",
@@ -42,15 +44,16 @@
     "react-native-screens": "~3.15.0",
     "react-native-svg": "12.4.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "0.18.7"
+    "react-native-web": "0.18.7",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.18.9",
     "@types/eslint": "^8.4.3",
     "@types/jest": "^28.1.1",
-    "@types/react": "~17.0.21",
-    "@types/react-native": "~0.67.6",
+    "@types/react": "^18.0.15",
+    "@types/react-native": "^0.69.3",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "eslint-config-airbnb": "^19.0.4",
