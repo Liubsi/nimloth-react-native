@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
+// TODO: fix this custom path import
+// eslint-disable-next-line import/no-unresolved
+import Dropdown from '@components/Dropdown';
 import {
   SendButton,
   PinpadButton,
@@ -7,12 +10,15 @@ import {
   MoneyText,
   FriendsSearchBar,
 } from './styles';
-import Dropdown from '../../../../components/Dropdown';
 
 const SendScreen = () => {
   const [money, setMoney] = useState<string>('0');
   const [dropdownData, setDropdownData] = useState<
-    { label: string; value: string; id: string }[]
+    {
+      label: string;
+      value: string;
+      id: string;
+    }[]
   >([{ label: '', value: '', id: '' }]);
   const [selectedCoin, setSelectedCoin] = useState<{
     label: string;
