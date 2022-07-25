@@ -11,7 +11,7 @@ export const DropdownListContainer = styled.View`
   margin-left: auto;
   margin-right: auto;
   top: 70px;
-  background-color: blue;
+  background-color: #f3f5f6;
 `;
 
 export const DropdownPressable = styled(Button).attrs({
@@ -23,10 +23,10 @@ export const DropdownPressable = styled(Button).attrs({
   buttonStyle: {
     borderRadius: 50,
     height: 45,
-    backgroundColor: '#404AFF',
+    backgroundColor: '#FFFFFF',
   },
   titleStyle: {
-    color: '#FFFFFF',
+    color: '#000000',
   },
 })``;
 
@@ -41,8 +41,12 @@ export const DropdownLabelContainer = styled.View`
 export const ChevronDown = styled(Icon).attrs({
   type: 'font-awesome',
   name: 'chevron-down',
-  color: '#FFFFFF',
-  size: 10,
+  color: '#000000',
+  size: 20,
+  containerStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })``;
 
 export const ChevronUp = styled(Icon).attrs({})``;

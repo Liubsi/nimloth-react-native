@@ -108,7 +108,9 @@ const SendScreen = () => {
   };
   // TODO: Replace FriendsSearchBar with SearchBar from react-native-elements
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F3F5F6' }}
+    >
       <FriendsSearchBar onChangeText={handleSearch} />
 
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>

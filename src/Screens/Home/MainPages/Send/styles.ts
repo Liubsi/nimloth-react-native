@@ -6,29 +6,37 @@ import { Button, Input } from '@rneui/themed';
 export const MoneyText = styled.Text`
   font-family: Urbanist-SemiBold;
   font-size: 39px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 `;
 
 export const PinpadContainer = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 export const PinpadButton = styled(Button).attrs({
   type: 'outline',
   containerStyle: {
-    marginRight: 20,
-    marginLeft: 20,
     marginTop: 7,
     marginBottom: 7,
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexBasis: '30.33%',
   },
   buttonStyle: {
     width: 60,
     height: 60,
-    borderRadius: 100,
-    borderWidth: 0.5,
-    borderColor: '#CED0DE',
+    // borderRadius: 100,
+    // borderWidth: 0.5,
+    // borderColor: '#CED0DE',
+    borderColor: '#F3F5F6',
   },
   titleStyle: {
     fontFamily: 'Urbanist-SemiBold',

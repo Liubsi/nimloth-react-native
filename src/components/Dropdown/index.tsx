@@ -67,7 +67,7 @@ const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
     <DropdownContainer>
       <DropdownPressable onPress={toggleDropdown}>
         <DropdownLabelContainer>
-          <Text style={{ color: '#FFFFFF', fontSize: 20 }}>
+          <Text style={{ color: '#000000', fontSize: 19 }}>
             {selectedLabel || defaultLabel}
           </Text>
           <ChevronDown />
