@@ -11,10 +11,10 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext", 
-    "baseUrl": ".", 
+    "target": "esnext",
+    "baseUrl": ".",
     "paths": {
-      "@components*": ["src/components*"],
+      "@components*": ["src/components*"]
     }
   },
   "exclude": [

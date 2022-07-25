@@ -9,7 +9,6 @@ export const MoneyText = styled.Text`
 `;
 
 export const PinpadContainer = styled.View`
-  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -25,8 +24,8 @@ export const PinpadButton = styled(Button).attrs({
     marginBottom: 7,
   },
   buttonStyle: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 100,
     borderWidth: 0.5,
     borderColor: '#CED0DE',
