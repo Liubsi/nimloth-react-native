@@ -57,6 +57,9 @@ export const SendButton = styled(Button).attrs({
   },
 })``;
 
+// TODO: move to a different folder, the Friends page uses this component as well
+// TODO: Add search bar icon
+
 export const FriendsSearchBar = styled(Input).attrs({
   placeholder: 'Search friends',
   inputContainerStyle: {
