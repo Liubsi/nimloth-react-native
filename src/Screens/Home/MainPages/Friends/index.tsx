@@ -1,35 +1,49 @@
 import React, { useState } from 'react';
-import { SafeAreaView, FlatList, View } from 'react-native';
-import { Text, Input, Button } from '@rneui/themed';
+import { SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { ListItem } from '@rneui/themed';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import ProfileScreen from '../../Profiles';
-import { RootStackParamList } from '../../../Landing/RootStackParams';
 import { FriendsSearchBar } from '../Send/styles';
+import ExploreTab from './ExploreTab';
 
 // The screen that displays Friends as well as Friend's profiles
 
 type FriendsScreenProps = NativeStackNavigationProp<
-  RootStackParamList,
+  { Friends: undefined; Profile: { userId: string } },
   'Friends'
 >;
-const FriendsStack = createNativeStackNavigator(); // create a stack navigator for the friends screen
+
+type FriendProps = {
+  firstName: string;
+  lastName: string;
+  id: string;
+};
+
+const FriendsStack = createNativeStackNavigator();
 
 const FriendsListScreen = () => {
   const navigation = useNavigation<FriendsScreenProps>();
 
-  const friendsData = ['a', 'b', 'Z'];
-  const [friendsList, setFriendsList] = useState<string[]>(friendsData); // need to fetch data from BE for this
+  const friendsData = [
+    { firstName: 'Bob', lastName: 'Jones', id: '1' },
+    { firstName: 'Jerry', lastName: 'Jones', id: '2' },
+    { firstName: 'Randall', lastName: 'Smith', id: '3' },
+  ];
+  const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
 
-  // change?
-  // eslint-disable-next-line consistent-return
   const handleSearch = (value: string) => {
-    if (!value.length) return setFriendsList(friendsData);
-    const filteredList = friendsData.filter((friend) =>
-      friend.toLowerCase().includes(value.toLowerCase())
+    if (!value.length) {
+      setFriendsList(friendsData);
+      return;
+    }
+    const filteredList = friendsData.filter(
+      ({ firstName, lastName }) =>
+        firstName.toLowerCase().includes(value.toLowerCase()) ||
+        lastName.toLowerCase().includes(value.toLowerCase())
     );
 
     if (filteredList.length) {
@@ -40,21 +54,32 @@ const FriendsListScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ alignItems: 'center' }}>
-        <Text>Friends</Text>
-      </View>
+    <SafeAreaView style={{ flex: 1, marginTop: 60 }}>
+      <ExploreTab />
       <FriendsSearchBar onChangeText={handleSearch} />
       <FlatList
         data={friendsList}
         renderItem={({ item }) => (
-          <Button
-            containerStyle={{ width: '100%' }}
-            title={item}
+          <TouchableOpacity
             onPress={() => {
-              navigation.push('Profile', { userId: item });
-            }} // reevaluate how userId is used
-          />
+              navigation.push('Profile', { userId: item.id });
+            }}
+            style={{ marginBottom: 10 }}
+          >
+            <ListItem key={item.id}>
+              <ListItem.Content>
+                <ListItem.Title
+                  style={{
+                    fontFamily: 'Urbanist',
+                    marginLeft: 20,
+                    marginRight: 20,
+                  }}
+                >
+                  {item.firstName} {item.lastName}
+                </ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          </TouchableOpacity>
         )}
       />
     </SafeAreaView>
