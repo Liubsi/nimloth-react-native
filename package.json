@@ -28,7 +28,7 @@
     "@types/supports-color": "^8.1.1",
     "@typescript-eslint/parser": "^5.30.7",
     "babel-preset-expo": "~9.1.0",
-    "eslint": "^8.17.0",
+    "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.3.0",
     "expo": "^45.0.6",
