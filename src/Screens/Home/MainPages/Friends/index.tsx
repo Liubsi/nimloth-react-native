@@ -23,11 +23,84 @@ type FriendProps = {
   id: string;
 };
 
+type FriendsViewProps = {
+  handleSearch: (value: string) => void;
+  friendsList: FriendProps[];
+};
+
+const MyFriendsView = ({ handleSearch, friendsList }: FriendsViewProps) => {
+  const navigation = useNavigation<FriendsScreenProps>();
+  return (
+    <>
+      <FriendsSearchBar onChangeText={handleSearch} />
+      <FlatList
+        data={friendsList}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.push('Profile', { userId: item.id });
+            }}
+            style={{ marginBottom: 10 }}
+          >
+            <ListItem key={item.id}>
+              <ListItem.Content>
+                <ListItem.Title
+                  style={{
+                    fontFamily: 'Urbanist',
+                    marginLeft: 20,
+                    marginRight: 20,
+                  }}
+                >
+                  {item.firstName} {item.lastName}
+                </ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          </TouchableOpacity>
+        )}
+      />
+    </>
+  );
+};
+
+const ExploreFriendsView = ({
+  handleSearch,
+  friendsList,
+}: FriendsViewProps) => {
+  const navigation = useNavigation<FriendsScreenProps>();
+  return (
+    <>
+      <FriendsSearchBar onChangeText={handleSearch} />
+      <FlatList
+        data={friendsList}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.push('Profile', { userId: item.id });
+            }}
+            style={{ marginBottom: 10 }}
+          >
+            <ListItem key={item.id}>
+              <ListItem.Content>
+                <ListItem.Title
+                  style={{
+                    fontFamily: 'Urbanist',
+                    marginLeft: 20,
+                    marginRight: 20,
+                  }}
+                >
+                  {item.firstName} {item.lastName}
+                </ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          </TouchableOpacity>
+        )}
+      />
+    </>
+  );
+};
 const FriendsStack = createNativeStackNavigator();
 
 const FriendsListScreen = () => {
-  const navigation = useNavigation<FriendsScreenProps>();
-
   const friendsData = [
     { firstName: 'Bob', lastName: 'Jones', id: '1' },
     { firstName: 'Jerry', lastName: 'Jones', id: '2' },
@@ -55,33 +128,13 @@ const FriendsListScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 60 }}>
-      <ExploreTab />
-      <FriendsSearchBar onChangeText={handleSearch} />
-      <FlatList
-        data={friendsList}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.push('Profile', { userId: item.id });
-            }}
-            style={{ marginBottom: 10 }}
-          >
-            <ListItem key={item.id}>
-              <ListItem.Content>
-                <ListItem.Title
-                  style={{
-                    fontFamily: 'Urbanist',
-                    marginLeft: 20,
-                    marginRight: 20,
-                  }}
-                >
-                  {item.firstName} {item.lastName}
-                </ListItem.Title>
-              </ListItem.Content>
-            </ListItem>
-          </TouchableOpacity>
-        )}
-      />
+      <ExploreTab>
+        <MyFriendsView handleSearch={handleSearch} friendsList={friendsList} />
+        <ExploreFriendsView
+          handleSearch={handleSearch}
+          friendsList={friendsList}
+        />
+      </ExploreTab>
     </SafeAreaView>
   );
 };

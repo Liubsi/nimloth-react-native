@@ -4,11 +4,10 @@ import { Tab, TabView } from '@rneui/themed';
 
 // TabView.Items
 type ExploreTabProps = {
-  MyFriendsView: any;
-  ExploreView: any;
+  children: React.ReactNode[];
 };
 
-const ExploreTab = () => {
+const ExploreTab = ({ children }: ExploreTabProps) => {
   const [index, setIndex] = useState(0);
 
   return (
@@ -62,10 +61,9 @@ const ExploreTab = () => {
         </Tab>
       </View>
       <TabView value={index} onChange={setIndex} disableTransition>
-        {/* <MyFriendsView />
-      <ExploreView /> */}
-        <TabView.Item style={{ backgroundColor: 'black', width: '100%' }} />
-        <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }} />
+        {children.map((child, index) => {
+          return <TabView.Item style={{ width: '100%' }}>{child}</TabView.Item>;
+        })}
       </TabView>
     </>
   );
