@@ -98,6 +98,7 @@ const ExploreFriendsView = ({
     </>
   );
 };
+
 const FriendsStack = createNativeStackNavigator();
 
 const FriendsListScreen = () => {
