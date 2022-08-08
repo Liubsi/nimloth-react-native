@@ -6528,7 +6528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.0":
+"husky@npm:^8.0.1":
   version: 8.0.1
   resolution: "husky@npm:8.0.1"
   bin:
@@ -8630,7 +8630,7 @@ __metadata:
     expo-font: ~10.1.0
     expo-linear-gradient: ~11.3.0
     expo-status-bar: ~1.3.0
-    husky: ^8.0.0
+    husky: ^8.0.1
     install-peers: ^1.0.4
     lint-staged: ^13.0.2
     prettier: ^2.7.1
