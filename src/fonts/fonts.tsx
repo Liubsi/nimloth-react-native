@@ -1,6 +1,3 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text } from '@rneui/themed';
 import { useFonts } from 'expo-font';
 
 const loadFonts = () => {
@@ -32,19 +29,6 @@ const loadFonts = () => {
   });
 
   return fontsLoaded;
-};
-
-export const TestFontsComponent = () => {
-  loadFonts();
-
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 20 }}>Font Family Poppins</Text>
-      <Text style={{ fontFamily: 'Poppins-Thin', fontSize: 30 }}>Nimloth</Text>
-      <Text style={{ fontFamily: 'Poppins', fontSize: 30 }}>Nimloth</Text>
-      <Text style={{ fontFamily: 'Poppins-Bold', fontSize: 30 }}>Nimloth</Text>
-    </View>
-  );
 };
 
 export default loadFonts;
