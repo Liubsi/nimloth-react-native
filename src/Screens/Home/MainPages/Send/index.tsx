@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
-// TODO: fix this custom path import
-// eslint-disable-next-line import/no-unresolved
 import Dropdown from '@components/Dropdown';
 import {
   SendButton,

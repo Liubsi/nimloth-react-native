@@ -45,7 +45,8 @@
     "import/no-named-as-default": 0,
     "global-require": "off",
     "no-undef": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "import/no-unresolved": "off" // TODO: remove this when we have a better way to handle imports
   },
   "settings": {
     "import/parsers": {
