@@ -6,9 +6,9 @@ import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import Tabs from '@components/Tabs';
 import ProfileScreen from '../../Profiles';
 import { FriendsSearchBar } from '../Send/styles';
-import ExploreTab from './ExploreTab';
 
 // The screen that displays Friends as well as Friend's profiles
 
@@ -143,13 +143,13 @@ const FriendsListScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-      <ExploreTab>
+      <Tabs tabTitles={['My Friends', 'Explore']}>
         <MyFriendsView handleSearch={handleSearch} friendsList={friendsList} />
         <ExploreFriendsView
           handleSearch={handleSearch}
           friendsList={friendsList}
         />
-      </ExploreTab>
+      </Tabs>
     </SafeAreaView>
   );
 };
