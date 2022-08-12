@@ -27,7 +27,10 @@ const TabNavigator = () => {
         name='Charts'
         component={ChartsScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
