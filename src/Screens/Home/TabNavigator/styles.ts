@@ -57,6 +57,7 @@ export const StyledTabNavigator = styled(Tab.Navigator).attrs({
     tabBarShowLabel: false,
     tabBarStyle: {
       height: 65,
+      marginTop: 30,
       marginRight: 15,
       marginLeft: 15,
       marginBottom: 30,

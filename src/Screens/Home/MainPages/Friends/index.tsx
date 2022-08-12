@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
 import {
   createNativeStackNavigator,
@@ -33,32 +33,34 @@ const MyFriendsView = ({ handleSearch, friendsList }: FriendsViewProps) => {
   return (
     <>
       <FriendsSearchBar onChangeText={handleSearch} />
-      <FlatList
-        data={friendsList}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.push('Profile', { userId: item.id });
-            }}
-            style={{ marginBottom: 10 }}
-          >
-            <ListItem key={item.id}>
-              <ListItem.Content>
-                <ListItem.Title
-                  style={{
-                    fontFamily: 'Urbanist',
-                    fontSize: 14,
-                    marginLeft: 20,
-                    marginRight: 20,
-                  }}
-                >
-                  {item.firstName} {item.lastName}
-                </ListItem.Title>
-              </ListItem.Content>
-            </ListItem>
-          </TouchableOpacity>
-        )}
-      />
+      <View style={{ marginTop: 20 }}>
+        <FlatList
+          data={friendsList}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.push('Profile', { userId: item.id });
+              }}
+              style={{ marginBottom: 10 }}
+            >
+              <ListItem key={item.id}>
+                <ListItem.Content>
+                  <ListItem.Title
+                    style={{
+                      fontFamily: 'Urbanist',
+                      fontSize: 14,
+                      marginLeft: 20,
+                      marginRight: 20,
+                    }}
+                  >
+                    {item.firstName} {item.lastName}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </>
   );
 };
@@ -71,31 +73,34 @@ const ExploreFriendsView = ({
   return (
     <>
       <FriendsSearchBar onChangeText={handleSearch} />
-      <FlatList
-        data={friendsList}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.push('Profile', { userId: item.id });
-            }}
-            style={{ marginBottom: 10 }}
-          >
-            <ListItem key={item.id}>
-              <ListItem.Content>
-                <ListItem.Title
-                  style={{
-                    fontFamily: 'Urbanist',
-                    marginLeft: 20,
-                    marginRight: 20,
-                  }}
-                >
-                  {item.firstName} {item.lastName}
-                </ListItem.Title>
-              </ListItem.Content>
-            </ListItem>
-          </TouchableOpacity>
-        )}
-      />
+      <View style={{ marginTop: 20 }}>
+        <FlatList
+          data={friendsList}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.push('Profile', { userId: item.id });
+              }}
+              style={{ marginBottom: 10 }}
+            >
+              <ListItem key={item.id}>
+                <ListItem.Content>
+                  <ListItem.Title
+                    style={{
+                      fontFamily: 'Urbanist',
+                      fontSize: 14,
+                      marginLeft: 20,
+                      marginRight: 20,
+                    }}
+                  >
+                    {item.firstName} {item.lastName}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </>
   );
 };
@@ -107,6 +112,14 @@ const FriendsListScreen = () => {
     { firstName: 'Bob', lastName: 'Jones', id: '1' },
     { firstName: 'Jerry', lastName: 'Jones', id: '2' },
     { firstName: 'Randall', lastName: 'Smith', id: '3' },
+    { firstName: 'John', lastName: 'Doe', id: '4' },
+    { firstName: 'Jane', lastName: 'Doe', id: '5' },
+    { firstName: 'Joe', lastName: 'Doe', id: '6' },
+    { firstName: 'Jill', lastName: 'Doe', id: '7' },
+    { firstName: 'Jack', lastName: 'Doe', id: '8' },
+    { firstName: 'Jill', lastName: 'Doe', id: '9' },
+    { firstName: 'Jack', lastName: 'Button', id: '10' },
+    { firstName: 'Jill', lastName: 'Button', id: '11' },
   ];
   const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
 
@@ -129,7 +142,7 @@ const FriendsListScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, marginTop: 60 }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <ExploreTab>
         <MyFriendsView handleSearch={handleSearch} friendsList={friendsList} />
         <ExploreFriendsView
