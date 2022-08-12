@@ -47,6 +47,7 @@ const MyFriendsView = ({ handleSearch, friendsList }: FriendsViewProps) => {
                 <ListItem.Title
                   style={{
                     fontFamily: 'Urbanist',
+                    fontSize: 14,
                     marginLeft: 20,
                     marginRight: 20,
                   }}

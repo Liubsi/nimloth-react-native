@@ -50,6 +50,9 @@ export const SendButton = styled(Button).attrs({
   containerStyle: {
     margin: 20,
   },
+  titleStyle: {
+    fontSize: 16,
+  },
   buttonStyle: {
     height: 45,
     borderRadius: 50,

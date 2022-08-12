@@ -6,6 +6,7 @@ const theme = createTheme({
   Input: {
     style: {
       fontFamily: 'Urbanist',
+      fontSize: 14,
       backgroundColor: 'white',
       borderRadius: 10,
     },

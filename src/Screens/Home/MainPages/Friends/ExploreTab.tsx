@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Tab, TabView } from '@rneui/themed';
 
-// TabView.Items
 type ExploreTabProps = {
   children: React.ReactNode[];
 };
@@ -34,6 +33,7 @@ const ExploreTab = ({ children }: ExploreTabProps) => {
             titleStyle={(active) => ({
               color: active ? '#404AFF' : '#9395A5',
               fontFamily: 'Urbanist',
+              fontSize: 14,
             })}
             containerStyle={{ backgroundColor: 'EBEFF1' }}
             buttonStyle={(active) => ({
@@ -49,6 +49,7 @@ const ExploreTab = ({ children }: ExploreTabProps) => {
             titleStyle={(active) => ({
               color: active ? '#404AFF' : '#9395A5',
               fontFamily: 'Urbanist',
+              fontSize: 14,
             })}
             containerStyle={{ backgroundColor: 'EBEFF1' }}
             buttonStyle={(active) => ({
