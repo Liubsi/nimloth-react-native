@@ -14,7 +14,8 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@components*": ["src/components*"]
+      "@components*": ["src/components*"], 
+      "@common*": ["src/common*"],
     }
   },
   "exclude": [
