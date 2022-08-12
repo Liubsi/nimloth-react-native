@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, ListItem } from '@rneui/themed';
 
 type HistoryProps = {
