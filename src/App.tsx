@@ -8,7 +8,6 @@ import LoginScreen from './Screens/Landing/Login';
 import SignInScreen from './Screens/Landing/SignIn';
 import SignUpScreen from './Screens/Landing/SignUp';
 import MainScreen from './Screens/Home/Main';
-import SettingsScreen from './Screens/Home/Settings';
 import { loadFonts } from './fonts';
 import theme from './theme';
 // migrate wrapper to another file
@@ -34,10 +33,7 @@ const App = () => {
               <Stack.Screen name='SignUp' component={SignUpScreen} />
             </>
           ) : (
-            <>
-              <Stack.Screen name='Main' component={MainScreen} />
-              <Stack.Screen name='Settings' component={SettingsScreen} />
-            </>
+            <Stack.Screen name='Main' component={MainScreen} />
           )}
         </Stack.Navigator>
       </NavigationContainer>
