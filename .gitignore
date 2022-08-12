@@ -9,7 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-.yarn/install-state.gz
+!.yarn/install-state.gz
+!.yarn/cache/
 
 # macOS
 .DS_Store
