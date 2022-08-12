@@ -7,7 +7,7 @@ export const TabContainerView = styled.View`
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
-  overflow: 'hidden';
+  overflow: hidden;
 `;
 
 export const TabContainer = styled(Tab).attrs({
