@@ -67,7 +67,10 @@ const TabNavigator = () => {
         name='History'
         component={TransactionHistoryScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
           },
