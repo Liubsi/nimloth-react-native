@@ -1,26 +1,13 @@
 import styled from 'styled-components/native';
-import Svg, { G, Circle } from 'react-native-svg';
-import { StyleSheet, Text } from 'react-native';
+import { Circle } from 'react-native-svg';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5,
-    top: 220,
-  },
-  graphWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 5,
-  },
-  label: {
-    position: 'absolute',
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: 24,
-    fontFamily: 'Urbanist-SemiBold',
-  },
-});
-export default styles;
+export const ProportionedCircle = styled(Circle).attrs({
+  cx: '50%',
+  cy: '50%',
+  fill: 'transparent',
+  originX: '90',
+  originY: '90',
+  strokeLinecap: 'round',
+})``;
+
+export default ProportionedCircle;

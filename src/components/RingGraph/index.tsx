@@ -1,107 +1,50 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import Svg, { G, Circle } from 'react-native-svg';
-import styles from './styles';
+import Svg, { G } from 'react-native-svg';
+import { ProportionedCircle } from './styles';
 
 const radius = 65;
 const borderTest = 10;
 const circleCircumference = 2 * Math.PI * radius;
+const colors = ['#FFA41B', '#1BFF32', '#F11BFF'];
 
 type Props = {
-  coins: Array<{ coinName: string; dollarAmmount: number }>;
+  coins: { coinName: string; dollarAmount: number }[];
 };
 
 const RingGraph = ({ coins }: Props) => {
-  const renderCircles = () => {
-    return coins.map((item) => <Text>hello</Text>);
+  const renderProportions = () => {
+    const coinTotal = coins.reduce((acc, curr) => acc + curr.dollarAmount, 0);
+    if (coinTotal === 0) {
+      return <ProportionedCircle r={radius} strokeWidth={borderTest} />;
+    }
+
+    return coins.map(({ coinName, dollarAmount }, index) => {
+      const prevDollarAmount = index > 0 ? coins[index - 1].dollarAmount : 0;
+      const coinPercentage = (dollarAmount / coinTotal) * 100;
+      const coinAngle = (prevDollarAmount / coinTotal) * 360;
+      const coinStrokeDashOffset =
+        (circleCircumference - circleCircumference * coinPercentage) / 100;
+      const coinRotation = index === 0 ? 0 : coinAngle;
+      return (
+        <ProportionedCircle
+          key={coinName}
+          r={radius}
+          stroke={colors[index]}
+          strokeWidth={borderTest}
+          strokeDasharray={circleCircumference * coinPercentage}
+          strokeDashoffset={coinStrokeDashOffset}
+          rotation={coinRotation}
+        />
+      );
+    });
   };
 
-  // Need to fix how data is added here
-  const BTC = 1000;
-  const ETH = 1000;
-  const SOL = 1400;
-  const total = BTC + ETH + SOL;
-
-  const BTCPercentage = (BTC / total) * 100;
-  const ETHPercentage = (ETH / total) * 100;
-  const SOLPercentage = (SOL / total) * 100;
-
-  const BTCStrokeDashoffset =
-    (circleCircumference - circleCircumference * BTCPercentage) / 100;
-  const ETHStrokeDashoffset =
-    (circleCircumference - circleCircumference * ETHPercentage) / 100;
-  const SOLStrokeDashoffset =
-    (circleCircumference - circleCircumference * SOLPercentage) / 100;
-
-  const BTCAngle = (BTC / total) * 360;
-  const ETHAngle = (ETH / total) * 360;
-  const SOLAngle = (SOL / total) * 360;
-
   return (
-    <View style={styles.container}>
-      <View style={styles.graphWrapper}>
-        <Svg height='320' width='320' viewBox='0 0 180 180'>
-          <G rotation={-90} originX='90' originY='90'>
-            {total === 0 ? (
-              <Circle
-                cx='50%'
-                cy='50%'
-                r={radius}
-                stroke='#F1F6F9'
-                fill='transparent'
-                strokeWidth={borderTest}
-              />
-            ) : (
-              <>
-                <Circle
-                  cx='50%'
-                  cy='50%'
-                  r={radius}
-                  stroke='#FFA41B'
-                  fill='transparent'
-                  strokeWidth={borderTest}
-                  strokeDasharray={circleCircumference * BTCPercentage}
-                  strokeDashoffset={BTCStrokeDashoffset}
-                  rotation={0}
-                  originX='90'
-                  originY='90'
-                  strokeLinecap='round'
-                />
-                <Circle
-                  cx='50%'
-                  cy='50%'
-                  r={radius}
-                  stroke='#1BFF32'
-                  fill='transparent'
-                  strokeWidth={borderTest}
-                  strokeDasharray={circleCircumference * ETHPercentage}
-                  strokeDashoffset={ETHStrokeDashoffset}
-                  rotation={BTCAngle}
-                  originX='90'
-                  originY='90'
-                  strokeLinecap='round'
-                />
-
-                <Circle
-                  cx='50%'
-                  cy='50%'
-                  r={radius}
-                  stroke='#F11BFF'
-                  fill='transparent'
-                  strokeWidth={borderTest}
-                  strokeDasharray={circleCircumference * SOLPercentage}
-                  strokeDashoffset={SOLStrokeDashoffset}
-                  rotation={ETHAngle}
-                  originX='90'
-                  originY='90'
-                  strokeLinecap='round'
-                />
-              </>
-            )}
-          </G>
-        </Svg>
-      </View>
-    </View>
+    <Svg height='320' width='320' viewBox='0 0 180 180'>
+      <G rotation={-90} originX='90' originY='90'>
+        {renderProportions()}
+      </G>
+    </Svg>
   );
 };
 export default RingGraph;
