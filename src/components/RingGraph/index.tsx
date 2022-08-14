@@ -1,17 +1,23 @@
 import React from 'react';
 import Svg, { G } from 'react-native-svg';
+import { Text } from '@rneui/themed';
 import { ProportionedCircle } from './styles';
 
 const radius = 65;
 const borderTest = 10;
 const circleCircumference = 2 * Math.PI * radius;
-const colors = ['#FFA41B', '#1BFF32', '#F11BFF'];
+const colors = ['#FFA41B', '#1BFF32', '#F11BFF', '#FF1B1B', '#404AFF'];
 
 type Props = {
   coins: { coinName: string; dollarAmount: number }[];
 };
 
 const RingGraph = ({ coins }: Props) => {
+  const colors = Array.from(
+    { length: coins.length },
+    () => `#${Math.floor(Math.random() * 16777215).toString(16)}`
+  );
+
   const renderProportions = () => {
     const coinTotal = coins.reduce((acc, curr) => acc + curr.dollarAmount, 0);
     if (coinTotal === 0) {
