@@ -10,6 +10,7 @@ import Tabs from '@components/Tabs';
 import ProfileScreen from '../../Profiles';
 import { FriendsSearchBar } from '../Send/styles';
 
+// TODO: Split this file
 // The screen that displays Friends as well as Friend's profiles
 
 type FriendsScreenProps = NativeStackNavigationProp<
