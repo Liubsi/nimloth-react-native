@@ -44,7 +44,6 @@ const SendScreen = () => {
     { label: 'five', value: 'six', id: 'b23dka9' },
   ];
 
-  // TODO: Change to monitor realtime data
   useEffect(() => {
     setDropdownData(availableCoins);
   }, []);
@@ -73,19 +72,16 @@ const SendScreen = () => {
     }
   };
 
-  // TODO: Make sure to send selection to BE
-
   const onDropdownSelect = (item: {
     label: string;
     value: string;
     id: string;
   }): void => {
     setSelectedCoin(item);
-    console.log(selectedCoin); // prints the previous selected coin
+    console.log(selectedCoin);
   };
 
   // TODO: Implement search for friends
-
   const handleSearch = () => {
     console.log('search');
   };
