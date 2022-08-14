@@ -3,10 +3,19 @@ import { View, Text } from 'react-native';
 import Svg, { G, Circle } from 'react-native-svg';
 import styles from './styles';
 
-const RingGraph = () => {
-  const radius = 65;
-  const borderTest = 10;
-  const circleCircumference = 2 * Math.PI * radius;
+const radius = 65;
+const borderTest = 10;
+const circleCircumference = 2 * Math.PI * radius;
+
+type Props = {
+  coins: Array<{ coinName: string; dollarAmmount: number }>;
+};
+
+const RingGraph = ({ coins }: Props) => {
+  const renderCircles = () => {
+    return coins.map((item) => <Text>hello</Text>);
+  };
+
   // Need to fix how data is added here
   const BTC = 1000;
   const ETH = 1000;
