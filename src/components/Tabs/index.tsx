@@ -9,11 +9,15 @@ type TabProps = {
 
 const Tabs = ({ children, tabTitles }: TabProps) => {
   const [index, setIndex] = useState(0);
-  console.log(children);
+
+  if (children.length !== tabTitles.length) {
+    return null;
+  }
+
   const renderTabs = () => {
     return tabTitles.map((title, index) => (
       <TabContainerItem
-        // TODO: Find a better way to do this
+        // TODO: Find a better way to do assign a key
         // eslint-disable-next-line react/no-array-index-key
         key={index}
         title={title}
