@@ -10,9 +10,9 @@ import SignUpScreen from './Screens/Landing/SignUp';
 import MainScreen from './Screens/Home/Main';
 import { loadFonts } from './fonts';
 import theme from './theme';
-// migrate wrapper to another file
-// look into making touchable without feedback lower order, if possible
-// add back status bar eventually (if needed)
+
+// TODO: Don't think status bar is working
+
 const Stack = createNativeStackNavigator();
 const isSignedIn = true; // change to false when signing in
 
