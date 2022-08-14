@@ -9,7 +9,7 @@ type TabProps = {
 
 const Tabs = ({ children, tabTitles }: TabProps) => {
   const [index, setIndex] = useState(0);
-
+  console.log(children);
   const renderTabs = () => {
     return tabTitles.map((title, index) => (
       <TabContainerItem

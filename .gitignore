@@ -1,4 +1,5 @@
 node_modules/
+.vscode/
 .expo/
 dist/
 npm-debug.*
@@ -9,6 +10,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+
+# yarn
 !.yarn/install-state.gz
 !.yarn/cache/*
 

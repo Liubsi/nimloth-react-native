@@ -1,4 +1,4 @@
-import { createTheme, Input, Button } from '@rneui/themed';
+import { createTheme } from '@rneui/themed';
 
 // Enforce the font across the app
 
