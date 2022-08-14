@@ -11,7 +11,7 @@ const Tabs = ({ children, tabTitles }: TabProps) => {
   const [index, setIndex] = useState(0);
 
   if (children.length !== tabTitles.length) {
-    return null;
+    throw new Error('Number of children and tabTitles must match');
   }
 
   const renderTabs = () => {
