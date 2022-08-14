@@ -12,8 +12,8 @@ npm-debug.*
 web-build/
 
 # yarn
-!.yarn/install-state.gz
-!.yarn/cache/*
+.yarn/install-state.gz
+.yarn/cache/*
 
 # macOS
 .DS_Store
