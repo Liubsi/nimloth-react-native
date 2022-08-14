@@ -14,10 +14,10 @@ import theme from './theme';
 // TODO: Don't think status bar is working
 
 const Stack = createNativeStackNavigator();
-const isSignedIn = true; // change to false when signing in
+const isSignedIn = true;
 
 const App = () => {
-  // load the fonts before the app loads
+  // TODO: replace null with a loading screen
   const loaded = loadFonts();
   if (!loaded) return null;
 
