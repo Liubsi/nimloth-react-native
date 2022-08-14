@@ -30,7 +30,7 @@
     "babel-preset-expo": "~9.2.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-import-resolver-typescript": "^3.4.1",
     "expo": "^46.0.3",
     "expo-font": "~10.2.0",
     "expo-linear-gradient": "~11.4.0",
