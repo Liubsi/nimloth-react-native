@@ -1,8 +1,8 @@
 import React from 'react';
-import TabNavigator from './TabNavigator';
+import MainNavigator from './MainNavigator';
 
 const MainScreen = () => {
-  return <TabNavigator />;
+  return <MainNavigator />;
 };
 
 export default MainScreen;

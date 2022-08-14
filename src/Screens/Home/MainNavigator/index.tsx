@@ -17,10 +17,11 @@ import {
 
 // TODO: Figure out how to wrap Tab.Screen with StyledComponent
 // TODO: Change icon coloring when selected
+// TODO: Change icons, they ugly
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const MainNavigator = () => {
   return (
     <StyledTabNavigator initialRouteName='Send'>
       <Tab.Screen
@@ -83,4 +84,4 @@ const TabNavigator = () => {
   );
 };
 
-export default TabNavigator;
+export default MainNavigator;
