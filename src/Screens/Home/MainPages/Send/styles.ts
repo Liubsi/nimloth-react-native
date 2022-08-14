@@ -33,9 +33,6 @@ export const PinpadButton = styled(Button).attrs({
   buttonStyle: {
     width: 60,
     height: 60,
-    // borderRadius: 100,
-    // borderWidth: 0.5,
-    // borderColor: '#CED0DE',
     borderColor: '#F3F5F6',
   },
   titleStyle: {
@@ -74,26 +71,3 @@ export const FriendsSearchBar = styled(Input).attrs({
     textAlign: 'center',
   },
 })``;
-
-// UNUSED, in favor of Dropdown component
-
-// export const CoinDropdownPicker = styled(DropDownPicker).attrs({
-//   itemProps: {
-//     style: {
-//       padding: 20,
-//     },
-//   },
-//   containerProps: {
-//     style: {
-//       margin: 20,
-//     },
-//   },
-//   labelProps: {
-//     style: {
-//       fontFamily: 'Urbanist-SemiBold',
-//     },
-//   },
-//   dropownContainerStyle: {
-//     backgroundColor: 'blue',
-//   },
-// })``;
