@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
-import { Text, ListItem } from '@rneui/themed';
+import { ListItem } from '@rneui/themed';
 
 type HistoryProps = {
   type: string;

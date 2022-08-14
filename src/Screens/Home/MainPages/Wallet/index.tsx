@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import RingGraph from '@components/RingGraph/';
 import OwnedCoinsList from './OwnedCoinsList';
 
@@ -19,12 +20,15 @@ const WalletsScreen = () => {
   ]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'center' }}
+      edges={['top', 'left', 'right']}
+    >
       <View style={{ flex: 1, alignItems: 'center' }}>
         <RingGraph coins={ownedCoins} />
       </View>
       <OwnedCoinsList coins={ownedCoins} />
-    </View>
+    </SafeAreaView>
   );
 };
 

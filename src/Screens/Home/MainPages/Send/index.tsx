@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Dropdown from '@components/Dropdown';
 import {
   SendButton,
@@ -104,6 +105,7 @@ const SendScreen = () => {
   return (
     <SafeAreaView
       style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F3F5F6' }}
+      edges={['top', 'left', 'right']}
     >
       <View style={{ marginTop: 60 }}>
         <FriendsSearchBar onChangeText={handleSearch} />
