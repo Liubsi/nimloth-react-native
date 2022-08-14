@@ -33,7 +33,7 @@
     "eslint-import-resolver-typescript": "^3.3.0",
     "expo": "^46.0.3",
     "expo-font": "~10.1.0",
-    "expo-linear-gradient": "~11.3.0",
+    "expo-linear-gradient": "~11.4.0",
     "expo-status-bar": "~1.4.0",
     "install-peers": "^1.0.4",
     "prop-types": "^15.8.1",
