@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@rneui/themed';
 import AuthScreen from './screens/Auth';
 import MainScreen from './screens/Home/Main';
-import { loadFonts } from './fonts';
+import loadFonts from './fonts';
 import theme from './theme';
 
 // TODO: Don't think status bar is working

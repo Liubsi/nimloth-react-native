@@ -1,4 +1,5 @@
-import CustomText from './CustomText';
 import Dropdown from './Dropdown';
+import RingGraph from './RingGraph';
+import Tabs from './Tabs';
 
-export { CustomText, Dropdown };
+export { Dropdown, RingGraph, Tabs };
