@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { loadFonts } from '../../fonts';
 import { RootStackParamList } from './RootStackParams';
+import { SendButton } from './styles';
 
 type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -13,22 +14,17 @@ const LoginScreen = () => {
   const navigation = useNavigation<LoginScreenProp>();
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
-    <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-    >
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={{ color: 'black', fontSize: 35 }}>Nimloth</Text>
       <View>
-        <Button
+        <SendButton
+          type='clear'
           titleStyle={{ fontSize: 15, fontFamily: 'Raleway' }}
           title='Sign in'
         />
       </View>
       <View>
-        <Button
-          type='clear'
-          titleStyle={{ color: 'black', fontSize: 15, fontFamily: 'Raleway' }}
-          title='Sign up'
-        />
+        <SendButton title='Sign up' />
       </View>
     </SafeAreaView>
   ) : null;
