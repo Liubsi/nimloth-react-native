@@ -8,8 +8,6 @@ import MainScreen from './screens/Home/Main';
 import loadFonts from './fonts';
 import theme from './theme';
 
-// TODO: Don't think status bar is working
-
 const Stack = createNativeStackNavigator();
 const isSignedIn = false;
 

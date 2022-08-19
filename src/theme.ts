@@ -5,17 +5,39 @@ import { createTheme } from '@rneui/themed';
 const theme = createTheme({
   components: {
     Input: {
+      renderErrorMessage: false,
       style: {
         fontFamily: 'Urbanist',
-        fontSize: 14,
         backgroundColor: 'white',
-        borderRadius: 10,
+      },
+      containerStyle: {
+        paddingRight: 0,
+        paddingLeft: 0,
       },
       inputContainerStyle: {
         borderBottomWidth: 0,
+        paddingVertical: 0,
+        paddingHorizontal: 0,
       },
-      containerStyle: {
-        height: 45,
+      rightIconContainerStyle: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        marginVertical: 0,
+        marginHorizontal: 0,
+      },
+      leftIconContainerStyle: {
+        paddingRight: 0,
+        paddingLeft: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        marginVertical: 0,
+        marginHorizontal: 0,
+      },
+      inputStyle: {
+        paddingVertical: 0,
+        paddingHorizontal: 0,
       },
     },
     Button: {
@@ -30,9 +52,11 @@ const theme = createTheme({
     },
     SearchBar: {
       lightTheme: true,
-      inputContainerStyle: {},
+      inputContainerStyle: {
+        backgroundColor: 'white',
+      },
       containerStyle: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         borderBottomColor: 'transparent',
         borderTopColor: 'transparent',
       },

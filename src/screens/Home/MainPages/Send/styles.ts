@@ -65,9 +65,10 @@ export const FriendsSearchBar = styled(Input).attrs({
   inputContainerStyle: {
     marginRight: 20,
     marginLeft: 20,
-    borderRadius: 50,
   },
   inputStyle: {
     textAlign: 'center',
+    fontSize: 14,
+    borderRadius: 50,
   },
 })``;
