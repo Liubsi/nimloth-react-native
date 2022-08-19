@@ -2,20 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  NativeStackScreenProps,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
-import { RootStackParamList } from '@navigation/types';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SignUpScreenProps } from '@navigation/types';
 import { StyledInput, StyledButton } from './styles';
 
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
-
-const EmailScreen = ({ navigation }: ScreenProps) => {
+const EmailScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -32,7 +27,7 @@ const EmailScreen = ({ navigation }: ScreenProps) => {
   );
 };
 
-const PasswordScreen = ({ navigation }: ScreenProps) => {
+const PasswordScreen = ({ navigation }: SignUpScreenProps<'Password'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -49,7 +44,7 @@ const PasswordScreen = ({ navigation }: ScreenProps) => {
   );
 };
 
-const NameScreen = ({ navigation }: ScreenProps) => {
+const NameScreen = ({ navigation }: SignUpScreenProps<'Name'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -67,7 +62,7 @@ const NameScreen = ({ navigation }: ScreenProps) => {
   );
 };
 
-const PhoneScreen = ({ navigation }: ScreenProps) => {
+const PhoneScreen = ({ navigation }: SignUpScreenProps<'Phone'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -84,7 +79,7 @@ const PhoneScreen = ({ navigation }: ScreenProps) => {
   );
 };
 
-const DOBScreen = ({ navigation }: ScreenProps) => {
+const DOBScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -101,7 +96,7 @@ const DOBScreen = ({ navigation }: ScreenProps) => {
   );
 };
 
-const AddressScreen = ({ navigation }: ScreenProps) => {
+const AddressScreen = ({ navigation }: SignUpScreenProps<'Address'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -119,7 +114,7 @@ const AddressScreen = ({ navigation }: ScreenProps) => {
 };
 
 // TODO: Add data for confirmation screen
-const ConfirmScreen = ({ navigation }: ScreenProps) => {
+const ConfirmScreen = ({ navigation }: SignUpScreenProps<'Confirm'>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -128,7 +123,7 @@ const ConfirmScreen = ({ navigation }: ScreenProps) => {
       <View style={{ width: '80%', alignItems: 'center' }}>
         <StyledButton
           title='Complete sign up'
-          onPress={() => navigation.navigate('Main')}
+          onPress={() => console.log('Get user token or some shit')}
         />
       </View>
     </SafeAreaView>

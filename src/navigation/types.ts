@@ -5,6 +5,8 @@ import type {
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
+// Param lists
+
 export type SignUpParamList = {
   Email: undefined;
   Password: undefined;
@@ -15,19 +17,6 @@ export type SignUpParamList = {
   Confirm: undefined;
 };
 
-export type RootStackParamList = {
-  Main: undefined;
-  Landing: undefined;
-  SignUp: NavigatorScreenParams<SignUpParamList>;
-  SignIn: undefined;
-  Home: undefined; // Home is the name of the screen
-  Friends: undefined;
-  Profile: { userId: string };
-};
-
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
-  StackScreenProps<RootStackParamList, T>;
-
 export type MainParamList = {
   Send: undefined;
   Wallet: undefined;
@@ -36,9 +25,37 @@ export type MainParamList = {
   History: undefined;
 };
 
+export type AuthParamList = {
+  Landing: undefined;
+  SignIn: undefined;
+  SignUp: NavigatorScreenParams<SignUpParamList>;
+};
+
+export type RootStackParamList = {
+  Main: NavigatorScreenParams<MainParamList>;
+  Auth: NavigatorScreenParams<AuthParamList>;
+};
+
+// Screen props
+
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+  StackScreenProps<RootStackParamList, T>;
+
+export type SignUpScreenProps<T extends keyof SignUpParamList> =
+  CompositeScreenProps<
+    StackScreenProps<SignUpParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
 export type MainScreenProps<T extends keyof MainParamList> =
   CompositeScreenProps<
     BottomTabScreenProps<MainParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
+export type AuthScreenProps<T extends keyof AuthParamList> =
+  CompositeScreenProps<
+    StackScreenProps<AuthParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>
   >;
 

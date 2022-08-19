@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styled from 'styled-components/native';
 import { Icon } from '@rneui/themed';
+import { MainParamList } from '@navigation/types';
 // TODO: Add icons to the tabs
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<MainParamList>();
 
 export const SendIcon = styled(Icon).attrs({
   reverse: true,

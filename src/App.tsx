@@ -3,12 +3,13 @@ import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@rneui/themed';
+import { RootStackParamList } from '@navigation/types';
 import AuthScreen from './screens/Auth';
 import MainScreen from './screens/Home/Main';
 import loadFonts from './fonts';
 import theme from './theme';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const isSignedIn = false;
 
 const App = () => {

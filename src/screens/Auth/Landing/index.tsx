@@ -1,13 +1,10 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from '@rneui/themed';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '@navigation/types';
+import type { AuthScreenProps } from '@navigation/types';
 import { StyledButton, ButtonContainer } from './styles';
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Landing'>;
-
-const LandingScreen = ({ navigation }: ScreenProps) => {
+const LandingScreen = ({ navigation }: AuthScreenProps<'Landing'>) => {
   return (
     <SafeAreaView
       style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center' }}
@@ -17,12 +14,16 @@ const LandingScreen = ({ navigation }: ScreenProps) => {
         <StyledButton
           type='solid'
           title='Sign in'
-          onPress={() => navigation.navigate('Main')}
+          onPress={() => navigation.navigate('SignIn')}
         />
         <StyledButton
           type='clear'
           title='Sign up'
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() =>
+            navigation.navigate('SignUp', {
+              screen: 'Email',
+            })
+          }
         />
       </ButtonContainer>
     </SafeAreaView>
