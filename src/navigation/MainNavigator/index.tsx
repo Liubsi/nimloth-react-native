@@ -3,11 +3,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { MainParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import ChartsScreen from '../MainPages/Charts';
-import WalletScreen from '../MainPages/Wallet';
-import SendScreen from '../MainPages/Send';
-import FriendsScreen from '../MainPages/Friends';
-import TransactionHistoryScreen from '../MainPages/TransactionHistory';
+import ChartsScreen from '../../screens/Home/MainPages/Charts';
+import WalletScreen from '../../screens/Home/MainPages/Wallet';
+import SendScreen from '../../screens/Home/MainPages/Send';
+import FriendsScreen from '../../screens/Home/MainPages/Friends';
+import TransactionHistoryScreen from '../../screens/Home/MainPages/TransactionHistory';
 import {
   StyledTabNavigator,
   SendIcon,
