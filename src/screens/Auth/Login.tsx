@@ -1,10 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from '@rneui/themed';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Button, Text } from '@rneui/themed';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-import { CustomText, SizedBox } from '../../components';
-import styles from '../styles';
 import { loadFonts } from '../../fonts';
 import { RootStackParamList } from './RootStackParams';
 
@@ -14,30 +13,24 @@ const LoginScreen = () => {
   const navigation = useNavigation<LoginScreenProp>();
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
-    <View>
-      <SizedBox height={100} />
-      <CustomText style={{ color: 'white', fontSize: 35 }} textType='bold'>
-        Nimloth
-      </CustomText>
-      <SizedBox height={150} />
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+    >
+      <Text style={{ color: 'black', fontSize: 35 }}>Nimloth</Text>
       <View>
         <Button
-          buttonStyle={styles.button}
           titleStyle={{ fontSize: 15, fontFamily: 'Raleway' }}
           title='Sign in'
-          onPress={() => navigation.navigate('SignIn')}
         />
       </View>
       <View>
         <Button
           type='clear'
-          buttonStyle={styles.button}
-          titleStyle={{ color: 'white', fontSize: 15, fontFamily: 'Raleway' }}
+          titleStyle={{ color: 'black', fontSize: 15, fontFamily: 'Raleway' }}
           title='Sign up'
-          onPress={() => navigation.navigate('SignUp')}
         />
       </View>
-    </View>
+    </SafeAreaView>
   ) : null;
 };
 

@@ -12,7 +12,7 @@ import theme from './theme';
 // TODO: Don't think status bar is working
 
 const Stack = createNativeStackNavigator();
-const isSignedIn = true;
+const isSignedIn = false;
 
 const App = () => {
   // TODO: replace null with a loading screen
