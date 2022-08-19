@@ -1,18 +1,23 @@
 import styled from 'styled-components/native';
 import { Button } from '@rneui/themed';
 
-export const SendButton = styled(Button).attrs({
+export const StyledButton = styled(Button).attrs(({ type }) => ({
   containerStyle: {
-    margin: 20,
+    width: '40%',
+    margin: 10,
   },
   titleStyle: {
+    color: type !== 'solid' ? '#404AFF' : '#FFFFFF',
     fontSize: 16,
   },
   buttonStyle: {
-    height: 45,
-    borderRadius: 50,
-    backgroundColor: '#404AFF',
+    borderRadius: '50%',
+    backgroundColor: type === 'solid' ? '#404AFF' : 'transparent',
   },
-})``;
+}))``;
 
-export default SendButton;
+export const ButtonContainer = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  width: 80%;
+`;
