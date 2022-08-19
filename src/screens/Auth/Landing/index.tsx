@@ -1,16 +1,13 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from '@rneui/themed';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../RootStackParams';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../navigation/types';
 import { StyledButton, ButtonContainer } from './styles';
 
-type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Landing'>;
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Landing'>;
 
-const LandingScreen = () => {
-  const navigation = useNavigation<LoginScreenProp>();
-
+const LandingScreen = ({ navigation }: ScreenProps) => {
   return (
     <SafeAreaView
       style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center' }}
