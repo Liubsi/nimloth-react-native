@@ -37,7 +37,7 @@ const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
     return visible ? (
       <DropdownListContainer>
         <FlatList
-          style={{ margin: 20, borderRadius: 8 }}
+          style={{ borderRadius: 8 }}
           data={data}
           keyExtractor={(item) => item.id}
           decelerationRate='fast'
@@ -48,6 +48,7 @@ const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
                   <ListItem.Title
                     style={{
                       fontFamily: 'Urbanist',
+                      fontSize: 14,
                       marginLeft: 20,
                       marginRight: 20,
                     }}
