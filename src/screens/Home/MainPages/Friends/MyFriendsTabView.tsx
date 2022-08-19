@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { ListItem } from '@rneui/themed';
-import FriendsScreenProps, { FriendsViewProps } from './props';
+import { FriendsViewProps } from './props';
 import { FriendsSearchBar } from '../Send/styles';
 
 const MyFriendsTabView = ({ handleSearch, friendsList }: FriendsViewProps) => {
-  const navigation = useNavigation<FriendsScreenProps>();
   return (
     <>
       <FriendsSearchBar onChangeText={handleSearch} />
@@ -16,7 +14,7 @@ const MyFriendsTabView = ({ handleSearch, friendsList }: FriendsViewProps) => {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => {
-                navigation.push('Profile', { userId: item.id });
+                console.log('Potato');
               }}
               style={{ marginBottom: 10 }}
             >

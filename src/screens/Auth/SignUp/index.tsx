@@ -4,13 +4,14 @@ import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { SignUpScreenProps } from '@navigation/types';
+import SCREEN_NAMES from '@navigation/names';
 import { StyledInput, StyledButton } from './styles';
 
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
 
-const EmailScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
+const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -20,14 +21,16 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
         <StyledInput autoFocus placeholder='Email' />
         <StyledButton
           title='Continue'
-          onPress={() => navigation.navigate('Password')}
+          onPress={() => navigation.navigate(SCREEN_NAMES.PASSWORD)}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-const PasswordScreen = ({ navigation }: SignUpScreenProps<'Password'>) => {
+const PasswordScreen = ({
+  navigation,
+}: SignUpScreenProps<SCREEN_NAMES.PASSWORD>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -37,14 +40,14 @@ const PasswordScreen = ({ navigation }: SignUpScreenProps<'Password'>) => {
         <StyledInput autoFocus placeholder='Password' />
         <StyledButton
           title='Continue'
-          onPress={() => navigation.navigate('Name')}
+          onPress={() => navigation.navigate(SCREEN_NAMES.NAME)}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-const NameScreen = ({ navigation }: SignUpScreenProps<'Name'>) => {
+const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -55,14 +58,14 @@ const NameScreen = ({ navigation }: SignUpScreenProps<'Name'>) => {
         <StyledInput placeholder='Last name' />
         <StyledButton
           title='Continue'
-          onPress={() => navigation.navigate('Phone')}
+          onPress={() => navigation.navigate(SCREEN_NAMES.PHONE)}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-const PhoneScreen = ({ navigation }: SignUpScreenProps<'Phone'>) => {
+const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -72,14 +75,14 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<'Phone'>) => {
         <StyledInput autoFocus placeholder='Phone number' />
         <StyledButton
           title='Continue'
-          onPress={() => navigation.navigate('DOB')}
+          onPress={() => navigation.navigate(SCREEN_NAMES.DOB)}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-const DOBScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
+const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -96,7 +99,9 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<'Email'>) => {
   );
 };
 
-const AddressScreen = ({ navigation }: SignUpScreenProps<'Address'>) => {
+const AddressScreen = ({
+  navigation,
+}: SignUpScreenProps<SCREEN_NAMES.ADDRESS>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -114,7 +119,9 @@ const AddressScreen = ({ navigation }: SignUpScreenProps<'Address'>) => {
 };
 
 // TODO: Add data for confirmation screen
-const ConfirmScreen = ({ navigation }: SignUpScreenProps<'Confirm'>) => {
+const ConfirmScreen = ({
+  navigation,
+}: SignUpScreenProps<SCREEN_NAMES.CONFIRM>) => {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -137,16 +144,25 @@ const SignUpScreen = () => {
 
   return (
     <SignUpStack.Navigator
-      initialRouteName='Email'
+      initialRouteName={SCREEN_NAMES.EMAIL}
       screenOptions={{ headerShown: false }}
     >
-      <SignUpStack.Screen name='Email' component={EmailScreen} />
-      <SignUpStack.Screen name='Password' component={PasswordScreen} />
-      <SignUpStack.Screen name='Name' component={NameScreen} />
-      <SignUpStack.Screen name='Phone' component={PhoneScreen} />
-      <SignUpStack.Screen name='DOB' component={DOBScreen} />
-      <SignUpStack.Screen name='Address' component={AddressScreen} />
-      <SignUpStack.Screen name='Confirm' component={ConfirmScreen} />
+      <SignUpStack.Screen name={SCREEN_NAMES.EMAIL} component={EmailScreen} />
+      <SignUpStack.Screen
+        name={SCREEN_NAMES.PASSWORD}
+        component={PasswordScreen}
+      />
+      <SignUpStack.Screen name={SCREEN_NAMES.NAME} component={NameScreen} />
+      <SignUpStack.Screen name={SCREEN_NAMES.PHONE} component={PhoneScreen} />
+      <SignUpStack.Screen name={SCREEN_NAMES.DOB} component={DOBScreen} />
+      <SignUpStack.Screen
+        name={SCREEN_NAMES.ADDRESS}
+        component={AddressScreen}
+      />
+      <SignUpStack.Screen
+        name={SCREEN_NAMES.CONFIRM}
+        component={ConfirmScreen}
+      />
     </SignUpStack.Navigator>
   );
 };

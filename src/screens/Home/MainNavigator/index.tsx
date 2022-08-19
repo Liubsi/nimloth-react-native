@@ -2,6 +2,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { MainParamList } from '@navigation/types';
+import SCREEN_NAMES from '@navigation/names';
 import ChartsScreen from '../MainPages/Charts';
 import WalletScreen from '../MainPages/Wallet';
 import SendScreen from '../MainPages/Send';
@@ -24,9 +25,9 @@ const Tab = createBottomTabNavigator<MainParamList>();
 
 const MainNavigator = () => {
   return (
-    <StyledTabNavigator initialRouteName='Send'>
+    <StyledTabNavigator initialRouteName={SCREEN_NAMES.SEND}>
       <Tab.Screen
-        name='Charts'
+        name={SCREEN_NAMES.CHARTS}
         component={ChartsScreen}
         options={{
           headerShown: true,
@@ -39,7 +40,7 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Wallet'
+        name={SCREEN_NAMES.WALLET}
         component={WalletScreen}
         options={{
           headerShown: false,
@@ -49,7 +50,7 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Send'
+        name={SCREEN_NAMES.SEND}
         component={SendScreen}
         options={{
           headerShown: false,
@@ -59,7 +60,7 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='Friends'
+        name={SCREEN_NAMES.FRIENDS}
         component={FriendsScreen}
         options={{
           headerShown: false,
@@ -69,7 +70,7 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='History'
+        name={SCREEN_NAMES.HISTORY}
         component={TransactionHistoryScreen}
         options={{
           headerShown: true,

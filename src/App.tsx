@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@rneui/themed';
 import type { RootStackParamList } from '@navigation/types';
+import SCREEN_NAMES from '@navigation/names';
 import AuthScreen from './screens/Auth';
 import MainScreen from './screens/Home/Main';
 import loadFonts from './fonts';
@@ -22,9 +23,9 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {!isSignedIn ? (
-            <Stack.Screen name='Auth' component={AuthScreen} />
+            <Stack.Screen name={SCREEN_NAMES.AUTH} component={AuthScreen} />
           ) : (
-            <Stack.Screen name='Main' component={MainScreen} />
+            <Stack.Screen name={SCREEN_NAMES.MAIN} component={MainScreen} />
           )}
         </Stack.Navigator>
       </NavigationContainer>
