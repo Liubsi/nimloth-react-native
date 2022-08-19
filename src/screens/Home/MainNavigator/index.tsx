@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MainParamList } from '@navigation/types';
+import type { MainParamList } from '@navigation/types';
 import ChartsScreen from '../MainPages/Charts';
 import WalletScreen from '../MainPages/Wallet';
 import SendScreen from '../MainPages/Send';

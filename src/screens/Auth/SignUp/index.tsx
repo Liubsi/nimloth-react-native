@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SignUpScreenProps } from '@navigation/types';
+import type { SignUpScreenProps } from '@navigation/types';
 import { StyledInput, StyledButton } from './styles';
 
 // Current flow:
