@@ -4,7 +4,7 @@ import { Tab } from '@rneui/themed';
 export const TabContainerView = styled.View`
   width: 90%;
   border-radius: 50px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
 `;
