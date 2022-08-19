@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
 import { FriendsViewProps } from '@screens/Home/Main/Friends/props';
-import { FriendsSearchBar } from '@screens/Home/Main/Send/styles';
+import SearchBar from '@components/SearchBar';
 
 const ExploreFriendsTabView = ({
   handleSearch,
@@ -10,8 +10,10 @@ const ExploreFriendsTabView = ({
 }: FriendsViewProps) => {
   return (
     <>
-      <FriendsSearchBar onChangeText={handleSearch} />
-      <View style={{ marginTop: 20 }}>
+      <View style={{ width: '90%' }}>
+        <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
+      </View>
+      <View style={{ width: '100%', marginTop: 20 }}>
         <FlatList
           data={friendsList}
           renderItem={({ item }) => (

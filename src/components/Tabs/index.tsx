@@ -42,7 +42,10 @@ const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
 
   const renderTabViews = () => {
     return children.map((child, index) => (
-      <TabView.Item key={tabTitles[index]} style={{ width: '100%' }}>
+      <TabView.Item
+        key={tabTitles[index]}
+        style={{ width: '100%', alignItems: 'center' }}
+      >
         {child}
       </TabView.Item>
     ));

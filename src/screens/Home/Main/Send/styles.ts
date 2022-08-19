@@ -44,9 +44,6 @@ export const PinpadButton = styled(Button).attrs({
 
 export const SendButton = styled(Button).attrs({
   type: 'solid',
-  containerStyle: {
-    margin: 20,
-  },
   titleStyle: {
     fontSize: 16,
   },
@@ -54,21 +51,5 @@ export const SendButton = styled(Button).attrs({
     height: 45,
     borderRadius: 50,
     backgroundColor: '#404AFF',
-  },
-})``;
-
-// TODO: move to a different folder, the Friends page uses this component as well
-// TODO: Add search bar icon
-
-export const FriendsSearchBar = styled(Input).attrs({
-  placeholder: 'Search friends',
-  inputContainerStyle: {
-    marginRight: 20,
-    marginLeft: 20,
-  },
-  inputStyle: {
-    textAlign: 'center',
-    fontSize: 14,
-    borderRadius: 50,
   },
 })``;

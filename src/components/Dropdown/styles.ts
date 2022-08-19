@@ -17,9 +17,6 @@ export const DropdownListContainer = styled.View`
 export const DropdownPressable = styled(Button).attrs({
   type: 'solid',
   iconPosition: 'left',
-  containerStyle: {
-    margin: 20,
-  },
   buttonStyle: {
     borderRadius: 50,
     height: 45,

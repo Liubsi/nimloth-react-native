@@ -15,7 +15,7 @@ const OwnedCoinsList = () => {
   const [ownedCoins, setOwnedCoins] = useState<CoinProps[]>(ownedCoinData);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ width: '100%' }}>
       <FlatList
         data={ownedCoins}
         renderItem={({ item }) => (

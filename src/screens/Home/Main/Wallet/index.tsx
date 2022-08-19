@@ -21,7 +21,7 @@ const WalletsScreen = () => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center' }}
+      style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F3F5F6' }}
       edges={['top', 'left', 'right']}
     >
       <View style={{ flex: 1, alignItems: 'center' }}>

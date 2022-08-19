@@ -16,7 +16,7 @@ const ExploreCoinsList = () => {
     useState<CoinProps[]>(exploreCoinsData);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ width: '100%' }}>
       <FlatList
         data={exploreCoins}
         renderItem={({ item }) => (
