@@ -17,7 +17,7 @@ export const StyledInput = styled(Input).attrs({
 export const StyledButton = styled(Button).attrs({
   type: 'solid',
   containerStyle: {
-    margin: 20,
+    marginTop: 30,
     width: '100%',
   },
   titleStyle: {
