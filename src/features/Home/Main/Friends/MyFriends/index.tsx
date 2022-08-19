@@ -7,7 +7,7 @@ import SearchBar from '@components/SearchBar';
 const MyFriendsTabView = ({ handleSearch, friendsList }: FriendsViewProps) => {
   return (
     <>
-      <View style={{ backgroundColor: 'red', width: '90%' }}>
+      <View style={{ width: '90%' }}>
         <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
       </View>
       <View style={{ width: '100%', marginTop: 20 }}>
