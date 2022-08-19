@@ -5,8 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@rneui/themed';
 import type { RootStackParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import AuthScreen from './screens/Auth';
-import MainScreen from './screens/Home/Main';
+import AuthScreen from '@screens/Auth';
+import MainScreen from '@screens/Home/Main';
 import loadFonts from './fonts';
 import theme from './theme';
 

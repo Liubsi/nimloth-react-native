@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Tabs from '@components/Tabs';
+import ExploreFriendsTabView from '@features/Home/Main/Friends/ExploreFriends';
+import MyFriendsTabView from '@features/Home/Main/Friends/MyFriends';
 import { FriendProps } from './props';
-import ExploreFriendsTabView from '../../../../features/Home/Main/Friends/ExploreFriends';
-import MyFriendsTabView from '../../../../features/Home/Main/Friends/MyFriends';
 
 // TODO: Consider turning ExploreFriendsTabView and MyFriendsTabView into a single component
 

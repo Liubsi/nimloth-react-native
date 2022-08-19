@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tabs from '@components/Tabs';
-import OwnedCoinsList from '../../../../features/Home/Main/Charts/OwnedCoins';
-import ExploreCoinsList from '../../../../features/Home/Main/Charts/ExploreCoins';
+import OwnedCoinsList from '@features/Home/Main/Charts/OwnedCoins';
+import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
 
 // TODO: Consider turning OwnedCoinsList and ExploreCoinsList into a single component
 
