@@ -5,9 +5,10 @@ import { TabContainerView, TabContainer, TabContainerItem } from './styles';
 type TabProps = {
   children: React.ReactNode[];
   tabTitles: string[];
+  fontSize?: number;
 };
 
-const Tabs = ({ children, tabTitles }: TabProps) => {
+const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
   const [index, setIndex] = useState(0);
 
   if (children.length !== tabTitles.length) {
@@ -24,13 +25,16 @@ const Tabs = ({ children, tabTitles }: TabProps) => {
         titleStyle={(active) => ({
           color: active ? '#404AFF' : '#9395A5',
           fontFamily: 'Urbanist',
-          fontSize: 14,
+          fontSize: fontSize || 14,
         })}
         buttonStyle={(active) => ({
           borderColor: '#EBEFF1',
           borderWidth: 8,
           backgroundColor: active ? '#FFFFFF' : '#EBEFF1',
           borderRadius: 50,
+          margin: 0,
+          paddingHorizontal: 0,
+          paddingVertical: 0,
         })}
       />
     ));

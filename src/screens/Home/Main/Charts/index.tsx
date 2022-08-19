@@ -9,10 +9,12 @@ import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
 const ChartsScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      <Tabs tabTitles={['24H', '1W', '1Y']}>
+      <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
         <View style={{ flex: 1, backgroundColor: 'red' }} />
         <View style={{ flex: 1, backgroundColor: 'blue' }} />
         <View style={{ flex: 1, backgroundColor: 'green' }} />
+        <View style={{ flex: 1, backgroundColor: 'yellow' }} />
+        <View style={{ flex: 1, backgroundColor: 'purple' }} />
       </Tabs>
       <Tabs tabTitles={['Owned', 'Explore']}>
         <OwnedCoinsList />
