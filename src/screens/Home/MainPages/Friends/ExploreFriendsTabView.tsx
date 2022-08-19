@@ -19,7 +19,7 @@ const ExploreFriendsTabView = ({
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => {
-                navigation.push('Profile', { userId: item.id });
+                navigation.navigate('Profile', { userId: item.id });
               }}
               style={{ marginBottom: 10 }}
             >
