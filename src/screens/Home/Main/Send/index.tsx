@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SearchBar } from '@rneui/themed';
+import PAD_NUMBERS from '@common/constants/number-pad-constants';
 import Dropdown from '@components/Dropdown';
 import {
   SendButton,
@@ -26,20 +26,6 @@ const SendScreen = () => {
     id: string;
   }>({ label: '', value: '', id: '' });
 
-  const padLayout = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '.',
-    '0',
-    '<',
-  ];
   const availableCoins = [
     { label: 'one', value: 'two', id: 'f23dfa2' },
     { label: 'three', value: 'four', id: 'h2fd6a2' },
@@ -89,7 +75,7 @@ const SendScreen = () => {
   };
 
   const renderPad = () => {
-    return padLayout.map((item) => (
+    return PAD_NUMBERS.map((item) => (
       <PinpadButton key={item} title={item} onPress={() => handlePress(item)} />
     ));
   };
