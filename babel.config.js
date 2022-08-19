@@ -11,6 +11,7 @@ module.exports = function (api) {
           alias: {
             '@components': './src/components/',
             '@common': './src/common/',
+            '@navigation': './src/navigation/',
           },
         },
       ],

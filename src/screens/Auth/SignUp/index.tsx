@@ -6,7 +6,7 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigation/types';
+import { RootStackParamList } from '@navigation/types';
 import { StyledInput, StyledButton } from './styles';
 
 // Current flow:

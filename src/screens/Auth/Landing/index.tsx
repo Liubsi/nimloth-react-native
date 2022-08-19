@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from '@rneui/themed';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigation/types';
+import { RootStackParamList } from '@navigation/types';
 import { StyledButton, ButtonContainer } from './styles';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Landing'>;
