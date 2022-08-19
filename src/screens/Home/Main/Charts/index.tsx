@@ -9,7 +9,12 @@ import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
 const ChartsScreen = () => {
   return (
     <View
-      style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F3F5F6' }}
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F3F5F6',
+      }}
     >
       <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
         <View style={{ flex: 1, width: '100%', backgroundColor: 'red' }} />

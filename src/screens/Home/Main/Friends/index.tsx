@@ -44,7 +44,12 @@ const FriendsScreen = () => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F3F5F6' }}
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F3F5F6',
+      }}
       edges={['top', 'left', 'right']}
     >
       <Tabs tabTitles={['My Friends', 'Explore']}>

@@ -44,7 +44,7 @@ const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
     return children.map((child, index) => (
       <TabView.Item
         key={tabTitles[index]}
-        style={{ width: '100%', alignItems: 'center' }}
+        style={{ flex: 1, width: '100%', alignItems: 'center' }}
       >
         {child}
       </TabView.Item>
@@ -58,7 +58,12 @@ const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
           {renderTabs()}
         </TabContainer>
       </TabContainerView>
-      <TabView value={index} onChange={setIndex} disableTransition>
+      <TabView
+        containerStyle={{ width: '100%' }}
+        value={index}
+        onChange={setIndex}
+        disableTransition
+      >
         {renderTabViews()}
       </TabView>
     </>
