@@ -88,13 +88,13 @@ const SendScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#F3F5F6',
       }}
       edges={['top', 'left', 'right']}
     >
-      <View style={{ width: '90%', marginTop: 60 }}>
+      <View style={{ width: '90%' }}>
         <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
       </View>
       <MoneyText>${money}</MoneyText>
