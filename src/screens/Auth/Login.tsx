@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Button } from '@rneui/themed';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
-import { CustomText, LoginBackground, SizedBox } from '../../components';
+import { CustomText, SizedBox } from '../../components';
 import styles from '../styles';
 import { loadFonts } from '../../fonts';
 import { RootStackParamList } from './RootStackParams';
@@ -14,7 +14,7 @@ const LoginScreen = () => {
   const navigation = useNavigation<LoginScreenProp>();
   const fontsLoaded = loadFonts();
   return fontsLoaded ? (
-    <LoginBackground>
+    <View>
       <SizedBox height={100} />
       <CustomText style={{ color: 'white', fontSize: 35 }} textType='bold'>
         Nimloth
@@ -37,7 +37,7 @@ const LoginScreen = () => {
           onPress={() => navigation.navigate('SignUp')}
         />
       </View>
-    </LoginBackground>
+    </View>
   ) : null;
 };
 

@@ -4,10 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeProvider } from '@rneui/themed';
-import LoginScreen from './Screens/Landing/Login';
-import SignInScreen from './Screens/Landing/SignIn';
-import SignUpScreen from './Screens/Landing/SignUp';
-import MainScreen from './Screens/Home/Main';
+import LoginScreen from './screens/Auth/Login';
+import MainScreen from './screens/Home/Main';
 import { loadFonts } from './fonts';
 import theme from './theme';
 
@@ -27,11 +25,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {!isSignedIn ? (
-            <>
-              <Stack.Screen name='Login' component={LoginScreen} />
-              <Stack.Screen name='SignIn' component={SignInScreen} />
-              <Stack.Screen name='SignUp' component={SignUpScreen} />
-            </>
+            <Stack.Screen name='Login' component={LoginScreen} />
           ) : (
             <Stack.Screen name='Main' component={MainScreen} />
           )}
