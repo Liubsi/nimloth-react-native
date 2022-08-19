@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
-import { FriendsViewProps } from './props';
-import { FriendsSearchBar } from '../Send/styles';
+import { FriendsViewProps } from '../../../../../screens/Home/Main/Friends/props';
+import { FriendsSearchBar } from '../../../../../screens/Home/Main/Send/styles';
 
 const ExploreFriendsTabView = ({
   handleSearch,

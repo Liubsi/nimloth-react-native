@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Tabs from '@components/Tabs';
 import { FriendProps } from './props';
-import ExploreFriendsTabView from './ExploreFriendsTabView';
-import MyFriendsTabView from './MyFriendsTabView';
+import ExploreFriendsTabView from '../../../../features/Home/Main/Friends/ExploreFriends';
+import MyFriendsTabView from '../../../../features/Home/Main/Friends/MyFriends';
 
 // TODO: Consider turning ExploreFriendsTabView and MyFriendsTabView into a single component
 
-const FriendsListScreen = () => {
+const FriendsScreen = () => {
   const friendsData = [
     { firstName: 'Bob', lastName: 'Jones', id: '1' },
     { firstName: 'Jerry', lastName: 'Jones', id: '2' },
@@ -60,4 +60,4 @@ const FriendsListScreen = () => {
   );
 };
 
-export default FriendsListScreen;
+export default FriendsScreen;

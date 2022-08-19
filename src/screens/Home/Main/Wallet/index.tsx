@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RingGraph from '@components/RingGraph/';
-import OwnedCoinsList from './OwnedCoinsList';
+import OwnedCoinsList from '../../../../features/Home/Main/Wallet/OwnedCoins';
 
 type CoinProps = {
   id: string;
