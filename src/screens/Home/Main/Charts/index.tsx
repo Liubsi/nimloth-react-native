@@ -3,14 +3,8 @@ import { View } from 'react-native';
 import Tabs from '@components/Tabs';
 import OwnedCoinsList from '@features/Home/Main/Charts/OwnedCoins';
 import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
-import LineChart, { makeGraph } from '@components/Charts';
+import LineChart from '@features/Home/Main/Charts/LineChart';
 import { WINDOW_WIDTH } from '@common/constants/screen-constants';
-
-type GraphData = {
-  yMax: number;
-  yMin: number;
-  curve: string;
-};
 
 type DataPoint = {
   date: string;
@@ -50,8 +44,6 @@ const originalData: DataPoint[] = [
   { date: '2000-03-01T05:00:00.000Z', value: 690.47 },
 ];
 
-const graphData: GraphData[] = [makeGraph(originalData)];
-
 const ChartsScreen = () => {
   return (
     <View
@@ -63,11 +55,11 @@ const ChartsScreen = () => {
       }}
     >
       <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
-        <View style={{ flex: 1, width: '100%' }}>
+        <View style={{ flex: 1, width: '100%', overflow: 'hidden' }}>
           <LineChart
             height={230}
             width={WINDOW_WIDTH}
-            data={graphData}
+            lineData={originalData}
             bottomPadding={20}
           />
         </View>

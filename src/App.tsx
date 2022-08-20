@@ -8,7 +8,7 @@ import type { RootStackParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import AuthScreen from '@screens/Auth';
 import MainScreen from '@screens/Home/Main';
-import loadFonts from './fonts';
+import loadFonts from '@common/fonts';
 import theme from './theme';
 import store from './store';
 
