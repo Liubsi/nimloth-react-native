@@ -46,7 +46,7 @@ const RingGraph = ({ coins }: Props) => {
   };
 
   return (
-    <Svg height='320' width='320' viewBox='0 0 180 180'>
+    <Svg height='100%' width='100%' viewBox='0 0 180 180'>
       <G rotation={-90} originX='90' originY='90'>
         {renderProportions()}
       </G>

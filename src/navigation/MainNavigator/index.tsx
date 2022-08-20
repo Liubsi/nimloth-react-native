@@ -43,7 +43,10 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.WALLET}
         component={WalletScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
           },
