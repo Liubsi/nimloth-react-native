@@ -63,7 +63,7 @@
     "@babel/eslint-parser": "^7.18.9",
     "@types/d3": "^7.4.0",
     "@types/d3-shape": "^3.1.0",
-    "@types/eslint": "^8.4.3",
+    "@types/eslint": "^8.4.6",
     "@types/jest": "^28.1.1",
     "@types/react": "^18.0.15",
     "@types/react-native": "^0.69.3",
