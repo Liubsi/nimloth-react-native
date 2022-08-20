@@ -20,6 +20,7 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.2",
+    "@reduxjs/toolkit": "^1.8.5",
     "@rneui/base": "^4.0.0-rc.4",
     "@rneui/themed": "^4.0.0-rc.4",
     "@types/babel__core": "^7.1.19",
@@ -52,6 +53,9 @@
     "react-native-svg": "12.4.4",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "0.18.7",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
@@ -63,7 +67,10 @@
     "@types/jest": "^28.1.1",
     "@types/react": "^18.0.15",
     "@types/react-native": "^0.69.3",
+    "@types/react-redux": "^7.1.24",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint-config-airbnb": "^19.0.4",
