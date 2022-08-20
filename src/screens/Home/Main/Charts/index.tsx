@@ -55,13 +55,8 @@ const ChartsScreen = () => {
       }}
     >
       <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
-        <View style={{ flex: 1, width: '100%', overflow: 'hidden' }}>
-          <LineChart
-            height={230}
-            width={WINDOW_WIDTH}
-            lineData={originalData}
-            bottomPadding={20}
-          />
+        <View style={{ flex: 1, aspectRatio: 1.5 }}>
+          <LineChart lineData={originalData} bottomPadding={20} />
         </View>
         <View style={{ flex: 1, width: '100%', backgroundColor: 'blue' }} />
         <View style={{ flex: 1, width: '100%', backgroundColor: 'green' }} />

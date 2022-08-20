@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import * as d3 from 'd3';
 import { useSelector, useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { line, curveBasis } from 'd3-shape';
@@ -17,8 +16,6 @@ type DataPoint = {
 };
 
 type LineChartProps = {
-  height: number;
-  width: number;
   lineData: DataPoint[];
   bottomPadding: number;
 };
@@ -37,12 +34,7 @@ const MONTH = 30;
 const YEAR = 365;
 const FIVE_YEARS = 5 * YEAR;
 
-const LineChart = ({
-  height,
-  width,
-  bottomPadding,
-  lineData,
-}: LineChartProps) => {
+const LineChart = ({ bottomPadding, lineData }: LineChartProps) => {
   const dispatch = useDispatch();
   const { currentPrice } = useSelector(selectChartsState);
 
@@ -73,12 +65,10 @@ const LineChart = ({
 
   return (
     <Animated.View>
-      <Svg width={width} height={height} stroke='black'>
+      <Svg width='100%' height='100%' stroke='black'>
         <G y={-bottomPadding}>
           <View
             style={{
-              marginLeft: 30,
-              marginRight: 30,
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}
@@ -93,25 +83,25 @@ const LineChart = ({
           </View>
           <Line
             x1={0}
-            y1={height}
-            x2={width}
-            y2={height}
+            y1='100%'
+            x2='150%'
+            y2='100%'
             stroke='#d7d7d7'
             strokeWidth='1'
           />
           <Line
             x1={0}
-            y1={height * 0.7}
-            x2={width}
-            y2={height * 0.7}
+            y1='70%'
+            x2='150%'
+            y2='70%'
             stroke='#d7d7d7'
             strokeWidth='1'
           />
           <Line
             x1={0}
-            y1={height * 0.4}
-            x2={width}
-            y2={height * 0.4}
+            y1='40%'
+            x2='150%'
+            y2='40%'
             stroke='#d7d7d7'
             strokeWidth='1'
           />

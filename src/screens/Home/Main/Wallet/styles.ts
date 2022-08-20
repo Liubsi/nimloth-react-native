@@ -38,6 +38,7 @@ export const StyledButton = styled(Button).attrs(({ type }) => ({
   buttonStyle: {
     borderRadius: 50,
     backgroundColor: type === 'solid' ? '#404AFF' : '#FFFFFF',
-    width: 150,
+    width: 155,
+    height: 45,
   },
 }))``;
