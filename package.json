@@ -35,7 +35,7 @@
     "d3-shape": "^3.1.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-import-resolver-typescript": "^3.5.0",
     "expo": "^46.0.7",
     "expo-font": "~10.2.0",
     "expo-linear-gradient": "~11.4.0",
