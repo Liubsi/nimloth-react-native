@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nimlothreactnative-dev-40512-authRole",
+      "UnauthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-40512-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-40512-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nimlothreactnative-dev-40512-deployment",
+      "UnauthRoleName": "amplify-nimlothreactnative-dev-40512-unauthRole",
+      "StackName": "amplify-nimlothreactnative-dev-40512",
+      "StackId": "arn:aws:cloudformation:us-east-1:180880308457:stack/amplify-nimlothreactnative-dev-40512/cf2ff140-2515-11ed-99f8-12a2d990fc6b",
+      "AmplifyAppId": "d1i6h89q734qyn"
+    },
+    "categories": {
+      "auth": {
+        "nimlothreactnativeb6f44271": {}
+      }
+    }
+  }
+}

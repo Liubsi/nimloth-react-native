@@ -1,4 +1,5 @@
 import React from 'react';
+import { withAuthenticator } from 'aws-amplify-react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { AuthParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
@@ -21,4 +22,4 @@ const AuthScreen = () => {
   );
 };
 
-export default AuthScreen;
+export default withAuthenticator(AuthScreen);

@@ -1,4 +1,7 @@
 import React from 'react';
+import Amplify from 'aws-amplify';
+import config from "./aws-exports";
+import { withAuthenticator } from 'aws-amplify-react-native';
 import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -14,8 +17,10 @@ import store from './store';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const isSignedIn = false;
+Amplify.configure(config);
 
 const App = () => {
+  
   // TODO: replace null with a loading screen
   const loaded = loadFonts();
   if (!loaded) return null;
@@ -38,3 +43,4 @@ const App = () => {
 };
 
 export default registerRootComponent(App);
+
