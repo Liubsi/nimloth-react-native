@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "nimlothreactnativeb6f44271_identitypool_b6f44271",
+    "identityPoolName": "nimlothreactnative49b6843e_identitypool_49b6843e",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "nimlotb6f44271",
-    "userPoolName": "nimlothreactnativeb6f44271_userpool_b6f44271",
+    "resourceNameTruncated": "nimlot49b6843e",
+    "userPoolName": "nimlothreactnative49b6843e_userpool_49b6843e",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,7 +20,10 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "birthdate",
+      "email",
+      "name",
+      "phone_number"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -31,14 +34,14 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "nimlotb6f44271_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "nimlot49b6843e_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "b6f44271",
-    "resourceName": "nimlothreactnativeb6f44271",
+    "sharedId": "49b6843e",
+    "resourceName": "nimlothreactnative49b6843e",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
-      "email, phone_number"
+      "email"
     ],
     "triggers": {},
     "userPoolGroupList": [],

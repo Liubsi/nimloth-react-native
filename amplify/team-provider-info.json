@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-nimlothreactnative-dev-40512-authRole",
-      "UnauthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-40512-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-40512-authRole",
+      "AuthRoleName": "amplify-nimlothreactnative-dev-190626-authRole",
+      "UnauthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-190626-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::180880308457:role/amplify-nimlothreactnative-dev-190626-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-nimlothreactnative-dev-40512-deployment",
-      "UnauthRoleName": "amplify-nimlothreactnative-dev-40512-unauthRole",
-      "StackName": "amplify-nimlothreactnative-dev-40512",
-      "StackId": "arn:aws:cloudformation:us-east-1:180880308457:stack/amplify-nimlothreactnative-dev-40512/cf2ff140-2515-11ed-99f8-12a2d990fc6b",
-      "AmplifyAppId": "d1i6h89q734qyn"
+      "DeploymentBucketName": "amplify-nimlothreactnative-dev-190626-deployment",
+      "UnauthRoleName": "amplify-nimlothreactnative-dev-190626-unauthRole",
+      "StackName": "amplify-nimlothreactnative-dev-190626",
+      "StackId": "arn:aws:cloudformation:us-east-1:180880308457:stack/amplify-nimlothreactnative-dev-190626/b5c58280-2a4a-11ed-a3a7-0ab68aec841d",
+      "AmplifyAppId": "d2mjap9cu9gbov"
     },
     "categories": {
       "auth": {
-        "nimlothreactnativeb6f44271": {}
+        "nimlothreactnative49b6843e": {}
       }
     }
   }

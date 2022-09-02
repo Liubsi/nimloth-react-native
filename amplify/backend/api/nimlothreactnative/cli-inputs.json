@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "nimlothreactnative",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/mnt/d/Nimloth/nimloth-react-native/amplify/backend/api/nimlothreactnative/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-09-02T01:50:33.237Z",
+      "keyDescription": "basicDataAcess"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    }
+  }
+}
