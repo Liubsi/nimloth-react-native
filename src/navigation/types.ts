@@ -18,11 +18,15 @@ export type SignUpParamList = {
 };
 
 export type MainParamList = {
+  // Main screens
   Send: undefined;
   Wallet: undefined;
   Friends: undefined;
   Charts: undefined;
   History: undefined;
+
+  // Additional screens
+  CoinInfo: undefined;
 };
 
 export type AuthParamList = {

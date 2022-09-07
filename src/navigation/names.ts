@@ -15,6 +15,9 @@ enum SCREEN_NAMES {
   CHARTS = 'Charts',
   HISTORY = 'History',
 
+  // Additional
+  COIN_INFO = 'CoinInfo',
+
   // Auth
   LANDING = 'Landing',
   SIGN_IN = 'SignIn',
