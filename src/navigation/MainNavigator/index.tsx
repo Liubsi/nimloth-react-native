@@ -21,6 +21,7 @@ import {
 // TODO: Change icon coloring when selected
 // TODO: Change icons, they ugly
 // TODO: Make spacing between header and first component consistent
+// TODO: Disable back swiping for certain screens
 
 const Tab = createBottomTabNavigator<MainParamList>();
 
