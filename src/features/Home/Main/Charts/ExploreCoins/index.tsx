@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
-import CoinProps from '@screens/Home/Main/Charts/props';
+import CoinProps from '@screens/Home/Main/Search/props';
 
 const ExploreCoinsList = () => {
   const exploreCoinsData: CoinProps[] = [

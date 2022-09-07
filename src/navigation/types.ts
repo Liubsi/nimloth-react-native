@@ -22,7 +22,7 @@ export type MainParamList = {
   Send: undefined;
   Wallet: undefined;
   Friends: undefined;
-  Charts: undefined;
+  Search: undefined;
   History: undefined;
 
   // Additional screens

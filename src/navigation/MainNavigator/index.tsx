@@ -3,7 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { MainParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import ChartsScreen from '@screens/Home/Main/Charts';
+import SearchScreen from '@screens/Home/Main/Search';
 import WalletScreen from '@screens/Home/Main/Wallet';
 import SendScreen from '@screens/Home/Main/Send';
 import FriendsScreen from '@screens/Home/Main/Friends';
@@ -29,8 +29,8 @@ const MainNavigator = () => {
   return (
     <StyledTabNavigator initialRouteName={SCREEN_NAMES.SEND}>
       <Tab.Screen
-        name={SCREEN_NAMES.CHARTS}
-        component={ChartsScreen}
+        name={SCREEN_NAMES.SEARCH}
+        component={SearchScreen}
         options={{
           headerShown: true,
           headerStyle: {

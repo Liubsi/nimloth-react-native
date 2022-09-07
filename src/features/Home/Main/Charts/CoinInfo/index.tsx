@@ -1,10 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tabs from '@components/Tabs';
-import OwnedCoinsList from '@features/Home/Main/Charts/OwnedCoins';
-import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
 import LineChart from '@features/Home/Main/Charts/LineChart';
-import { WINDOW_WIDTH } from '@common/constants/screen-constants';
 
 type DataPoint = {
   date: string;
@@ -44,7 +41,7 @@ const originalData: DataPoint[] = [
   { date: '2000-03-01T05:00:00.000Z', value: 690.47 },
 ];
 
-const ChartsScreen = () => {
+const CoinChart = () => {
   return (
     <View
       style={{
@@ -62,12 +59,8 @@ const ChartsScreen = () => {
         <View style={{ flex: 1, width: '100%', backgroundColor: 'yellow' }} />
         <View style={{ flex: 1, width: '100%', backgroundColor: 'purple' }} />
       </Tabs>
-      <Tabs tabTitles={['Owned', 'Explore']}>
-        <OwnedCoinsList />
-        <ExploreCoinsList />
-      </Tabs>
     </View>
   );
 };
 
-export default ChartsScreen;
+export default CoinChart;

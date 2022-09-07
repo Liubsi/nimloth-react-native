@@ -12,7 +12,7 @@ enum SCREEN_NAMES {
   SEND = 'Send',
   WALLET = 'Wallet',
   FRIENDS = 'Friends',
-  CHARTS = 'Charts',
+  SEARCH = 'Search',
   HISTORY = 'History',
 
   // Additional
