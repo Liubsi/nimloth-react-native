@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { SignUpScreenProps } from '@navigation/types';
+import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import { StyledInput, StyledButton } from './styles';
 
@@ -140,7 +140,7 @@ const ConfirmScreen = ({
 // TODO: Add a welcome screen
 
 const SignUpScreen = () => {
-  const SignUpStack = createNativeStackNavigator();
+  const SignUpStack = createNativeStackNavigator<SignUpParamList>();
 
   return (
     <SignUpStack.Navigator
