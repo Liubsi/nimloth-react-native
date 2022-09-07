@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
 import SearchBar from '@components/SearchBar';
-import { MainScreenProps } from '@navigation/types';
+import { SearchParamList, SearchScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CoinInfoScreen from '@features/Home/Main/Charts/CoinInfo';
 import CoinProps from './props';
 
-const SearchScreen = ({ navigation }: MainScreenProps<SCREEN_NAMES.SEARCH>) => {
+const SearchScreen = ({
+  navigation,
+}: SearchScreenProps<SCREEN_NAMES.SEARCH_COINS>) => {
   const exploreCoinsData: CoinProps[] = [
     { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
     { id: '5', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
@@ -54,7 +58,7 @@ const SearchScreen = ({ navigation }: MainScreenProps<SCREEN_NAMES.SEARCH>) => {
           data={exploreCoins}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate('CoinInfo')}
+              onPress={() => navigation.navigate(SCREEN_NAMES.COIN_INFO)}
               style={{ marginBottom: 10 }}
             >
               <ListItem key={item.id}>
@@ -79,4 +83,25 @@ const SearchScreen = ({ navigation }: MainScreenProps<SCREEN_NAMES.SEARCH>) => {
   );
 };
 
-export default SearchScreen;
+const SearchStack = createNativeStackNavigator<SearchParamList>();
+
+const SearchStackScreen = () => {
+  return (
+    <SearchStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <SearchStack.Screen
+        name={SCREEN_NAMES.SEARCH_COINS}
+        component={SearchScreen}
+      />
+      <SearchStack.Screen
+        name={SCREEN_NAMES.COIN_INFO}
+        component={CoinInfoScreen}
+      />
+    </SearchStack.Navigator>
+  );
+};
+
+export default SearchStackScreen;

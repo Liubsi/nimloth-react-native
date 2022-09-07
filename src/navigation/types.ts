@@ -17,16 +17,18 @@ export type SignUpParamList = {
   Confirm: undefined;
 };
 
+export type SearchParamList = {
+  SearchCoins: undefined;
+  CoinInfo: undefined;
+};
+
 export type MainParamList = {
   // Main screens
   Send: undefined;
   Wallet: undefined;
   Friends: undefined;
-  Search: undefined;
+  Search: NavigatorScreenParams<SearchParamList>;
   History: undefined;
-
-  // Additional screens
-  CoinInfo: undefined;
 };
 
 export type AuthParamList = {
@@ -48,6 +50,12 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 export type SignUpScreenProps<T extends keyof SignUpParamList> =
   CompositeScreenProps<
     StackScreenProps<SignUpParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
+export type SearchScreenProps<T extends keyof SearchParamList> =
+  CompositeScreenProps<
+    StackScreenProps<SearchParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>
   >;
 

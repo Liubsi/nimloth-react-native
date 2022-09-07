@@ -41,7 +41,7 @@ const originalData: DataPoint[] = [
   { date: '2000-03-01T05:00:00.000Z', value: 690.47 },
 ];
 
-const CoinChart = () => {
+const CoinInfoScreen = () => {
   return (
     <View
       style={{
@@ -63,4 +63,4 @@ const CoinChart = () => {
   );
 };
 
-export default CoinChart;
+export default CoinInfoScreen;
