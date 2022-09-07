@@ -41,6 +41,8 @@ const originalData: DataPoint[] = [
   { date: '2000-03-01T05:00:00.000Z', value: 690.47 },
 ];
 
+// TODO: REDO charts
+
 const CoinInfoScreen = () => {
   return (
     <View
@@ -51,7 +53,7 @@ const CoinInfoScreen = () => {
       }}
     >
       <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
-        <View style={{ flex: 1, aspectRatio: 1.5 }}>
+        <View style={{ flex: 1, width: '90%', height: '25%' }}>
           <LineChart lineData={originalData} bottomPadding={20} />
         </View>
         <View style={{ flex: 1, width: '100%', backgroundColor: 'blue' }} />
@@ -59,6 +61,14 @@ const CoinInfoScreen = () => {
         <View style={{ flex: 1, width: '100%', backgroundColor: 'yellow' }} />
         <View style={{ flex: 1, width: '100%', backgroundColor: 'purple' }} />
       </Tabs>
+      <View
+        style={{
+          flex: 1,
+          width: '100%',
+          height: '50%',
+          backgroundColor: 'black',
+        }}
+      />
     </View>
   );
 };
