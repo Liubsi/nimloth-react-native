@@ -106,7 +106,6 @@ const TransactionHistoryScreen = () => {
       style={{
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#F3F5F6',
         marginTop: 20,
       }}
     >

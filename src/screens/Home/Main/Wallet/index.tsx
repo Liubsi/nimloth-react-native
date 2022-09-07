@@ -23,9 +23,7 @@ const WalletsScreen = () => {
   ]);
 
   return (
-    <View
-      style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }}
-    >
+    <View style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ aspectRatio: 1, flex: 1 }}>
         <RingGraph coins={ownedCoins} />
       </View>

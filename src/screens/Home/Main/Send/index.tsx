@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import PAD_NUMBERS from '@common/constants/number-pad-constants';
 import Dropdown from '@components/Dropdown';
 import SearchBar from '@components/SearchBar';
@@ -85,14 +84,12 @@ const SendScreen = () => {
   };
   // TODO (optional): Replace FriendsSearchBar with SearchBar from react-native-elements?
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor: '#F3F5F6',
       }}
-      edges={['top', 'left', 'right']}
     >
       <View style={{ width: '90%' }}>
         <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
@@ -109,7 +106,7 @@ const SendScreen = () => {
       <View style={{ width: '90%' }}>
         <SendButton title='Send' onPress={handleSubmit} />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

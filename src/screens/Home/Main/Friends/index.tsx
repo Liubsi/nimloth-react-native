@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Tabs from '@components/Tabs';
 import ExploreFriendsTabView from '@features/Home/Main/Friends/ExploreFriends';
 import MyFriendsTabView from '@features/Home/Main/Friends/MyFriends';
@@ -43,14 +42,12 @@ const FriendsScreen = () => {
   };
 
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F3F5F6',
       }}
-      edges={['top', 'left', 'right']}
     >
       <Tabs tabTitles={['My Friends', 'Explore']}>
         <MyFriendsTabView
@@ -62,7 +59,7 @@ const FriendsScreen = () => {
           friendsList={friendsList}
         />
       </Tabs>
-    </SafeAreaView>
+    </View>
   );
 };
 

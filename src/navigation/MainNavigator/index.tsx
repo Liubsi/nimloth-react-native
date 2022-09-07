@@ -20,6 +20,7 @@ import {
 // TODO: Figure out how to wrap Tab.Screen with StyledComponent
 // TODO: Change icon coloring when selected
 // TODO: Change icons, they ugly
+// TODO: Make spacing between header and first component consistent
 
 const Tab = createBottomTabNavigator<MainParamList>();
 
@@ -34,6 +35,10 @@ const MainNavigator = () => {
           headerStyle: {
             backgroundColor: 'transparent',
           },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Urbanist',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
@@ -47,6 +52,10 @@ const MainNavigator = () => {
           headerStyle: {
             backgroundColor: 'transparent',
           },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Urbanist',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
           },
@@ -56,7 +65,14 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.SEND}
         component={SendScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Urbanist',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <SendIcon />;
           },
@@ -66,7 +82,14 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.FRIENDS}
         component={FriendsScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Urbanist',
+          },
           tabBarIcon: ({ focused, color, size }) => {
             return <FriendsIcon />;
           },
@@ -79,6 +102,10 @@ const MainNavigator = () => {
           headerShown: true,
           headerStyle: {
             backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Urbanist',
           },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
