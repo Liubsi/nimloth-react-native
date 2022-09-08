@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
+import { Settings, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { MainParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
@@ -16,6 +17,7 @@ import {
   WalletIcon,
   ChartsIcon,
   HistoryIcon,
+  SettingsIcon,
 } from './styles';
 
 // TODO: Figure out how to wrap Tab.Screen with StyledComponent
@@ -83,9 +85,21 @@ const MainStackNavigator = () => {
   return (
     <MainStack.Navigator
       screenOptions={{
+        headerRight: () => (
+          <TouchableOpacity
+            onPress={() => {
+              console.log('FDS');
+            }}
+          >
+            <SettingsIcon />
+          </TouchableOpacity>
+        ),
         headerTitleStyle: {
           fontSize: 20,
           fontFamily: 'Urbanist-SemiBold',
+        },
+        headerStyle: {
+          backgroundColor: 'transparent',
         },
       }}
     >

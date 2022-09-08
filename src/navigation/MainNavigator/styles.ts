@@ -50,6 +50,12 @@ export const HistoryIcon = styled(Icon).attrs({
   },
 })``;
 
+export const SettingsIcon = styled(Icon).attrs({
+  type: 'font-awesome-5',
+  name: 'bars',
+  size: 20,
+})``;
+
 export const StyledTabNavigator = styled(Tab.Navigator).attrs({
   safeAreaInsets: {
     bottom: 0,
