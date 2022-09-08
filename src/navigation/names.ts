@@ -25,8 +25,12 @@ enum SCREEN_NAMES {
   SIGN_IN = 'SignIn',
   SIGN_UP = 'SignUp',
 
-  // Root
+  // Main Stack
   MAIN = 'Main',
+  SETTINGS = 'Settings',
+
+  // Root
+  MAIN_STACK = 'MainStack',
   AUTH = 'Auth',
 }
 

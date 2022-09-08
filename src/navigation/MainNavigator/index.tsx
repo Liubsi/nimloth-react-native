@@ -1,15 +1,21 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { Settings, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { MainParamList } from '@navigation/types';
+import type {
+  MainParamList,
+  MainStackParamList,
+  MainStackScreenNavigationProp,
+} from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import SearchScreen from '@screens/Home/Main/Search';
 import WalletScreen from '@screens/Home/Main/Wallet';
 import SendScreen from '@screens/Home/Main/Send';
 import FriendsScreen from '@screens/Home/Main/Friends';
 import TransactionHistoryScreen from '@screens/Home/Main/TransactionHistory';
+import SettingsScreen from '@screens/Home/Settings';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import {
   StyledTabNavigator,
   SendIcon,
@@ -26,10 +32,10 @@ import {
 // TODO: Make spacing between header and first component consistent
 // TODO: Disable back swiping for certain screens
 
-const MainStack = createNativeStackNavigator();
+const MainStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainParamList>();
 
-const MainNavigator = () => {
+const MainTabNavigator = () => {
   return (
     <StyledTabNavigator initialRouteName={SCREEN_NAMES.SEND}>
       <Tab.Screen
@@ -82,18 +88,19 @@ const MainNavigator = () => {
 };
 
 const MainStackNavigator = () => {
+  const navigation = useNavigation<MainStackScreenNavigationProp>();
+
   return (
     <MainStack.Navigator
       screenOptions={{
         headerRight: () => (
           <TouchableOpacity
-            onPress={() => {
-              console.log('FDS');
-            }}
+            onPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
           >
             <SettingsIcon />
           </TouchableOpacity>
         ),
+        headerBackVisible: false,
         headerTitleStyle: {
           fontSize: 20,
           fontFamily: 'Urbanist-SemiBold',
@@ -103,7 +110,11 @@ const MainStackNavigator = () => {
         },
       }}
     >
-      <MainStack.Screen name='Main' component={MainNavigator} />
+      <MainStack.Screen name={SCREEN_NAMES.MAIN} component={MainTabNavigator} />
+      <MainStack.Screen
+        name={SCREEN_NAMES.SETTINGS}
+        component={SettingsScreen}
+      />
     </MainStack.Navigator>
   );
 };

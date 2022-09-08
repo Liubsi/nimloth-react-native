@@ -1,8 +1,8 @@
 import React from 'react';
-import MainNavigator from '@navigation/MainNavigator';
+import MainStackNavigator from '@navigation/MainNavigator';
 
-const MainScreen = () => {
-  return <MainNavigator />;
+const MainStackScreen = () => {
+  return <MainStackNavigator />;
 };
 
-export default MainScreen;
+export default MainStackScreen;
