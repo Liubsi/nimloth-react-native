@@ -8,6 +8,7 @@ import WalletScreen from '@screens/Home/Main/Wallet';
 import SendScreen from '@screens/Home/Main/Send';
 import FriendsScreen from '@screens/Home/Main/Friends';
 import TransactionHistoryScreen from '@screens/Home/Main/TransactionHistory';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   StyledTabNavigator,
   SendIcon,
@@ -23,6 +24,7 @@ import {
 // TODO: Make spacing between header and first component consistent
 // TODO: Disable back swiping for certain screens
 
+const MainStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator<MainParamList>();
 
 const MainNavigator = () => {
@@ -32,10 +34,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.SEARCH}
         component={SearchScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
@@ -45,10 +43,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.WALLET}
         component={WalletScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
           },
@@ -58,10 +52,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.SEND}
         component={SendScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <SendIcon />;
           },
@@ -71,10 +61,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.FRIENDS}
         component={FriendsScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <FriendsIcon />;
           },
@@ -84,10 +70,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.HISTORY}
         component={TransactionHistoryScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
           },
@@ -97,4 +79,19 @@ const MainNavigator = () => {
   );
 };
 
-export default MainNavigator;
+const MainStackNavigator = () => {
+  return (
+    <MainStack.Navigator
+      screenOptions={{
+        headerTitleStyle: {
+          fontSize: 20,
+          fontFamily: 'Urbanist-SemiBold',
+        },
+      }}
+    >
+      <MainStack.Screen name='Main' component={MainNavigator} />
+    </MainStack.Navigator>
+  );
+};
+
+export default MainStackNavigator;

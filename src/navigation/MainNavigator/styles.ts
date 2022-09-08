@@ -64,12 +64,11 @@ export const StyledTabNavigator = styled(Tab.Navigator).attrs({
       marginBottom: 30,
       borderRadius: 100,
     },
-    headerTitleStyle: {
-      fontSize: 20,
-      fontFamily: 'Urbanist-SemiBold',
-    },
+    headerShown: false,
   },
 })``;
+
+// DOESN'T Work
 
 export const StyledTabScreen = styled(Tab.Screen).attrs({
   options: {
