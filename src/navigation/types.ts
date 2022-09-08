@@ -7,10 +7,7 @@ import type {
   StackScreenProps,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import type {
-  BottomTabScreenProps,
-  BottomTabNavigationProp,
-} from '@react-navigation/bottom-tabs';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 // Param lists
 

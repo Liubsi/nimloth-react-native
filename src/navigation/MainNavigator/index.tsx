@@ -1,21 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type {
-  MainParamList,
-  MainStackParamList,
-  MainStackScreenNavigationProp,
-} from '@navigation/types';
+import type { MainParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import SearchScreen from '@screens/Home/Main/Search';
 import WalletScreen from '@screens/Home/Main/Wallet';
 import SendScreen from '@screens/Home/Main/Send';
 import FriendsScreen from '@screens/Home/Main/Friends';
 import TransactionHistoryScreen from '@screens/Home/Main/TransactionHistory';
-import SettingsScreen from '@screens/Home/Settings';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
 import {
   StyledTabNavigator,
   SendIcon,
@@ -23,7 +15,6 @@ import {
   WalletIcon,
   ChartsIcon,
   HistoryIcon,
-  SettingsIcon,
 } from './styles';
 
 // TODO: Figure out how to wrap Tab.Screen with StyledComponent
@@ -32,7 +23,6 @@ import {
 // TODO: Make spacing between header and first component consistent
 // TODO: Disable back swiping for certain screens
 
-const MainStack = createNativeStackNavigator<MainStackParamList>();
 const Tab = createBottomTabNavigator<MainParamList>();
 
 const MainTabNavigator = () => {
@@ -87,36 +77,4 @@ const MainTabNavigator = () => {
   );
 };
 
-const MainStackNavigator = () => {
-  const navigation = useNavigation<MainStackScreenNavigationProp>();
-
-  return (
-    <MainStack.Navigator
-      screenOptions={{
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
-          >
-            <SettingsIcon />
-          </TouchableOpacity>
-        ),
-        headerBackVisible: false,
-        headerTitleStyle: {
-          fontSize: 20,
-          fontFamily: 'Urbanist-SemiBold',
-        },
-        headerStyle: {
-          backgroundColor: 'transparent',
-        },
-      }}
-    >
-      <MainStack.Screen name={SCREEN_NAMES.MAIN} component={MainTabNavigator} />
-      <MainStack.Screen
-        name={SCREEN_NAMES.SETTINGS}
-        component={SettingsScreen}
-      />
-    </MainStack.Navigator>
-  );
-};
-
-export default MainStackNavigator;
+export default MainTabNavigator;
