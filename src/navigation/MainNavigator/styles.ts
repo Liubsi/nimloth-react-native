@@ -65,8 +65,8 @@ export const StyledTabNavigator = styled(Tab.Navigator).attrs({
       borderRadius: 100,
     },
     headerTitleStyle: {
-      fontSize: 26,
-      fontFamily: 'Urbanist',
+      fontSize: 20,
+      fontFamily: 'Urbanist-SemiBold',
     },
   },
 })``;

@@ -36,10 +36,6 @@ const MainNavigator = () => {
           headerStyle: {
             backgroundColor: 'transparent',
           },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
@@ -52,10 +48,6 @@ const MainNavigator = () => {
           headerShown: true,
           headerStyle: {
             backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
           },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
@@ -70,10 +62,6 @@ const MainNavigator = () => {
           headerStyle: {
             backgroundColor: 'transparent',
           },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <SendIcon />;
           },
@@ -87,10 +75,6 @@ const MainNavigator = () => {
           headerStyle: {
             backgroundColor: 'transparent',
           },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <FriendsIcon />;
           },
@@ -103,10 +87,6 @@ const MainNavigator = () => {
           headerShown: true,
           headerStyle: {
             backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
           },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
