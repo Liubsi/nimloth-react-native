@@ -13,9 +13,9 @@ import Todo from '../../../models/index';
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
 const todo = {
-  username: 'testuser@gmail.com',
+  username: 'testus@gmail.com',
   password: 'testpassword',
-  email: 'testuser@gmail.com', // optional
+  email: 'testuser2@gmail.com', // optional
   phone_number: '+11111111111', // optional - E.164 number convention
   birthdate: '01/01/2000',
   name: 'usertest',

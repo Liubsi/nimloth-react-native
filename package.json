@@ -13,6 +13,7 @@
     "format": "prettier --check ./src"
   },
   "dependencies": {
+    "@aws-amplify/datastore": "^3.12.10",
     "@aws-amplify/ui-react": "^3.5.0",
     "@babel/preset-env": "^7.18.2",
     "@expo-google-fonts/inter": "^0.2.2",
@@ -65,7 +66,8 @@
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

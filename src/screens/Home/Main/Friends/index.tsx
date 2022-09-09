@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+// import t from 'tcomb-form-native';
 import Tabs from '@components/Tabs';
 import ExploreFriendsTabView from '@features/Home/Main/Friends/ExploreFriends';
 import MyFriendsTabView from '@features/Home/Main/Friends/MyFriends';
+import { DataStore } from '@aws-amplify/datastore';
+import { UserSignupData } from '../../../../models';
 import { FriendProps } from './props';
 
 // TODO: Consider turning ExploreFriendsTabView and MyFriendsTabView into a single component
 
-const FriendsScreen = () => {
+const FriendsScreen = async () => {
+  const models = await DataStore.query(UserSignupData);
+  console.log(models);
   const friendsData = [
     { firstName: 'Bob', lastName: 'Jones', id: '1' },
     { firstName: 'Jerry', lastName: 'Jones', id: '2' },

@@ -1,7 +1,7 @@
 export const schema = {
   models: {
-    Todo: {
-      name: 'Todo',
+    UserSignupData: {
+      name: 'UserSignupData',
       fields: {
         id: {
           name: 'id',
@@ -14,7 +14,7 @@ export const schema = {
           name: 'email',
           isArray: false,
           type: 'String',
-          isRequired: true,
+          isRequired: false,
           attributes: [],
         },
         password: {
@@ -24,8 +24,8 @@ export const schema = {
           isRequired: false,
           attributes: [],
         },
-        name: {
-          name: 'name',
+        phone_number: {
+          name: 'phone_number',
           isArray: false,
           type: 'String',
           isRequired: false,
@@ -38,12 +38,20 @@ export const schema = {
           isRequired: false,
           attributes: [],
         },
-        phone_number: {
-          name: 'phone_number',
+        name: {
+          name: 'name',
           isArray: false,
           type: 'String',
           isRequired: false,
           attributes: [],
+        },
+        Friends: {
+          name: 'Friends',
+          isArray: true,
+          type: 'String',
+          isRequired: false,
+          attributes: [],
+          isArrayNullable: true,
         },
         createdAt: {
           name: 'createdAt',
@@ -63,16 +71,27 @@ export const schema = {
         },
       },
       syncable: true,
-      pluralName: 'Todos',
+      pluralName: 'UserSignupData',
       attributes: [
         {
           type: 'model',
           properties: {},
+        },
+        {
+          type: 'auth',
+          properties: {
+            rules: [
+              {
+                allow: 'public',
+                operations: ['create', 'update', 'delete', 'read'],
+              },
+            ],
+          },
         },
       ],
     },
   },
   enums: {},
   nonModels: {},
-  version: 'eb826d729f1089183ba686bfac2ea9d0',
+  version: '5364ef4c266f606e5c1490e882f40e07',
 };
