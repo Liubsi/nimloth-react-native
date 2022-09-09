@@ -25,21 +25,13 @@ import {
 
 const Tab = createBottomTabNavigator<MainParamList>();
 
-const MainNavigator = () => {
+const MainTabNavigator = () => {
   return (
     <StyledTabNavigator initialRouteName={SCREEN_NAMES.SEND}>
       <Tab.Screen
         name={SCREEN_NAMES.SEARCH}
         component={SearchScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
@@ -49,14 +41,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.WALLET}
         component={WalletScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
           },
@@ -66,14 +50,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.SEND}
         component={SendScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <SendIcon />;
           },
@@ -83,14 +59,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.FRIENDS}
         component={FriendsScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <FriendsIcon />;
           },
@@ -100,14 +68,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.HISTORY}
         component={TransactionHistoryScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontSize: 20,
-            fontFamily: 'Urbanist',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
           },
@@ -117,4 +77,4 @@ const MainNavigator = () => {
   );
 };
 
-export default MainNavigator;
+export default MainTabNavigator;

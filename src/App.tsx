@@ -7,7 +7,7 @@ import { ThemeProvider } from '@rneui/themed';
 import type { RootStackParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import AuthScreen from '@screens/Auth';
-import MainScreen from '@screens/Home/Main';
+import MainStackScreen from '@screens/Home/Main';
 import loadFonts from '@common/fonts';
 import theme from './theme';
 import store from './store';
@@ -28,7 +28,10 @@ const App = () => {
             {!isSignedIn ? (
               <Stack.Screen name={SCREEN_NAMES.AUTH} component={AuthScreen} />
             ) : (
-              <Stack.Screen name={SCREEN_NAMES.MAIN} component={MainScreen} />
+              <Stack.Screen
+                name={SCREEN_NAMES.MAIN_STACK}
+                component={MainStackScreen}
+              />
             )}
           </Stack.Navigator>
         </NavigationContainer>

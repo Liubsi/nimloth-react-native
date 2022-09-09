@@ -1,8 +1,12 @@
 import type {
+  CompositeNavigationProp,
   CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import type { StackScreenProps } from '@react-navigation/stack';
+import type {
+  StackScreenProps,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 // Param lists
@@ -31,6 +35,11 @@ export type MainParamList = {
   History: undefined;
 };
 
+export type MainStackParamList = {
+  Main: NavigatorScreenParams<MainParamList>;
+  Settings: undefined;
+};
+
 export type AuthParamList = {
   Landing: undefined;
   SignIn: undefined;
@@ -38,9 +47,16 @@ export type AuthParamList = {
 };
 
 export type RootStackParamList = {
-  Main: NavigatorScreenParams<MainParamList>;
+  MainStack: NavigatorScreenParams<MainStackParamList>;
   Auth: NavigatorScreenParams<AuthParamList>;
 };
+
+// Nav props
+
+export type MainStackScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<MainStackParamList>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 // Screen props
 
@@ -62,6 +78,12 @@ export type SearchScreenProps<T extends keyof SearchParamList> =
 export type MainScreenProps<T extends keyof MainParamList> =
   CompositeScreenProps<
     BottomTabScreenProps<MainParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
+export type MainStackScreenProps<T extends keyof MainStackParamList> =
+  CompositeScreenProps<
+    StackScreenProps<MainStackParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>
   >;
 
