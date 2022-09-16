@@ -37,7 +37,6 @@ export type MainParamList = {
 
 export type MainStackParamList = {
   Main: NavigatorScreenParams<MainParamList>;
-  Settings: undefined;
 };
 
 export type AuthParamList = {
@@ -47,6 +46,7 @@ export type AuthParamList = {
 };
 
 export type RootStackParamList = {
+  Settings: undefined;
   MainStack: NavigatorScreenParams<MainStackParamList>;
   Auth: NavigatorScreenParams<AuthParamList>;
 };
