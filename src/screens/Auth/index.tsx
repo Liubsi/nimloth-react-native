@@ -15,7 +15,7 @@ const AuthScreen = () => {
       screenOptions={{ headerShown: false }}
     >
       <AuthStack.Screen name={SCREEN_NAMES.LANDING} component={LandingScreen} />
-      <AuthStack.Screen name={SCREEN_NAMES.SIGN_IN} component={MainScreen} />
+      {/* <AuthStack.Screen name={SCREEN_NAMES.SIGN_IN} component={MainScreen} /> */}
       <AuthStack.Screen name={SCREEN_NAMES.SIGN_UP} component={SignUpScreen} />
     </AuthStack.Navigator>
   );
