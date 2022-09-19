@@ -9,7 +9,8 @@ import type { RootStackParamList } from '@navigation/types';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import SCREEN_NAMES from '@navigation/names';
 import AuthScreen from '@screens/Auth';
-import MainScreen from '@screens/Home/Main';
+import MainStackScreen from '@screens/Home/Main';
+import SettingsScreen from '@screens/Home/Settings';
 import loadFonts from '@common/fonts';
 import awsconfig from './aws-exports';
 import theme from './theme';
@@ -33,7 +34,16 @@ const App = () => {
             {!isSignedIn ? (
               <Stack.Screen name={SCREEN_NAMES.AUTH} component={AuthScreen} />
             ) : (
-              <Stack.Screen name={SCREEN_NAMES.MAIN} component={MainScreen} />
+              <Stack.Group>
+                <Stack.Screen
+                  name={SCREEN_NAMES.MAIN_STACK}
+                  component={MainStackScreen}
+                />
+                <Stack.Screen
+                  name={SCREEN_NAMES.SETTINGS}
+                  component={SettingsScreen}
+                />
+              </Stack.Group>
             )}
           </Stack.Navigator>
         </NavigationContainer>

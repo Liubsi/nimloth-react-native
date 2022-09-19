@@ -50,6 +50,12 @@ export const HistoryIcon = styled(Icon).attrs({
   },
 })``;
 
+export const SettingsIcon = styled(Icon).attrs({
+  type: 'font-awesome-5',
+  name: 'bars',
+  size: 20,
+})``;
+
 export const StyledTabNavigator = styled(Tab.Navigator).attrs({
   safeAreaInsets: {
     bottom: 0,
@@ -64,12 +70,11 @@ export const StyledTabNavigator = styled(Tab.Navigator).attrs({
       marginBottom: 30,
       borderRadius: 100,
     },
-    headerTitleStyle: {
-      fontSize: 26,
-      fontFamily: 'Urbanist',
-    },
+    headerShown: false,
   },
 })``;
+
+// DOESN'T Work
 
 export const StyledTabScreen = styled(Tab.Screen).attrs({
   options: {

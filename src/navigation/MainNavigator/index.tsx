@@ -3,7 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { MainParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import ChartsScreen from '@screens/Home/Main/Charts';
+import SearchScreen from '@screens/Home/Main/Search';
 import WalletScreen from '@screens/Home/Main/Wallet';
 import SendScreen from '@screens/Home/Main/Send';
 import FriendsScreen from '@screens/Home/Main/Friends';
@@ -20,20 +20,18 @@ import {
 // TODO: Figure out how to wrap Tab.Screen with StyledComponent
 // TODO: Change icon coloring when selected
 // TODO: Change icons, they ugly
+// TODO: Make spacing between header and first component consistent
+// TODO: Disable back swiping for certain screens
 
 const Tab = createBottomTabNavigator<MainParamList>();
 
-const MainNavigator = () => {
+const MainTabNavigator = () => {
   return (
     <StyledTabNavigator initialRouteName={SCREEN_NAMES.SEND}>
       <Tab.Screen
-        name={SCREEN_NAMES.CHARTS}
-        component={ChartsScreen}
+        name={SCREEN_NAMES.SEARCH}
+        component={SearchScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <ChartsIcon />;
           },
@@ -43,10 +41,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.WALLET}
         component={WalletScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <WalletIcon />;
           },
@@ -56,7 +50,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.SEND}
         component={SendScreen}
         options={{
-          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             return <SendIcon />;
           },
@@ -66,7 +59,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.FRIENDS}
         component={FriendsScreen}
         options={{
-          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             return <FriendsIcon />;
           },
@@ -76,10 +68,6 @@ const MainNavigator = () => {
         name={SCREEN_NAMES.HISTORY}
         component={TransactionHistoryScreen}
         options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
           tabBarIcon: ({ focused, color, size }) => {
             return <HistoryIcon />;
           },
@@ -89,4 +77,4 @@ const MainNavigator = () => {
   );
 };
 
-export default MainNavigator;
+export default MainTabNavigator;

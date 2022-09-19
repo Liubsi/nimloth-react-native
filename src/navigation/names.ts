@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 enum SCREEN_NAMES {
   // Sign up
   EMAIL = 'Email',
@@ -12,16 +13,24 @@ enum SCREEN_NAMES {
   SEND = 'Send',
   WALLET = 'Wallet',
   FRIENDS = 'Friends',
-  CHARTS = 'Charts',
+  SEARCH = 'Search',
   HISTORY = 'History',
+
+  // Additional
+  SEARCH_COINS = 'SearchCoins',
+  COIN_INFO = 'CoinInfo',
 
   // Auth
   LANDING = 'Landing',
   SIGN_IN = 'SignIn',
   SIGN_UP = 'SignUp',
 
-  // Root
+  // Main Stack
   MAIN = 'Main',
+  SETTINGS = 'Settings',
+
+  // Root
+  MAIN_STACK = 'MainStack',
   AUTH = 'Auth',
 }
 

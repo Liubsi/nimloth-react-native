@@ -1,8 +1,12 @@
 import type {
+  CompositeNavigationProp,
   CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import type { StackScreenProps } from '@react-navigation/stack';
+import type {
+  StackScreenProps,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 // Param lists
@@ -17,12 +21,22 @@ export type SignUpParamList = {
   Confirm: undefined;
 };
 
+export type SearchParamList = {
+  SearchCoins: undefined;
+  CoinInfo: undefined;
+};
+
 export type MainParamList = {
+  // Main screens
   Send: undefined;
   Wallet: undefined;
   Friends: undefined;
-  Charts: undefined;
+  Search: NavigatorScreenParams<SearchParamList>;
   History: undefined;
+};
+
+export type MainStackParamList = {
+  Main: NavigatorScreenParams<MainParamList>;
 };
 
 export type AuthParamList = {
@@ -32,9 +46,17 @@ export type AuthParamList = {
 };
 
 export type RootStackParamList = {
-  Main: NavigatorScreenParams<MainParamList>;
+  Settings: undefined;
+  MainStack: NavigatorScreenParams<MainStackParamList>;
   Auth: NavigatorScreenParams<AuthParamList>;
 };
+
+// Nav props
+
+export type MainStackScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<MainStackParamList>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 // Screen props
 
@@ -47,9 +69,21 @@ export type SignUpScreenProps<T extends keyof SignUpParamList> =
     RootStackScreenProps<keyof RootStackParamList>
   >;
 
+export type SearchScreenProps<T extends keyof SearchParamList> =
+  CompositeScreenProps<
+    StackScreenProps<SearchParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
 export type MainScreenProps<T extends keyof MainParamList> =
   CompositeScreenProps<
     BottomTabScreenProps<MainParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
+
+export type MainStackScreenProps<T extends keyof MainStackParamList> =
+  CompositeScreenProps<
+    StackScreenProps<MainStackParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>
   >;
 

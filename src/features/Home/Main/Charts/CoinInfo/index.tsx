@@ -1,10 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tabs from '@components/Tabs';
-import OwnedCoinsList from '@features/Home/Main/Charts/OwnedCoins';
-import ExploreCoinsList from '@features/Home/Main/Charts/ExploreCoins';
 import LineChart from '@features/Home/Main/Charts/LineChart';
-import { WINDOW_WIDTH } from '@common/constants/screen-constants';
 
 type DataPoint = {
   date: string;
@@ -44,18 +41,19 @@ const originalData: DataPoint[] = [
   { date: '2000-03-01T05:00:00.000Z', value: 690.47 },
 ];
 
-const ChartsScreen = () => {
+// TODO: REDO charts
+
+const CoinInfoScreen = () => {
   return (
     <View
       style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F3F5F6',
       }}
     >
       <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
-        <View style={{ flex: 1, aspectRatio: 1.5 }}>
+        <View style={{ flex: 1, width: '90%', height: '25%' }}>
           <LineChart lineData={originalData} bottomPadding={20} />
         </View>
         <View style={{ flex: 1, width: '100%', backgroundColor: 'blue' }} />
@@ -63,12 +61,16 @@ const ChartsScreen = () => {
         <View style={{ flex: 1, width: '100%', backgroundColor: 'yellow' }} />
         <View style={{ flex: 1, width: '100%', backgroundColor: 'purple' }} />
       </Tabs>
-      <Tabs tabTitles={['Owned', 'Explore']}>
-        <OwnedCoinsList />
-        <ExploreCoinsList />
-      </Tabs>
+      <View
+        style={{
+          flex: 1,
+          width: '100%',
+          height: '50%',
+          backgroundColor: 'black',
+        }}
+      />
     </View>
   );
 };
 
-export default ChartsScreen;
+export default CoinInfoScreen;

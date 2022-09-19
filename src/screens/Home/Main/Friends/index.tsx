@@ -48,14 +48,12 @@ const FriendsScreen = async () => {
   };
 
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F3F5F6',
       }}
-      edges={['top', 'left', 'right']}
     >
       <Tabs tabTitles={['My Friends', 'Explore']}>
         <MyFriendsTabView
@@ -67,7 +65,7 @@ const FriendsScreen = async () => {
           friendsList={friendsList}
         />
       </Tabs>
-    </SafeAreaView>
+    </View>
   );
 };
 
