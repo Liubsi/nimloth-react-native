@@ -4,7 +4,7 @@ import type { AuthParamList } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import LandingScreen from './Landing';
 import SignUpScreen from './SignUp';
-import MainScreen from '../Home/Main';
+import SignInScreen from './SignIn';
 
 const AuthStack = createNativeStackNavigator<AuthParamList>();
 
@@ -15,7 +15,7 @@ const AuthScreen = () => {
       screenOptions={{ headerShown: false }}
     >
       <AuthStack.Screen name={SCREEN_NAMES.LANDING} component={LandingScreen} />
-      {/* <AuthStack.Screen name={SCREEN_NAMES.SIGN_IN} component={MainScreen} /> */}
+      <AuthStack.Screen name={SCREEN_NAMES.SIGN_IN} component={SignInScreen} />
       <AuthStack.Screen name={SCREEN_NAMES.SIGN_UP} component={SignUpScreen} />
     </AuthStack.Navigator>
   );
