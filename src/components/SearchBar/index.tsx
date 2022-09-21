@@ -5,6 +5,7 @@ import { XIcon, StyledInput } from './styles';
 
 type Props = InputProps & {
   placeholder: string;
+  onChangeText: (value: string) => void;
 };
 
 const ClearButton = ({ clear }: { clear: () => void }) => {
@@ -15,7 +16,7 @@ const ClearButton = ({ clear }: { clear: () => void }) => {
   );
 };
 
-const SearchBar = ({ placeholder }: Props) => {
+const SearchBar = ({ placeholder, onChangeText }: Props) => {
   const input = useRef<TextInput>(null);
   const clearInput = () => {
     input.current?.clear();
@@ -26,6 +27,7 @@ const SearchBar = ({ placeholder }: Props) => {
       ref={input}
       placeholder={placeholder}
       rightIcon={<ClearButton clear={clearInput} />}
+      onChangeText={onChangeText}
     />
   );
 };
