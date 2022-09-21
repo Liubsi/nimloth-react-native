@@ -2,11 +2,14 @@
 
 Install `yarn`
 
-Follow the instructions for installing Expo with `yarn`:  
-https://reactnative.dev/docs/environment-setup
-
 `yarn install` will link and install all dependencies  
+`yarn husky install` to install pre-commit hooks
+
+To initialize Amplify: 
+`amplify pull --appId d2mjap9cu9gbov --envName dev`
+
+To pull Amplify updates: 
+`amplify pull`
+
 `yarn start` to start the server
 
-To install pre-commit hooks: 
-`yarn husky install` 
