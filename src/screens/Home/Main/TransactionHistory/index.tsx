@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 import { ListItem } from '@rneui/themed';
 import MainHeader from '@components/MainHeader';
 import SCREEN_NAMES from '@navigation/names';
 import { MainScreenProps } from '@navigation/types';
+import { selectHistory } from './historySlice';
 
 type HistoryProps = {
   type: string;
@@ -18,93 +20,7 @@ const TransactionHistoryScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.HISTORY>) => {
-  const historyData = [
-    {
-      type: 'Send',
-      time: '12:01 AM',
-      coin: 'BTC',
-      amount: '$200.00',
-      recipient: 'Jerry Jones',
-      id: '1',
-    },
-    {
-      type: 'Receive',
-      time: '12:02 AM',
-      coin: 'ETH',
-      amount: '$150.00',
-      recipient: 'John Jones',
-      id: '2',
-    },
-    {
-      type: 'Send',
-      time: '12:03 AM',
-      coin: 'SOL',
-      amount: '$100.00',
-      recipient: 'Jack Jones',
-      id: '3',
-    },
-    {
-      type: 'Send',
-      time: '12:04 AM',
-      coin: 'BTC',
-      amount: '$120.00',
-      recipient: 'Jonan Jones',
-      id: '4',
-    },
-    {
-      type: 'Purchase',
-      time: '12:05 AM',
-      coin: 'ETH',
-      amount: '$130.00',
-      id: '5',
-    },
-    {
-      type: 'Purchase',
-      time: '12:06 AM',
-      coin: 'BTC',
-      amount: '$300.00',
-      id: '6',
-    },
-    {
-      type: 'Send',
-      time: '12:07 AM',
-      coin: 'SOL',
-      amount: '$50.00',
-      recipient: 'Julian Jones',
-      id: '7',
-    },
-    {
-      type: 'Purchase',
-      time: '12:08 AM',
-      coin: 'BTC',
-      amount: '$600.00',
-      id: '8',
-    },
-    {
-      type: 'Receive',
-      time: '12:09 AM',
-      coin: 'ETH',
-      amount: '$220.00',
-      recipient: 'Joshua Jones',
-      id: '9',
-    },
-    {
-      type: 'Purchase',
-      time: '12:10 AM',
-      coin: 'BTC',
-      amount: '$170.00',
-      id: '10',
-    },
-    { type: 'Sell', time: '12:11 AM', coin: 'SOL', amount: '$80.00', id: '11' },
-    {
-      type: 'Purchase',
-      time: '12:12 AM',
-      coin: 'BTC',
-      amount: '$210.00',
-      id: '12',
-    },
-    { type: 'Sell', time: '12:13 AM', coin: 'ETH', amount: '$10.00', id: '13' },
-  ];
+  const { historyData } = useSelector(selectHistory);
   const [historyList, setHistoryList] = useState<HistoryProps[]>(historyData);
 
   return (

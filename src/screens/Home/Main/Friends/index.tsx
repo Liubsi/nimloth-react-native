@@ -19,6 +19,7 @@ const FriendsScreen = ({
   const { friendsData } = useSelector(selectFriends);
   const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
 
+  // TODO: Have separate search functions for each tab
   const handleSearch = (value: string) => {
     if (!value.length) {
       setFriendsList(friendsData);
