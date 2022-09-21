@@ -4,12 +4,14 @@ import { ListItem } from '@rneui/themed';
 import SearchBar from '@components/SearchBar';
 import { SearchParamList, SearchScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import MainHeader from '@components/MainHeader';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CoinInfoScreen from '@features/Home/Main/Charts/CoinInfo';
 import CoinProps from './props';
 
 const SearchScreen = ({
   navigation,
+  route,
 }: SearchScreenProps<SCREEN_NAMES.SEARCH_COINS>) => {
   const exploreCoinsData: CoinProps[] = [
     { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
@@ -42,44 +44,51 @@ const SearchScreen = ({
     useState<CoinProps[]>(exploreCoinsData);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: 20,
-      }}
-    >
-      <View style={{ width: '90%' }}>
-        <SearchBar placeholder='Search coins' />
+    <>
+      <MainHeader
+        headerName={route.name === 'SearchCoins' ? 'Search' : 'ERROR'}
+        onIconPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
+      />
+
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: 20,
+        }}
+      >
+        <View style={{ width: '90%' }}>
+          <SearchBar placeholder='Search coins' />
+        </View>
+        <View style={{ width: '100%', marginTop: 20 }}>
+          <FlatList
+            data={exploreCoins}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate(SCREEN_NAMES.COIN_INFO)}
+                style={{ marginBottom: 10 }}
+              >
+                <ListItem key={item.id}>
+                  <ListItem.Content>
+                    <ListItem.Title
+                      style={{
+                        fontFamily: 'Urbanist',
+                        fontSize: 14,
+                        marginLeft: 20,
+                        marginRight: 20,
+                      }}
+                    >
+                      {item.coinName} {item.dollarAmount} {item.ownedAmount}
+                    </ListItem.Title>
+                  </ListItem.Content>
+                </ListItem>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
-      <View style={{ width: '100%', marginTop: 20 }}>
-        <FlatList
-          data={exploreCoins}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate(SCREEN_NAMES.COIN_INFO)}
-              style={{ marginBottom: 10 }}
-            >
-              <ListItem key={item.id}>
-                <ListItem.Content>
-                  <ListItem.Title
-                    style={{
-                      fontFamily: 'Urbanist',
-                      fontSize: 14,
-                      marginLeft: 20,
-                      marginRight: 20,
-                    }}
-                  >
-                    {item.coinName} {item.dollarAmount} {item.ownedAmount}
-                  </ListItem.Title>
-                </ListItem.Content>
-              </ListItem>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-    </View>
+    </>
   );
 };
 

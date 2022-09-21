@@ -3,9 +3,16 @@ import { View } from 'react-native';
 import PAD_NUMBERS from '@common/constants/number-pad-constants';
 import Dropdown from '@components/Dropdown';
 import SearchBar from '@components/SearchBar';
+import MainHeader from '@components/MainHeader';
+import { MainScreenProps } from '@navigation/types';
+import SCREEN_NAMES from '@navigation/names';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
 
-const SendScreen = () => {
+const SendScreen = ({
+  navigation,
+  route,
+}: MainScreenProps<SCREEN_NAMES.SEND>) => {
+  console.log(navigation);
   const [money, setMoney] = useState<string>('0');
   const [dropdownData, setDropdownData] = useState<
     {
@@ -84,29 +91,35 @@ const SendScreen = () => {
   };
   // TODO (optional): Replace FriendsSearchBar with SearchBar from react-native-elements?
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-      }}
-    >
-      <View style={{ width: '90%' }}>
-        <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
+    <>
+      <MainHeader
+        headerName={route.name}
+        onIconPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
+      />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}
+      >
+        <View style={{ width: '90%' }}>
+          <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
+        </View>
+        <MoneyText>${money}</MoneyText>
+        <View style={{ zIndex: 2, width: '90%' }}>
+          <Dropdown
+            defaultLabel='Select shit coin'
+            data={dropdownData}
+            onSelect={onDropdownSelect}
+          />
+        </View>
+        <PinpadContainer style={{ zIndex: 1 }}>{renderPad()}</PinpadContainer>
+        <View style={{ width: '90%' }}>
+          <SendButton title='Send' onPress={handleSubmit} />
+        </View>
       </View>
-      <MoneyText>${money}</MoneyText>
-      <View style={{ zIndex: 2, width: '90%' }}>
-        <Dropdown
-          defaultLabel='Select shit coin'
-          data={dropdownData}
-          onSelect={onDropdownSelect}
-        />
-      </View>
-      <PinpadContainer style={{ zIndex: 1 }}>{renderPad()}</PinpadContainer>
-      <View style={{ width: '90%' }}>
-        <SendButton title='Send' onPress={handleSubmit} />
-      </View>
-    </View>
+    </>
   );
 };
 

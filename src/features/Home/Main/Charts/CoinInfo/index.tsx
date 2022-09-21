@@ -1,7 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import Tabs from '@components/Tabs';
+import MainHeader from '@components/MainHeader';
 import LineChart from '@features/Home/Main/Charts/LineChart';
+import SCREEN_NAMES from '@navigation/names';
+import { SearchScreenProps } from '@navigation/types';
 
 type DataPoint = {
   date: string;
@@ -43,33 +46,43 @@ const originalData: DataPoint[] = [
 
 // TODO: REDO charts
 
-const CoinInfoScreen = () => {
+const CoinInfoScreen = ({
+  navigation,
+  route,
+}: SearchScreenProps<SCREEN_NAMES.COIN_INFO>) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
-        <View style={{ flex: 1, width: '90%', height: '25%' }}>
-          <LineChart lineData={originalData} bottomPadding={20} />
-        </View>
-        <View style={{ flex: 1, width: '100%', backgroundColor: 'blue' }} />
-        <View style={{ flex: 1, width: '100%', backgroundColor: 'green' }} />
-        <View style={{ flex: 1, width: '100%', backgroundColor: 'yellow' }} />
-        <View style={{ flex: 1, width: '100%', backgroundColor: 'purple' }} />
-      </Tabs>
+    <>
+      <MainHeader
+        headerName={route.name === 'CoinInfo' ? 'Coin Info' : 'ERROR'}
+        onIconPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
+      />
+
       <View
         style={{
           flex: 1,
-          width: '100%',
-          height: '50%',
-          backgroundColor: 'black',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
-      />
-    </View>
+      >
+        <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
+          <View style={{ flex: 1, width: '90%', height: '25%' }}>
+            <LineChart lineData={originalData} bottomPadding={20} />
+          </View>
+          <View style={{ flex: 1, width: '100%', backgroundColor: 'blue' }} />
+          <View style={{ flex: 1, width: '100%', backgroundColor: 'green' }} />
+          <View style={{ flex: 1, width: '100%', backgroundColor: 'yellow' }} />
+          <View style={{ flex: 1, width: '100%', backgroundColor: 'purple' }} />
+        </Tabs>
+        <View
+          style={{
+            flex: 1,
+            width: '100%',
+            height: '50%',
+            backgroundColor: 'black',
+          }}
+        />
+      </View>
+    </>
   );
 };
 

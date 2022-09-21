@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import Tabs from '@components/Tabs';
+import MainHeader from '@components/MainHeader';
 import ExploreFriendsTabView from '@features/Home/Main/Friends/ExploreFriends';
 import MyFriendsTabView from '@features/Home/Main/Friends/MyFriends';
+import SCREEN_NAMES from '@navigation/names';
+import { MainScreenProps } from '@navigation/types';
 import { FriendProps } from './props';
 
 // TODO: Consider turning ExploreFriendsTabView and MyFriendsTabView into a single component
 
-const FriendsScreen = () => {
+const FriendsScreen = ({
+  navigation,
+  route,
+}: MainScreenProps<SCREEN_NAMES.FRIENDS>) => {
   const friendsData = [
     { firstName: 'Bob', lastName: 'Jones', id: '1' },
     { firstName: 'Jerry', lastName: 'Jones', id: '2' },
@@ -42,24 +48,30 @@ const FriendsScreen = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Tabs tabTitles={['My Friends', 'Explore']}>
-        <MyFriendsTabView
-          handleSearch={handleSearch}
-          friendsList={friendsList}
-        />
-        <ExploreFriendsTabView
-          handleSearch={handleSearch}
-          friendsList={friendsList}
-        />
-      </Tabs>
-    </View>
+    <>
+      <MainHeader
+        headerName={route.name}
+        onIconPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
+      />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Tabs tabTitles={['My Friends', 'Explore']}>
+          <MyFriendsTabView
+            handleSearch={handleSearch}
+            friendsList={friendsList}
+          />
+          <ExploreFriendsTabView
+            handleSearch={handleSearch}
+            friendsList={friendsList}
+          />
+        </Tabs>
+      </View>
+    </>
   );
 };
 
