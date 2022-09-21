@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useSelector } from 'react-redux';
 import Tabs from '@components/Tabs';
 import MainHeader from '@components/MainHeader';
 import ExploreFriendsTabView from '@features/Home/Main/Friends/ExploreFriends';
@@ -7,6 +8,7 @@ import MyFriendsTabView from '@features/Home/Main/Friends/MyFriends';
 import SCREEN_NAMES from '@navigation/names';
 import { MainScreenProps } from '@navigation/types';
 import { FriendProps } from './props';
+import { selectFriends } from './friendsSlice';
 
 // TODO: Consider turning ExploreFriendsTabView and MyFriendsTabView into a single component
 
@@ -14,19 +16,7 @@ const FriendsScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.FRIENDS>) => {
-  const friendsData = [
-    { firstName: 'Bob', lastName: 'Jones', id: '1' },
-    { firstName: 'Jerry', lastName: 'Jones', id: '2' },
-    { firstName: 'Randall', lastName: 'Smith', id: '3' },
-    { firstName: 'John', lastName: 'Doe', id: '4' },
-    { firstName: 'Jane', lastName: 'Doe', id: '5' },
-    { firstName: 'Joe', lastName: 'Doe', id: '6' },
-    { firstName: 'Jill', lastName: 'Doe', id: '7' },
-    { firstName: 'Jack', lastName: 'Doe', id: '8' },
-    { firstName: 'Jill', lastName: 'Doe', id: '9' },
-    { firstName: 'Jack', lastName: 'Button', id: '10' },
-    { firstName: 'Jill', lastName: 'Button', id: '11' },
-  ];
+  const friendsData = useSelector(selectFriends);
   const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
 
   const handleSearch = (value: string) => {
