@@ -55,6 +55,8 @@ const CoinInfoScreen = ({
       <MainHeader
         headerName={route.name === 'CoinInfo' ? 'Coin Info' : 'ERROR'}
         onIconPress={() => navigation.navigate(SCREEN_NAMES.SETTINGS)}
+        showBackIcon
+        onBackIconPress={() => navigation.goBack()}
       />
 
       <View
