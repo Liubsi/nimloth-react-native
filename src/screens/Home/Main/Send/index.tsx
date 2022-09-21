@@ -7,13 +7,14 @@ import MainHeader from '@components/MainHeader';
 import { MainScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
+import ConfirmModal from './ConfirmModal';
 
 const SendScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.SEND>) => {
-  console.log(navigation);
   const [money, setMoney] = useState<string>('0');
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [dropdownData, setDropdownData] = useState<
     {
       label: string;
@@ -87,6 +88,7 @@ const SendScreen = ({
       return;
     }
     console.log(money);
+    setModalVisible(true);
     setMoney('0');
   };
   // TODO (optional): Replace FriendsSearchBar with SearchBar from react-native-elements?
@@ -119,6 +121,10 @@ const SendScreen = ({
           <SendButton title='Send' onPress={handleSubmit} />
         </View>
       </View>
+      <ConfirmModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </>
   );
 };
