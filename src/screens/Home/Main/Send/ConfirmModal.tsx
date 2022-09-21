@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Modal } from 'react-native';
-import { Button, Text } from '@rneui/themed';
+import { Text } from '@rneui/themed';
+import StyledButton from '@components/StyledButton';
 
 type Props = {
   modalVisible: boolean;
@@ -33,7 +34,11 @@ const ConfirmModal = ({ modalVisible, setModalVisible }: Props) => {
         }}
       >
         <Text>Big Papa</Text>
-        <Button onPress={() => setModalVisible(false)}>Cancel</Button>
+        <View style={{ width: '70%' }}>
+          <StyledButton onPress={() => setModalVisible(false)}>
+            Cancel
+          </StyledButton>
+        </View>
       </View>
     </Modal>
   );
