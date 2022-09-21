@@ -7,4 +7,8 @@ export const SettingsIcon = styled(Icon).attrs({
   size: 20,
 })``;
 
-export default SettingsIcon;
+export const BackIcon = styled(Icon).attrs({
+  type: 'font-awesome-5',
+  name: 'chevron-left',
+  size: 20,
+})``;

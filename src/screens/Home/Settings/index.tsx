@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
-import { MainStackScreenProps, RootStackScreenProps } from '@navigation/types';
+import { RootStackScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import MainHeader from '@components/MainHeader';
 
 const SettingsScreen = ({
   navigation,
+  route,
 }: RootStackScreenProps<SCREEN_NAMES.SETTINGS>) => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text> SETTINGS </Text>
-    </View>
+    <>
+      <MainHeader
+        headerName={route.name}
+        showSettingsIcon={false}
+        showBackIcon
+        onBackIconPress={() => navigation.goBack()}
+      />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text> SETTINGS </Text>
+      </View>
+    </>
   );
 };
 
