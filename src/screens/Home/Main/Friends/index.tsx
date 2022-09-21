@@ -16,7 +16,7 @@ const FriendsScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.FRIENDS>) => {
-  const friendsData = useSelector(selectFriends);
+  const { friendsData } = useSelector(selectFriends);
   const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
 
   const handleSearch = (value: string) => {

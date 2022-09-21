@@ -16,19 +16,19 @@ const friendsData = [
 ];
 
 type FriendsState = {
-  friends: [
-    {
+  friends: {
+    friendsData: {
       firstName: string;
       lastName: string;
       id: string;
-    }
-  ];
+    }[];
+  };
 };
 
 const friendsSlice = createSlice({
   name: 'friends',
   initialState: {
-    friends: friendsData,
+    friendsData,
   },
   reducers: {},
 });
