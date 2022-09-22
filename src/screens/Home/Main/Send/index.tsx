@@ -127,7 +127,11 @@ const SendScreen = ({
         }}
       >
         <View style={{ width: '90%' }}>
-          <SearchBar placeholder='Search friends' onChangeText={handleSearch} />
+          <SearchBar
+            placeholder='Search friends'
+            onChangeText={handleSearch}
+            searchData={friendsData}
+          />
         </View>
         <MoneyText>${money}</MoneyText>
         <View style={{ zIndex: 2, width: '90%' }}>

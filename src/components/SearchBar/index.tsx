@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { TextInput, TouchableOpacity, Modal, View } from 'react-native';
 import { InputProps } from '@rneui/themed';
 import { BackIcon } from '@components/MainHeader/styles';
+import ScrollableList from '@components/ScrollableList';
 import { XIcon, StyledInput } from './styles';
 
 type SearchBarProps = InputProps & {
@@ -41,28 +42,37 @@ const SearchModal = ({
       animationType='slide'
       presentationStyle='fullScreen'
     >
-      <View style={{ flex: 1, backgroundColor: '#F2F2F2' }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#F2F2F2',
+          justifyContent: 'space-evenly',
+        }}
+      >
         <View style={{ height: '8%' }} />
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            width: '90%',
-            alignSelf: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <TouchableOpacity onPress={() => setVisible(false)}>
-            <BackIcon />
-          </TouchableOpacity>
-          <View style={{ width: '90%' }}>
-            <SearchBar
-              placeholder={placeholder}
-              onChangeText={onChangeText}
-              searchData={searchData}
-              useModal={false}
-            />
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              width: '90%',
+              alignSelf: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <BackIcon />
+            </TouchableOpacity>
+            <View style={{ width: '90%' }}>
+              <SearchBar
+                placeholder={placeholder}
+                onChangeText={onChangeText}
+                searchData={searchData}
+                useModal={false}
+              />
+            </View>
           </View>
+          <ScrollableList data={searchData} />
         </View>
       </View>
     </Modal>
