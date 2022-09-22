@@ -4,9 +4,11 @@ import { ListItem } from '@rneui/themed';
 
 type Props = {
   data: Array<any> | undefined;
+  onSelectItem?: () => void;
+  setSelected: (value: React.SetStateAction<any>) => void;
 };
 
-const ScrollableList = ({ data }: Props) => {
+const ScrollableList = ({ data, onSelectItem, setSelected }: Props) => {
   return (
     <FlatList
       style={{ flex: 1, marginTop: '5%', marginBottom: '5%' }}
@@ -14,7 +16,8 @@ const ScrollableList = ({ data }: Props) => {
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() => {
-            console.log('1');
+            setSelected(item);
+            onSelectItem?.();
           }}
           style={{ marginBottom: 10 }}
         >

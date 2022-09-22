@@ -36,6 +36,8 @@ const SearchModal = ({
   visible,
   setVisible,
 }: Props) => {
+  const [selected, setSelected] = useState<any>();
+
   return (
     <Modal
       visible={visible}
@@ -72,7 +74,11 @@ const SearchModal = ({
               />
             </View>
           </View>
-          <ScrollableList data={searchData} />
+          <ScrollableList
+            data={searchData}
+            setSelected={setSelected}
+            onSelectItem={() => setVisible(false)}
+          />
         </View>
       </View>
     </Modal>
