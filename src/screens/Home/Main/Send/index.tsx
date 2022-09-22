@@ -7,7 +7,7 @@ import SearchBar from '@components/SearchBar';
 import MainHeader from '@components/MainHeader';
 import { MainScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import { CoinProps, FriendProps } from '@common/types';
+import { CoinProps } from '@common/types';
 import { selectFriends } from '../Friends/friendsSlice';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
 import ConfirmModal from './ConfirmModal';
@@ -20,12 +20,17 @@ const SendScreen = ({
   const { friendsData } = useSelector(selectFriends);
   const { ownedCoinsData } = useSelector(selectOwnedCoins);
   const [money, setMoney] = useState<string>('0');
-  const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [dropdownData, setDropdownData] = useState<CoinProps[]>(ownedCoinsData);
-  const [selectedCoin, setSelectedCoin] = useState<CoinProps>(
-    ownedCoinsData[0]
-  );
+  const [selectedCoin, setSelectedCoin] = useState<CoinProps | undefined>();
+
+  const onDropdownSelect = (item: CoinProps): void => {
+    setSelectedCoin(item);
+    console.log(selectedCoin);
+  };
+
+  const handleSearch = () => {
+    console.log('Search');
+  };
 
   // TODO: Add a comma separator for thousands
   const handlePress = (item: string) => {
@@ -51,28 +56,13 @@ const SendScreen = ({
     }
   };
 
-  const onDropdownSelect = (item: CoinProps): void => {
-    setSelectedCoin(item);
-    console.log(selectedCoin);
-  };
-
-  // TODO: Implement search for friends
-  const handleSearch = (value: string) => {
-    if (!value.length) {
-      setFriendsList(friendsData);
+  const handleSubmit = () => {
+    if (money === '0') {
+      console.log('empty value');
       return;
     }
-    const filteredList = friendsData.filter(
-      ({ firstName, lastName }) =>
-        firstName.toLowerCase().includes(value.toLowerCase()) ||
-        lastName.toLowerCase().includes(value.toLowerCase())
-    );
-
-    if (filteredList.length) {
-      setFriendsList(filteredList);
-    } else {
-      setFriendsList(friendsList);
-    }
+    console.log(money);
+    setModalVisible(true);
   };
 
   const renderPad = () => {
@@ -81,15 +71,6 @@ const SendScreen = ({
     ));
   };
 
-  const handleSubmit = () => {
-    if (money === '0') {
-      console.log('empty value');
-      return;
-    }
-    console.log(money);
-    setModalVisible(true);
-    setMoney('0');
-  };
   // TODO (optional): Replace FriendsSearchBar with SearchBar from react-native-elements?
   return (
     <>
@@ -107,8 +88,8 @@ const SendScreen = ({
         <View style={{ width: '90%' }}>
           <SearchBar
             placeholder='Search friends'
-            onChangeText={handleSearch}
             searchData={friendsData}
+            onChangeText={handleSearch}
             useModal
           />
         </View>
@@ -116,7 +97,7 @@ const SendScreen = ({
         <View style={{ zIndex: 2, width: '90%' }}>
           <Dropdown
             defaultLabel='Select shit coin'
-            data={dropdownData}
+            data={ownedCoinsData}
             onSelect={onDropdownSelect}
           />
         </View>
