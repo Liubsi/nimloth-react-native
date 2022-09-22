@@ -4,15 +4,24 @@ import { TextInput, TouchableOpacity, Modal, View } from 'react-native';
 import { InputProps } from '@rneui/themed';
 import { BackIcon } from '@components/MainHeader/styles';
 import ScrollableList from '@components/ScrollableList';
+import { DatumProps } from '@common/types';
 import { XIcon, StyledInput } from './styles';
 
 type SearchBarProps = InputProps & {
   placeholder: string;
   onChangeText: (value: string) => void;
-  searchData?: Array<any>;
+  searchData: DatumProps[];
   // eslint-disable-next-line react/no-unused-prop-types
-  useModal?: boolean; // Shows modal popup
+  useModal?: boolean;
 };
+
+type ModalProps = {
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelected: React.Dispatch<React.SetStateAction<DatumProps | undefined>>;
+};
+
+type Props = SearchBarProps & ModalProps;
 
 const ClearButton = ({ clear }: { clear: () => void }) => {
   return (
@@ -21,14 +30,6 @@ const ClearButton = ({ clear }: { clear: () => void }) => {
     </TouchableOpacity>
   );
 };
-
-type ModalProps = {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelected: React.Dispatch<React.SetStateAction<any>>;
-};
-
-type Props = SearchBarProps & ModalProps;
 
 const SearchModal = ({
   placeholder,
@@ -93,7 +94,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const input = useRef<TextInput>(null);
   const [visible, setVisible] = useState<boolean>(false);
-  const [selected, setSelected] = useState<any>();
+  const [selected, setSelected] = useState<DatumProps | undefined>();
   const clearInput = () => {
     input.current?.clear();
   };

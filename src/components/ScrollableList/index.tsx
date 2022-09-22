@@ -1,33 +1,56 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { ListRenderItem, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
+import type { DatumProps } from '@common/types';
 import { StyledFlatList, StyledListItemTitle } from './styles';
 
-type Props = {
-  data: Array<any> | undefined;
+type TouchableProps = {
   onSelectItem?: () => void;
   setSelected: (value: React.SetStateAction<any>) => void;
 };
 
-const ScrollableList = ({ data, onSelectItem, setSelected }: Props) => {
+type ScrollableProps = TouchableProps & {
+  data: DatumProps[];
+};
+
+type ItemProps = TouchableProps & {
+  item: DatumProps;
+};
+
+const TouchableListItem = ({ item, setSelected, onSelectItem }: ItemProps) => (
+  <TouchableOpacity
+    onPress={() => {
+      setSelected(item);
+      onSelectItem?.();
+    }}
+    style={{ marginBottom: 10 }}
+  >
+    <ListItem key={item.id}>
+      <ListItem.Content>
+        <StyledListItemTitle>Chicken</StyledListItemTitle>
+      </ListItem.Content>
+    </ListItem>
+  </TouchableOpacity>
+);
+
+const ScrollableList = ({
+  data,
+  onSelectItem,
+  setSelected,
+}: ScrollableProps) => {
+  const renderItem: ListRenderItem<DatumProps> = ({ item }) => (
+    <TouchableListItem
+      item={item}
+      setSelected={setSelected}
+      onSelectItem={onSelectItem}
+    />
+  );
+
   return (
     <StyledFlatList
       data={data}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => {
-            setSelected(item);
-            onSelectItem?.();
-          }}
-          style={{ marginBottom: 10 }}
-        >
-          <ListItem key={item.id}>
-            <ListItem.Content>
-              <StyledListItemTitle>Chicken</StyledListItemTitle>
-            </ListItem.Content>
-          </ListItem>
-        </TouchableOpacity>
-      )}
+      renderItem={renderItem}
+      keyExtractor={(item: DatumProps) => item.id}
     />
   );
 };
