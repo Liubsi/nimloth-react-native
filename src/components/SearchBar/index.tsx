@@ -25,6 +25,7 @@ const ClearButton = ({ clear }: { clear: () => void }) => {
 type ModalProps = {
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelected: React.Dispatch<React.SetStateAction<any>>;
 };
 
 type Props = SearchBarProps & ModalProps;
@@ -35,9 +36,8 @@ const SearchModal = ({
   searchData,
   visible,
   setVisible,
+  setSelected,
 }: Props) => {
-  const [selected, setSelected] = useState<any>();
-
   return (
     <Modal
       visible={visible}
@@ -93,6 +93,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const input = useRef<TextInput>(null);
   const [visible, setVisible] = useState<boolean>(false);
+  const [selected, setSelected] = useState<any>();
   const clearInput = () => {
     input.current?.clear();
   };
@@ -112,14 +113,16 @@ const SearchBar = ({
         rightIcon={<ClearButton clear={clearInput} />}
         onChangeText={onChangeText}
         onFocus={onFocus}
+        value={selected?.id}
       />
-      {useModal !== false ? (
+      {useModal === true ? (
         <SearchModal
           visible={visible}
           setVisible={setVisible}
           placeholder={placeholder}
           onChangeText={onChangeText}
           searchData={searchData}
+          setSelected={setSelected}
         />
       ) : null}
     </>

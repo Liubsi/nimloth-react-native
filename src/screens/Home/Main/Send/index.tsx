@@ -131,6 +131,7 @@ const SendScreen = ({
             placeholder='Search friends'
             onChangeText={handleSearch}
             searchData={friendsData}
+            useModal
           />
         </View>
         <MoneyText>${money}</MoneyText>
