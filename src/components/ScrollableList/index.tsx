@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
+import { StyledFlatList, StyledListItemTitle } from './styles';
 
 type Props = {
   data: Array<any> | undefined;
@@ -10,8 +11,7 @@ type Props = {
 
 const ScrollableList = ({ data, onSelectItem, setSelected }: Props) => {
   return (
-    <FlatList
-      style={{ flex: 1, marginTop: '5%', marginBottom: '5%' }}
+    <StyledFlatList
       data={data}
       renderItem={({ item }) => (
         <TouchableOpacity
@@ -23,16 +23,7 @@ const ScrollableList = ({ data, onSelectItem, setSelected }: Props) => {
         >
           <ListItem key={item.id}>
             <ListItem.Content>
-              <ListItem.Title
-                style={{
-                  fontFamily: 'Urbanist',
-                  fontSize: 14,
-                  marginLeft: 20,
-                  marginRight: 20,
-                }}
-              >
-                Chicken
-              </ListItem.Title>
+              <StyledListItemTitle>Chicken</StyledListItemTitle>
             </ListItem.Content>
           </ListItem>
         </TouchableOpacity>
