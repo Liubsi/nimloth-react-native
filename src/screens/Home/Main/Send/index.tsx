@@ -20,7 +20,7 @@ const SendScreen = ({
 }: MainScreenProps<SCREEN_NAMES.SEND>) => {
   const { friendsData } = useSelector(selectFriends);
   const { ownedCoinsData } = useSelector(selectOwnedCoins);
-  const [money, setMoney] = useState<string>('0');
+  const [amount, setAmount] = useState<string>('0');
   const [searchModalVisible, setSearchModalVisible] = useState<boolean>(false);
   const [confirmModalVisible, setConfirmModalVisible] =
     useState<boolean>(false);
@@ -33,34 +33,34 @@ const SendScreen = ({
 
   // TODO: Add a comma separator for thousands
   const handlePress = (item: string) => {
-    if (money.length > 7 && item !== '←') {
+    if (amount.length > 7 && item !== '←') {
       return;
     }
-    if (money === '0' && item !== '←' && item !== '.') {
-      setMoney(item);
+    if (amount === '0' && item !== '←' && item !== '.') {
+      setAmount(item);
     } else {
       if (item === '.') {
-        if (money.includes('.')) {
+        if (amount.includes('.')) {
           return;
         }
       } else if (item === '←') {
-        if (money.length === 1) {
-          setMoney('0');
+        if (amount.length === 1) {
+          setAmount('0');
           return;
         }
-        setMoney(money.slice(0, -1));
+        setAmount(amount.slice(0, -1));
         return;
       }
-      setMoney(money + item);
+      setAmount(amount + item);
     }
   };
 
   const handleSubmit = () => {
-    if (money === '0' || coin === undefined || recipient === undefined) {
+    if (amount === '0' || coin === undefined || recipient === undefined) {
       console.log('empty value');
       return;
     }
-    console.log(money, coin, recipient);
+    console.log(amount, coin, recipient);
     setConfirmModalVisible(true);
   };
 
@@ -88,10 +88,14 @@ const SendScreen = ({
           <SearchBar
             placeholder='Search friends'
             onFocus={() => setSearchModalVisible(true)}
-            value={`${recipient?.firstName} ${recipient?.lastName}`}
+            value={
+              recipient === undefined
+                ? ''
+                : `${recipient?.firstName} ${recipient?.lastName}`
+            }
           />
         </View>
-        <MoneyText>${money}</MoneyText>
+        <MoneyText>${amount}</MoneyText>
         <View style={{ zIndex: 2, width: '90%' }}>
           <Dropdown
             defaultLabel='Select shit coin'
@@ -114,8 +118,9 @@ const SendScreen = ({
       />
 
       <ConfirmModal
-        modalVisible={confirmModalVisible}
-        setModalVisible={setConfirmModalVisible}
+        visible={confirmModalVisible}
+        setVisible={setConfirmModalVisible}
+        data={{ amount, coin, recipient }}
       />
     </>
   );

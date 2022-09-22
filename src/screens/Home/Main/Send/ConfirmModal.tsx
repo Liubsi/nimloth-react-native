@@ -1,17 +1,25 @@
 import React from 'react';
 import { View, Modal } from 'react-native';
 import { Text } from '@rneui/themed';
-import StyledButton from '@components/StyledButton';
+import { FriendProps, CoinProps } from '@common/types';
+import { StyledButton } from './styles';
 
 type Props = {
-  modalVisible: boolean;
-  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  data: {
+    amount: string;
+    coin: CoinProps | undefined;
+    recipient: FriendProps | undefined;
+  };
 };
 
-const ConfirmModal = ({ modalVisible, setModalVisible }: Props) => {
+// TODO: Actually send
+
+const ConfirmModal = ({ visible, setVisible, data }: Props) => {
   return (
     <Modal
-      visible={modalVisible}
+      visible={visible}
       animationType='slide'
       presentationStyle='formSheet'
     >
@@ -33,11 +41,12 @@ const ConfirmModal = ({ modalVisible, setModalVisible }: Props) => {
           justifyContent: 'space-around',
         }}
       >
-        <Text>Big Papa</Text>
+        <Text>{`You are sending $${data.amount} (${data.coin?.coinName}) to ${data.recipient?.firstName} ${data.recipient?.lastName}`}</Text>
         <View style={{ width: '70%' }}>
-          <StyledButton onPress={() => setModalVisible(false)}>
-            Cancel
+          <StyledButton type='solid' onPress={() => setVisible(false)}>
+            Send
           </StyledButton>
+          <StyledButton onPress={() => setVisible(false)}>Cancel</StyledButton>
         </View>
       </View>
     </Modal>

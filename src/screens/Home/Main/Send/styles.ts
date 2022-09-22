@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Button, Input } from '@rneui/themed';
+import { Button } from '@rneui/themed';
 
 // TODO: Set global colors for buttons, text, etc...
 
@@ -53,3 +53,17 @@ export const SendButton = styled(Button).attrs({
     backgroundColor: '#404AFF',
   },
 })``;
+
+export const StyledButton = styled(Button).attrs(({ type }) => ({
+  containerStyle: {
+    margin: 10,
+  },
+  titleStyle: {
+    color: type !== 'solid' ? '#404AFF' : '#FFFFFF',
+    fontSize: 16,
+  },
+  buttonStyle: {
+    borderRadius: 50,
+    backgroundColor: type === 'solid' ? '#404AFF' : 'transparent',
+  },
+}))``;
