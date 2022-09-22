@@ -1,32 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
+import { useSelector } from 'react-redux';
 import PAD_NUMBERS from '@common/constants/number-pad-constants';
 import Dropdown from '@components/Dropdown';
 import SearchBar from '@components/SearchBar';
 import MainHeader from '@components/MainHeader';
 import { MainScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import { selectFriends } from '../Friends/friendsSlice';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
 import ConfirmModal from './ConfirmModal';
+import { FriendProps } from '../Friends/props';
+
+type CoinProps = {
+  label: string;
+  value: string;
+  id: string;
+};
 
 const SendScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.SEND>) => {
+  const { friendsData } = useSelector(selectFriends);
   const [money, setMoney] = useState<string>('0');
+  const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [dropdownData, setDropdownData] = useState<
-    {
-      label: string;
-      value: string;
-      id: string;
-    }[]
-  >([{ label: '', value: '', id: '' }]);
-  const [selectedCoin, setSelectedCoin] = useState<{
-    label: string;
-    value: string;
-    id: string;
-  }>({ label: '', value: '', id: '' });
+  const [dropdownData, setDropdownData] = useState<CoinProps[]>([
+    { label: '', value: '', id: '' },
+  ]);
+  const [selectedCoin, setSelectedCoin] = useState<CoinProps>({
+    label: '',
+    value: '',
+    id: '',
+  });
 
   const availableCoins = [
     { label: 'one', value: 'two', id: 'f23dfa2' },
@@ -72,8 +79,22 @@ const SendScreen = ({
   };
 
   // TODO: Implement search for friends
-  const handleSearch = () => {
-    console.log('search');
+  const handleSearch = (value: string) => {
+    if (!value.length) {
+      setFriendsList(friendsData);
+      return;
+    }
+    const filteredList = friendsData.filter(
+      ({ firstName, lastName }) =>
+        firstName.toLowerCase().includes(value.toLowerCase()) ||
+        lastName.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (filteredList.length) {
+      setFriendsList(filteredList);
+    } else {
+      setFriendsList(friendsList);
+    }
   };
 
   const renderPad = () => {
