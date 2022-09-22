@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useSelector } from 'react-redux';
 import RingGraph from '@components/RingGraph/';
 import OwnedCoinsList from '@features/Home/Main/Wallet/OwnedCoins';
 import MainHeader from '@components/MainHeader';
 import SCREEN_NAMES from '@navigation/names';
 import { MainScreenProps } from '@navigation/types';
 import { ButtonContainer, StyledButton } from './styles';
+import { selectOwnedCoins } from './coinsSlice';
 
 type CoinProps = {
   id: string;
@@ -18,15 +20,8 @@ const WalletsScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.WALLET>) => {
-  const [ownedCoins, setOwnedCoins] = useState<CoinProps[]>([
-    { id: '1', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '2', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '3', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '4', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '5', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '6', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '7', coinName: '7', dollarAmount: 1400, ownedAmount: 1 },
-  ]);
+  const { ownedCoinsData } = useSelector(selectOwnedCoins);
+  const [ownedCoins, setOwnedCoins] = useState<CoinProps[]>(ownedCoinsData);
 
   return (
     <>

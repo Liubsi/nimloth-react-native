@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import PAD_NUMBERS from '@common/constants/number-pad-constants';
@@ -7,43 +7,25 @@ import SearchBar from '@components/SearchBar';
 import MainHeader from '@components/MainHeader';
 import { MainScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import { CoinProps, FriendProps } from '@common/types';
 import { selectFriends } from '../Friends/friendsSlice';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
 import ConfirmModal from './ConfirmModal';
-import { FriendProps } from '../Friends/props';
-
-type CoinProps = {
-  label: string;
-  value: string;
-  id: string;
-};
+import { selectOwnedCoins } from '../Wallet/coinsSlice';
 
 const SendScreen = ({
   navigation,
   route,
 }: MainScreenProps<SCREEN_NAMES.SEND>) => {
   const { friendsData } = useSelector(selectFriends);
+  const { ownedCoinsData } = useSelector(selectOwnedCoins);
   const [money, setMoney] = useState<string>('0');
   const [friendsList, setFriendsList] = useState<FriendProps[]>(friendsData);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [dropdownData, setDropdownData] = useState<CoinProps[]>([
-    { label: '', value: '', id: '' },
-  ]);
-  const [selectedCoin, setSelectedCoin] = useState<CoinProps>({
-    label: '',
-    value: '',
-    id: '',
-  });
-
-  const availableCoins = [
-    { label: 'one', value: 'two', id: 'f23dfa2' },
-    { label: 'three', value: 'four', id: 'h2fd6a2' },
-    { label: 'five', value: 'six', id: 'b23dka9' },
-  ];
-
-  useEffect(() => {
-    setDropdownData(availableCoins);
-  }, []);
+  const [dropdownData, setDropdownData] = useState<CoinProps[]>(ownedCoinsData);
+  const [selectedCoin, setSelectedCoin] = useState<CoinProps>(
+    ownedCoinsData[0]
+  );
 
   // TODO: Add a comma separator for thousands
   const handlePress = (item: string) => {
@@ -69,11 +51,7 @@ const SendScreen = ({
     }
   };
 
-  const onDropdownSelect = (item: {
-    label: string;
-    value: string;
-    id: string;
-  }): void => {
+  const onDropdownSelect = (item: CoinProps): void => {
     setSelectedCoin(item);
     console.log(selectedCoin);
   };

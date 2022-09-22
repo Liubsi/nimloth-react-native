@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { Text, ListItem } from '@rneui/themed';
+import { CoinProps } from '@common/types';
 import {
   ChevronDown,
   DropdownLabelContainer,
@@ -9,11 +10,13 @@ import {
   DropdownListContainer,
 } from './styles';
 
-interface Props {
-  defaultLabel: string;
-  data: Array<{ label: string; value: string; id: string }>;
-  onSelect: (item: { label: string; value: string; id: string }) => void; // TODO: Add a type for this?
-}
+// Dropdown for COINS
+
+type Props = {
+  defaultLabel?: string;
+  data: CoinProps[];
+  onSelect: (item: CoinProps) => void;
+};
 
 const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
   const [visible, setVisible] = useState(false);
@@ -23,12 +26,8 @@ const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
     setVisible(!visible);
   };
 
-  const onItemPress = (item: {
-    label: string;
-    value: string;
-    id: string;
-  }): void => {
-    setSelectedLabel(item.label);
+  const onItemPress = (item: CoinProps): void => {
+    setSelectedLabel(item.coinName);
     setVisible(false);
     onSelect(item);
   };
@@ -53,7 +52,7 @@ const Dropdown = ({ defaultLabel, data, onSelect }: Props) => {
                       marginRight: 20,
                     }}
                   >
-                    {item.label}
+                    {item.coinName}
                   </ListItem.Title>
                 </ListItem.Content>
               </ListItem>
