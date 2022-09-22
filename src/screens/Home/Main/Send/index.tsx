@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import PAD_NUMBERS from '@common/constants/number-pad-constants';
 import Dropdown from '@components/Dropdown';
 import SearchBar from '@components/SearchBar';
+import SearchModal from '@components/SearchModal';
 import MainHeader from '@components/MainHeader';
 import { MainScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import { CoinProps } from '@common/types';
+import { CoinProps, FriendProps } from '@common/types';
 import { selectFriends } from '../Friends/friendsSlice';
 import { SendButton, PinpadButton, PinpadContainer, MoneyText } from './styles';
 import ConfirmModal from './ConfirmModal';
@@ -20,13 +21,11 @@ const SendScreen = ({
   const { friendsData } = useSelector(selectFriends);
   const { ownedCoinsData } = useSelector(selectOwnedCoins);
   const [money, setMoney] = useState<string>('0');
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [selectedCoin, setSelectedCoin] = useState<CoinProps | undefined>();
-
-  const onDropdownSelect = (item: CoinProps): void => {
-    setSelectedCoin(item);
-    console.log(selectedCoin);
-  };
+  const [searchModalVisible, setSearchModalVisible] = useState<boolean>(false);
+  const [confirmModalVisible, setConfirmModalVisible] =
+    useState<boolean>(false);
+  const [coin, setCoin] = useState<CoinProps | undefined>();
+  const [recipient, setRecipient] = useState<FriendProps | undefined>();
 
   const handleSearch = () => {
     console.log('Search');
@@ -57,12 +56,12 @@ const SendScreen = ({
   };
 
   const handleSubmit = () => {
-    if (money === '0') {
+    if (money === '0' || coin === undefined || recipient === undefined) {
       console.log('empty value');
       return;
     }
-    console.log(money);
-    setModalVisible(true);
+    console.log(money, coin, recipient);
+    setConfirmModalVisible(true);
   };
 
   const renderPad = () => {
@@ -88,9 +87,8 @@ const SendScreen = ({
         <View style={{ width: '90%' }}>
           <SearchBar
             placeholder='Search friends'
-            searchData={friendsData}
-            onChangeText={handleSearch}
-            useModal
+            onFocus={() => setSearchModalVisible(true)}
+            value={`${recipient?.firstName} ${recipient?.lastName}`}
           />
         </View>
         <MoneyText>${money}</MoneyText>
@@ -98,7 +96,7 @@ const SendScreen = ({
           <Dropdown
             defaultLabel='Select shit coin'
             data={ownedCoinsData}
-            onSelect={onDropdownSelect}
+            onSelect={setCoin}
           />
         </View>
         <PinpadContainer style={{ zIndex: 1 }}>{renderPad()}</PinpadContainer>
@@ -106,9 +104,18 @@ const SendScreen = ({
           <SendButton title='Send' onPress={handleSubmit} />
         </View>
       </View>
+      <SearchModal
+        placeholder='Search friends'
+        onChangeText={handleSearch}
+        searchData={friendsData}
+        visible={searchModalVisible}
+        setVisible={setSearchModalVisible}
+        setSelected={setRecipient}
+      />
+
       <ConfirmModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
+        modalVisible={confirmModalVisible}
+        setModalVisible={setConfirmModalVisible}
       />
     </>
   );
