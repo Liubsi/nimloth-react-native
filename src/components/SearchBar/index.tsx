@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { useRef, useState } from 'react';
 import { TextInput, TouchableOpacity, Modal, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { InputProps } from '@rneui/themed';
 import { BackIcon } from '@components/MainHeader/styles';
 import { XIcon, StyledInput } from './styles';
@@ -42,19 +41,30 @@ const SearchModal = ({
       animationType='slide'
       presentationStyle='fullScreen'
     >
-      <SafeAreaView
-        style={{ flex: 1, backgroundColor: 'red', flexDirection: 'row' }}
-      >
-        <SearchBar
-          placeholder={placeholder}
-          onChangeText={onChangeText}
-          searchData={searchData}
-          useModal={false}
-        />
-        <TouchableOpacity onPress={() => setVisible(false)}>
-          <BackIcon />
-        </TouchableOpacity>
-      </SafeAreaView>
+      <View style={{ flex: 1, backgroundColor: '#F2F2F2' }}>
+        <View style={{ height: '8%' }} />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: '90%',
+            alignSelf: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <TouchableOpacity onPress={() => setVisible(false)}>
+            <BackIcon />
+          </TouchableOpacity>
+          <View style={{ width: '90%' }}>
+            <SearchBar
+              placeholder={placeholder}
+              onChangeText={onChangeText}
+              searchData={searchData}
+              useModal={false}
+            />
+          </View>
+        </View>
+      </View>
     </Modal>
   );
 };
