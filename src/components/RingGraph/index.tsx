@@ -26,19 +26,26 @@ const RingGraph = ({ coins }: Props) => {
 
     return coins.map(({ coinName, dollarAmount }, index) => {
       const prevDollarAmount = index > 0 ? coins[index - 1].dollarAmount : 0;
-      const coinPercentage = (dollarAmount / coinTotal) * 100;
-      const coinAngle = (prevDollarAmount / coinTotal) * 360;
+      function prevTotalCalc(coins: { dollarAmmount: number }[]) {
+        let prevCalc = 0;
+        for (let i = 0; i < index - 1; i += 1) {
+          prevCalc += coins[i].dollarAmmount;
+        }
+      }
+      const coinPercentage = dollarAmount / coinTotal;
+      const coinAngle = (prevTotalCalc(index) / coinTotal) * 360;
       const coinStrokeDashOffset =
-        (circleCircumference - circleCircumference * coinPercentage) / 100;
+        (circleCircumference - circleCircumference * coinPercentage) / 180;
       const coinRotation = index === 0 ? 0 : coinAngle;
+      const coinDashArray = circleCircumference * coinPercentage;
+
       return (
         <ProportionedCircle
           key={coinName}
           r={radius}
           stroke={colors[index]}
           strokeWidth={borderTest}
-          strokeDasharray={circleCircumference * coinPercentage}
-          strokeDashoffset={coinStrokeDashOffset}
+          strokeDasharray={`${coinDashArray}, ${360 - coinDashArray}`}
           rotation={coinRotation}
         />
       );
