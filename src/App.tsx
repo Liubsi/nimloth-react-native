@@ -17,7 +17,7 @@ import theme from './theme';
 import store from './store';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const isSignedIn = false;
+const isSignedIn = true;
 
 Amplify.configure(awsconfig);
 

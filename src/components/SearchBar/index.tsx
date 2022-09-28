@@ -3,8 +3,11 @@ import { TextInput, TouchableOpacity } from 'react-native';
 import { InputProps } from '@rneui/themed';
 import { XIcon, StyledInput } from './styles';
 
-type Props = InputProps & {
+type SearchBarProps = InputProps & {
   placeholder: string;
+  onChangeText?: (value: string) => void;
+  onFocus?: () => void;
+  value?: string;
 };
 
 const ClearButton = ({ clear }: { clear: () => void }) => {
@@ -15,7 +18,12 @@ const ClearButton = ({ clear }: { clear: () => void }) => {
   );
 };
 
-const SearchBar = ({ placeholder }: Props) => {
+const SearchBar = ({
+  placeholder,
+  onChangeText,
+  onFocus,
+  value,
+}: SearchBarProps) => {
   const input = useRef<TextInput>(null);
   const clearInput = () => {
     input.current?.clear();
@@ -26,6 +34,9 @@ const SearchBar = ({ placeholder }: Props) => {
       ref={input}
       placeholder={placeholder}
       rightIcon={<ClearButton clear={clearInput} />}
+      onChangeText={onChangeText}
+      onFocus={onFocus}
+      value={value}
     />
   );
 };

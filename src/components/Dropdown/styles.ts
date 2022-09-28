@@ -12,6 +12,7 @@ export const DropdownListContainer = styled.View`
   margin-right: auto;
   top: 70px;
   background-color: #f3f5f6;
+  height: 500%;
 `;
 
 export const DropdownPressable = styled(Button).attrs({
