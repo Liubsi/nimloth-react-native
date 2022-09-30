@@ -1,0 +1,28 @@
+type AllCoins @model @auth(rules: [{allow: public}, {allow: private}]) {
+  id: ID!
+  CoinData: [CoinData] @hasMany(indexName: "byAllCoins", fields: ["id"])
+}
+
+type CoinData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  coinname: String
+  coinvalue: String
+  updates: AWSDateTime
+  allcoinsID: ID! @index(name: "byAllCoins")
+}
+
+type Coin @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  coinname: String
+  coinamount: Float
+  coinowned: Boolean
+  walletID: ID! @index(name: "byWallet")
+}
+
+type Wallet @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  username: String
+  updated: AWSDateTime
+  Coins: [Coin] @hasMany(indexName: "byWallet", fields: ["id"])
+}
+ 

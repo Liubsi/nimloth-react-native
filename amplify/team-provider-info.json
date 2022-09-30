@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nimlothreact-staging-164403-authRole",
+      "UnauthRoleArn": "arn:aws:iam::678954555931:role/amplify-nimlothreact-staging-164403-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::678954555931:role/amplify-nimlothreact-staging-164403-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nimlothreact-staging-164403-deployment",
+      "UnauthRoleName": "amplify-nimlothreact-staging-164403-unauthRole",
+      "StackName": "amplify-nimlothreact-staging-164403",
+      "StackId": "arn:aws:cloudformation:us-east-1:678954555931:stack/amplify-nimlothreact-staging-164403/17d23450-40df-11ed-87a9-0e05c2f1c26d",
+      "AmplifyAppId": "d15a5zslm99fop"
+    },
+    "categories": {
+      "auth": {
+        "NimlothReact": {}
+      }
+    }
+  }
+}

@@ -10,11 +10,15 @@ import AuthScreen from '@screens/Auth';
 import MainStackScreen from '@screens/Home/Main';
 import SettingsScreen from '@screens/Home/Settings';
 import loadFonts from '@common/fonts';
+import Amplify from 'aws-amplify';
 import theme from './theme';
 import store from './store';
+import awsconfig from './aws-exports';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const isSignedIn = true;
+const isSignedIn = false;
+
+Amplify.configure(awsconfig);
 
 const App = () => {
   // TODO: replace null with a loading screen
