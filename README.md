@@ -6,7 +6,7 @@ Install `yarn`
 `yarn husky install` to install pre-commit hooks
 
 To initialize Amplify: 
-`amplify pull --appId d2mjap9cu9gbov --envName dev`
+`amplify pull --appId d15a5zslm99fop --envName staging
 
 To pull Amplify updates: 
 `amplify pull`
