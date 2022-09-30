@@ -5,6 +5,7 @@ import { Text } from '@rneui/themed';
 import SCREEN_NAMES from '@navigation/names';
 import type { AuthScreenProps } from '@navigation/types';
 import { withAuthenticator } from 'aws-amplify-react-native';
+import { MainScreenProps } from '@navigation/types';
 import { StyledInput, StyledButton } from '../SignUp/styles';
 
 const SignInScreen = ({
@@ -22,7 +23,7 @@ const SignInScreen = ({
       <View style={{ width: '80%', alignItems: 'center' }}>
         <StyledButton
           title='Login'
-          onPress={() => navigation.navigate(SCREEN_NAMES.MAIN)}
+          onPress={() => navigation.navigate(SCREEN_NAMES.LANDING)}
         />
         <TouchableOpacity style={{ marginTop: 20 }}>
           <Text style={{ color: '#404AFF' }}>Forgot password?</Text>

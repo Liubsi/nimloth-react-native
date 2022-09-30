@@ -24,6 +24,7 @@ enum SCREEN_NAMES {
   LANDING = 'Landing',
   SIGN_IN = 'SignIn',
   SIGN_UP = 'SignUp',
+  WALLETT = 'Wallet',
 
   // Main Stack
   MAIN = 'Main',
