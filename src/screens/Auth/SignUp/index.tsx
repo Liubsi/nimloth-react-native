@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import { validatePassword } from '@common/rules';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { StyledInput, StyledButton } from './styles';
+import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
 import {
   signUp,
   setUserBirthdate,
@@ -73,24 +74,82 @@ const PasswordScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.PASSWORD>) => {
   const dispatch = useAppDispatch();
+  const [firstPassword, setFirstPassword] = useState<string>('');
+  const [secondPassword, setSecondPassword] = useState<string>('');
+  const [matchesRequirements, setMatchesRequirement] = useState(false);
+  const [matchesSecondPassword, setMatchesSecondPassword] = useState(false);
+
+  useEffect(() => {
+    if (validatePassword(firstPassword)) {
+      setMatchesRequirement(true);
+    } else {
+      setMatchesRequirement(false);
+    }
+
+    if (firstPassword === secondPassword && firstPassword !== '') {
+      setMatchesSecondPassword(true);
+    } else {
+      setMatchesSecondPassword(false);
+    }
+  }, [firstPassword, secondPassword]);
+
+  const validatePasswordInputs = () => {
+    if (matchesRequirements) {
+      navigation.navigate(SCREEN_NAMES.NAME);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>Create your Nimloth password</Text>
+        <View
+          style={{
+            alignItems: 'flex-start',
+            flexDirection: 'row',
+            marginTop: 30,
+            width: '100%',
+          }}
+        >
+          <View style={{ width: 35 }}>
+            {matchesRequirements ? <CheckIcon /> : <XIcon />}
+          </View>
+          <Text>
+            Your password must contain at least 8 characters, one letter, one
+            number, and one special character
+          </Text>
+        </View>
+        <View
+          style={{
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginTop: 20,
+            width: '100%',
+          }}
+        >
+          <View style={{ width: 35 }}>
+            {matchesSecondPassword ? <CheckIcon /> : <XIcon />}
+          </View>
+
+          <Text>Your passwords must match</Text>
+        </View>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
         <StyledInput
           autoFocus
           placeholder='Password'
           onChangeText={(val) => {
+            setFirstPassword(val);
             dispatch(setUserPassword(val));
           }}
         />
-        <StyledInput placeholder='Re-enter password' />
+        <StyledInput
+          placeholder='Re-enter password'
+          onChangeText={(val) => setSecondPassword(val)}
+        />
         <StyledButton
           title='Continue'
-          onPress={() => navigation.navigate(SCREEN_NAMES.NAME)}
+          onPress={() => validatePasswordInputs()}
         />
       </View>
     </SafeAreaView>
