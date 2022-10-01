@@ -130,12 +130,12 @@ const PasswordScreen = ({
           <View style={{ width: 35 }}>
             {matchesSecondPassword ? <CheckIcon /> : <XIcon />}
           </View>
-
           <Text>Your passwords must match</Text>
         </View>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
         <StyledInput
+          secureTextEntry
           autoFocus
           placeholder='Password'
           onChangeText={(val) => {
@@ -144,6 +144,7 @@ const PasswordScreen = ({
           }}
         />
         <StyledInput
+          secureTextEntry
           placeholder='Re-enter password'
           onChangeText={(val) => setSecondPassword(val)}
         />
