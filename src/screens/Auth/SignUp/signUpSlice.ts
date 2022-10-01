@@ -26,9 +26,9 @@ export const signUp = createAsyncThunk(
         password,
         attributes: {
           // email, // optional
-          phone_number: phoneNumber, // optional - E.164 number convention
+          phone_number: `+1${phoneNumber}`, // optional - E.164 number convention
           birthdate,
-          // name: email,
+          name: `${firstName} ${lastName}`,
           // other custom attributes
         },
         autoSignIn: {
@@ -36,10 +36,8 @@ export const signUp = createAsyncThunk(
           enabled: true,
         },
       });
-      console.log(user);
       return user;
     } catch (error) {
-      console.log('error signing up:', error);
       return rejectWithValue(error);
     }
   }

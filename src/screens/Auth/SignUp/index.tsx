@@ -5,9 +5,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
-import { validatePassword } from '@common/rules';
+import {
+  validatePassword,
+  validateEmail,
+  validatePhoneNumber,
+} from '@common/rules';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
 import {
   signUp,
   setUserBirthdate,
@@ -19,6 +22,7 @@ import {
   setUserLastName,
   setUserAddress,
 } from './signUpSlice';
+import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
 
 export type SignUpUser = {
   firstName: string;
@@ -29,6 +33,7 @@ export type SignUpUser = {
   birthdate: string;
   address: string;
 };
+
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
@@ -47,6 +52,13 @@ const todo = {
 
 const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
   const dispatch = useAppDispatch();
+  const [email, setEmail] = useState('');
+
+  const onContinue = () => {
+    if (validateEmail(email)) {
+      navigation.navigate(SCREEN_NAMES.PASSWORD);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -58,13 +70,11 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
           autoFocus
           placeholder='Email'
           onChangeText={(val) => {
+            setEmail(val);
             dispatch(setUserEmail(val));
           }}
         />
-        <StyledButton
-          title='Continue'
-          onPress={() => navigation.navigate(SCREEN_NAMES.PASSWORD)}
-        />
+        <StyledButton title='Continue' onPress={() => onContinue()} />
       </View>
     </SafeAreaView>
   );
@@ -93,7 +103,7 @@ const PasswordScreen = ({
     }
   }, [firstPassword, secondPassword]);
 
-  const validatePasswordInputs = () => {
+  const onContinue = () => {
     if (matchesRequirements) {
       navigation.navigate(SCREEN_NAMES.NAME);
     }
@@ -148,10 +158,7 @@ const PasswordScreen = ({
           placeholder='Re-enter password'
           onChangeText={(val) => setSecondPassword(val)}
         />
-        <StyledButton
-          title='Continue'
-          onPress={() => validatePasswordInputs()}
-        />
+        <StyledButton title='Continue' onPress={() => onContinue()} />
       </View>
     </SafeAreaView>
   );
@@ -188,8 +195,16 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
   );
 };
 
+// TODO: Allow changing of area code?
 const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
   const dispatch = useAppDispatch();
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  const onContinue = () => {
+    if (validatePhoneNumber(phoneNumber)) {
+      navigation.navigate(SCREEN_NAMES.DOB);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -197,17 +212,22 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
         <Text style={{ fontSize: 25 }}>What is your phone number?</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput
-          autoFocus
-          placeholder='Phone number'
-          onChangeText={(val) => {
-            dispatch(setUserPhoneNumber(val));
-          }}
-        />
-        <StyledButton
-          title='Continue'
-          onPress={() => navigation.navigate(SCREEN_NAMES.DOB)}
-        />
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ width: '14%', marginRight: '2%' }}>
+            <StyledInput value='+1' disabled />
+          </View>
+          <View style={{ width: '84%' }}>
+            <StyledInput
+              autoFocus
+              placeholder='Phone number'
+              onChangeText={(val) => {
+                setPhoneNumber(val);
+                dispatch(setUserPhoneNumber(val));
+              }}
+            />
+          </View>
+        </View>
+        <StyledButton title='Continue' onPress={() => onContinue()} />
       </View>
     </SafeAreaView>
   );
@@ -238,7 +258,6 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
   );
 };
 
-// TODO: collect user Address
 const AddressScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.ADDRESS>) => {
