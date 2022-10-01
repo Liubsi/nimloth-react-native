@@ -1,57 +1,51 @@
 import React from 'react';
-import { Auth } from 'aws-amplify';
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { StyledInput, StyledButton } from './styles';
-import Todo from '../../../models/index';
+import {
+  signUp,
+  setUserBirthdate,
+  setUserEmail,
+  setUserPassword,
+  setUserPhoneNumber,
+  getSignUpFields,
+  setUserFirstName,
+  setUserLastName,
+} from './signUpSlice';
 
+export type SignUpUser = {
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string; // make optional?
+  phoneNumber: string; // make optional?
+  birthdate: string;
+};
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
+
+// EXAMPLE
 const todo = {
-  username: 'testus@gmail.com',
+  firstName: 'test',
+  lastName: 'test',
   password: 'testpassword',
   email: 'testuser2@gmail.com', // optional
-  phone_number: '+11111111111', // optional - E.164 number convention
+  phoneNumber: '+11111111111', // optional - E.164 number convention
   birthdate: '01/01/2000',
   name: 'usertest',
   // other custom attributes
 };
 
-function setvalue(value: string) {
-  todo.username = value;
-  return null;
-}
-
-async function signUp() {
-  try {
-    const { user } = await Auth.signUp({
-      username: todo.username,
-      password: todo.password,
-      attributes: {
-        email: todo.username, // optional
-        phone_number: todo.phone_number, // optional - E.164 number convention
-        birthdate: todo.birthdate,
-        name: todo.name,
-        // other custom attributes
-      },
-      autoSignIn: {
-        // optional - enables auto sign in after user is confirmed
-        enabled: true,
-      },
-    });
-    console.log(user);
-  } catch (error) {
-    console.log('error signing up:', error);
-  }
-}
-
 const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
-  const [text, setUser] = React.useState('email');
+  const [email, setEmail] = React.useState<string>();
+  const dispatch = useAppDispatch();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
@@ -61,8 +55,10 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
         <StyledInput
           autoFocus
           placeholder='Email'
-          onChangeText={(value) => setUser(value)}
-          value={text}
+          onChangeText={(val) => {
+            setEmail(val);
+            dispatch(setUserEmail(val));
+          }}
         />
         <StyledButton
           title='Continue'
@@ -76,13 +72,23 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
 const PasswordScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.PASSWORD>) => {
+  const [password, setPassword] = React.useState<string>();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>Create your Nimloth password</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput autoFocus placeholder='Password' />
+        <StyledInput
+          autoFocus
+          placeholder='Password'
+          onChangeText={(val) => {
+            setPassword(val);
+            setUserPassword(val);
+          }}
+        />
+        <StyledInput placeholder='Re-enter password' />
         <StyledButton
           title='Continue'
           onPress={() => navigation.navigate(SCREEN_NAMES.NAME)}
@@ -93,14 +99,30 @@ const PasswordScreen = ({
 };
 
 const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
+  const [firstName, setFirstName] = React.useState<string>();
+  const [lastName, setLastName] = React.useState<string>();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>What is your legal name?</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput autoFocus placeholder='First name' />
-        <StyledInput placeholder='Last name' />
+        <StyledInput
+          autoFocus
+          placeholder='First name'
+          onChangeText={(val) => {
+            setFirstName(val);
+            setUserFirstName(val);
+          }}
+        />
+        <StyledInput
+          placeholder='Last name'
+          onChangeText={(val) => {
+            setLastName(val);
+            setUserLastName(val);
+          }}
+        />
         <StyledButton
           title='Continue'
           onPress={() => navigation.navigate(SCREEN_NAMES.PHONE)}
@@ -111,13 +133,22 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
 };
 
 const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
+  const [phoneNumber, setPhoneNumber] = React.useState<string>();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>What is your phone number?</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput autoFocus placeholder='Phone number' />
+        <StyledInput
+          autoFocus
+          placeholder='Phone number'
+          onChangeText={(val) => {
+            setPhoneNumber(val);
+            setUserPhoneNumber(val);
+          }}
+        />
         <StyledButton
           title='Continue'
           onPress={() => navigation.navigate(SCREEN_NAMES.DOB)}
@@ -128,13 +159,22 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
 };
 
 const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
+  const [DOB, setDOB] = React.useState<string>();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>What is your date of birth?</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput autoFocus placeholder='MM / DD / YYYY' />
+        <StyledInput
+          autoFocus
+          placeholder='MM / DD / YYYY'
+          onChangeText={(val) => {
+            setDOB(val);
+            setUserBirthdate(val);
+          }}
+        />
         <StyledButton
           title='Continue'
           onPress={() => navigation.navigate('Address')}
@@ -144,16 +184,23 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
   );
 };
 
+// TODO: collect user Address
 const AddressScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.ADDRESS>) => {
+  const [address, setAddress] = React.useState<string>();
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>Enter your address</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledInput autoFocus placeholder='Address' />
+        <StyledInput
+          autoFocus
+          placeholder='Address'
+          onChangeText={(val) => setAddress(val)}
+        />
         <StyledButton
           title='Continue'
           onPress={() => navigation.navigate('Confirm')}
@@ -167,13 +214,22 @@ const AddressScreen = ({
 const ConfirmScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.CONFIRM>) => {
+  const dispatch = useAppDispatch();
+  const a = useAppSelector(getSignUpFields);
+  console.log(a);
+
+  const onConfirm = async () => {
+    const signUpUser = await dispatch(signUp(todo));
+    console.log(signUpUser);
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
       <View style={{ margin: 50 }}>
         <Text style={{ fontSize: 25 }}>Confirm your details</Text>
       </View>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <StyledButton title='Complete sign up' onPress={() => signUp()} />
+        <StyledButton title='Complete sign up' onPress={onConfirm} />
       </View>
     </SafeAreaView>
   );
