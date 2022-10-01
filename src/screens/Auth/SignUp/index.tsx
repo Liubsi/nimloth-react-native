@@ -45,7 +45,6 @@ const todo = {
 };
 
 const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
-  const [email, setEmail] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -58,7 +57,6 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
           autoFocus
           placeholder='Email'
           onChangeText={(val) => {
-            setEmail(val);
             dispatch(setUserEmail(val));
           }}
         />
@@ -74,7 +72,6 @@ const EmailScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.EMAIL>) => {
 const PasswordScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.PASSWORD>) => {
-  const [password, setPassword] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -87,7 +84,6 @@ const PasswordScreen = ({
           autoFocus
           placeholder='Password'
           onChangeText={(val) => {
-            setPassword(val);
             dispatch(setUserPassword(val));
           }}
         />
@@ -102,8 +98,6 @@ const PasswordScreen = ({
 };
 
 const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
-  const [firstName, setFirstName] = React.useState<string>();
-  const [lastName, setLastName] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -116,14 +110,12 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
           autoFocus
           placeholder='First name'
           onChangeText={(val) => {
-            setFirstName(val);
             dispatch(setUserFirstName(val));
           }}
         />
         <StyledInput
           placeholder='Last name'
           onChangeText={(val) => {
-            setLastName(val);
             dispatch(setUserLastName(val));
           }}
         />
@@ -137,7 +129,6 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
 };
 
 const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
-  const [phoneNumber, setPhoneNumber] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -150,7 +141,6 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
           autoFocus
           placeholder='Phone number'
           onChangeText={(val) => {
-            setPhoneNumber(val);
             dispatch(setUserPhoneNumber(val));
           }}
         />
@@ -164,7 +154,6 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
 };
 
 const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
-  const [DOB, setDOB] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -177,7 +166,6 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
           autoFocus
           placeholder='MM / DD / YYYY'
           onChangeText={(val) => {
-            setDOB(val);
             dispatch(setUserBirthdate(val));
           }}
         />
@@ -194,7 +182,6 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
 const AddressScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.ADDRESS>) => {
-  const [address, setAddress] = React.useState<string>();
   const dispatch = useAppDispatch();
 
   return (
@@ -207,7 +194,6 @@ const AddressScreen = ({
           autoFocus
           placeholder='Address'
           onChangeText={(val) => {
-            setAddress(val);
             dispatch(setUserAddress(val));
           }}
         />
