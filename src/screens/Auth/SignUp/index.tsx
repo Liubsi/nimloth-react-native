@@ -293,8 +293,8 @@ const ConfirmScreen = ({
   const signUpInfo = useAppSelector(getSignUpFields);
 
   const onConfirm = async () => {
-    const signUpUser = await dispatch(signUp(signUpInfo));
-    console.log(signUpUser);
+    const user = await dispatch(signUp(signUpInfo));
+    console.log(user);
   };
 
   return (

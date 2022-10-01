@@ -4,6 +4,7 @@ import friendsSlice from '@screens/Home/Main/Friends/friendsSlice';
 import historySlice from '@screens/Home/Main/TransactionHistory/historySlice';
 import coinsSlice from '@screens/Home/Main/Wallet/coinsSlice';
 import signUpSlice from '@screens/Auth/SignUp/signUpSlice';
+import signInSlice from '@screens/Auth/SignIn/signInSlice';
 
 const rootReducer = combineReducers({
   charts: chartSlice,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   history: historySlice,
   ownedCoins: coinsSlice,
   signUp: signUpSlice,
+  signIn: signInSlice,
 });
 
 export default rootReducer;
