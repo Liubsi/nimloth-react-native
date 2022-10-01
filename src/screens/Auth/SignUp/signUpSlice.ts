@@ -5,7 +5,7 @@ import type { RootState } from 'src/store';
 import type { SignUpUser } from '.';
 
 // TODO: Add more options for signUp
-
+// TODO: Fix: "A non-serializable value was detected in an action, in the path: `payload`."
 export const signUp = createAsyncThunk(
   'auth/signUp',
   async (

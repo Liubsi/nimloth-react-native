@@ -18,6 +18,9 @@ export const XIcon = styled(Icon).attrs({
 })``;
 
 export const StyledInput = styled(Input).attrs({
+  autoCapitalize: 'none',
+  autoComplete: 'off',
+  autoCorrect: false,
   inputContainerStyle: {
     borderRadius: 50,
     marginTop: 10,

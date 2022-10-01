@@ -33,7 +33,6 @@ const SignInScreen = () => {
           onChangeText={(val) => setEmail(val)}
         />
         <StyledInput
-          autoFocus
           placeholder='Password'
           onChangeText={(val) => setPassword(val)}
         />
