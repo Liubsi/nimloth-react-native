@@ -16,6 +16,7 @@ export const signUp = createAsyncThunk(
       email,
       phoneNumber,
       birthdate,
+      address,
     }: SignUpUser,
     { rejectWithValue }
   ) => {
@@ -51,6 +52,7 @@ const initialState: SignUpUser = {
   email: '',
   phoneNumber: '',
   birthdate: '',
+  address: '',
 };
 
 export const signUpSlice = createSlice({
@@ -75,6 +77,9 @@ export const signUpSlice = createSlice({
     setUserLastName(state, action) {
       state.lastName = action.payload;
     },
+    setUserAddress(state, action) {
+      state.address = action.payload;
+    },
   },
 });
 
@@ -87,6 +92,7 @@ export const {
   setUserLastName,
   setUserPhoneNumber,
   setUserBirthdate,
+  setUserAddress,
 } = signUpSlice.actions;
 
 export default signUpSlice.reducer;

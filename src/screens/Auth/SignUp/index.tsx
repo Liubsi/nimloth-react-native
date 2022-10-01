@@ -16,6 +16,7 @@ import {
   getSignUpFields,
   setUserFirstName,
   setUserLastName,
+  setUserAddress,
 } from './signUpSlice';
 
 export type SignUpUser = {
@@ -25,6 +26,7 @@ export type SignUpUser = {
   email: string; // make optional?
   phoneNumber: string; // make optional?
   birthdate: string;
+  address: string;
 };
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
@@ -38,7 +40,7 @@ const todo = {
   email: 'testuser2@gmail.com', // optional
   phoneNumber: '+11111111111', // optional - E.164 number convention
   birthdate: '01/01/2000',
-  name: 'usertest',
+  address: 'test',
   // other custom attributes
 };
 
@@ -73,6 +75,7 @@ const PasswordScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.PASSWORD>) => {
   const [password, setPassword] = React.useState<string>();
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -85,7 +88,7 @@ const PasswordScreen = ({
           placeholder='Password'
           onChangeText={(val) => {
             setPassword(val);
-            setUserPassword(val);
+            dispatch(setUserPassword(val));
           }}
         />
         <StyledInput placeholder='Re-enter password' />
@@ -101,6 +104,7 @@ const PasswordScreen = ({
 const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
   const [firstName, setFirstName] = React.useState<string>();
   const [lastName, setLastName] = React.useState<string>();
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -113,14 +117,14 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
           placeholder='First name'
           onChangeText={(val) => {
             setFirstName(val);
-            setUserFirstName(val);
+            dispatch(setUserFirstName(val));
           }}
         />
         <StyledInput
           placeholder='Last name'
           onChangeText={(val) => {
             setLastName(val);
-            setUserLastName(val);
+            dispatch(setUserLastName(val));
           }}
         />
         <StyledButton
@@ -134,6 +138,7 @@ const NameScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.NAME>) => {
 
 const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
   const [phoneNumber, setPhoneNumber] = React.useState<string>();
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -146,7 +151,7 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
           placeholder='Phone number'
           onChangeText={(val) => {
             setPhoneNumber(val);
-            setUserPhoneNumber(val);
+            dispatch(setUserPhoneNumber(val));
           }}
         />
         <StyledButton
@@ -160,6 +165,7 @@ const PhoneScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.PHONE>) => {
 
 const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
   const [DOB, setDOB] = React.useState<string>();
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -172,7 +178,7 @@ const DOBScreen = ({ navigation }: SignUpScreenProps<SCREEN_NAMES.DOB>) => {
           placeholder='MM / DD / YYYY'
           onChangeText={(val) => {
             setDOB(val);
-            setUserBirthdate(val);
+            dispatch(setUserBirthdate(val));
           }}
         />
         <StyledButton
@@ -189,6 +195,7 @@ const AddressScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.ADDRESS>) => {
   const [address, setAddress] = React.useState<string>();
+  const dispatch = useAppDispatch();
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -199,7 +206,10 @@ const AddressScreen = ({
         <StyledInput
           autoFocus
           placeholder='Address'
-          onChangeText={(val) => setAddress(val)}
+          onChangeText={(val) => {
+            setAddress(val);
+            dispatch(setUserAddress(val));
+          }}
         />
         <StyledButton
           title='Continue'
@@ -215,11 +225,10 @@ const ConfirmScreen = ({
   navigation,
 }: SignUpScreenProps<SCREEN_NAMES.CONFIRM>) => {
   const dispatch = useAppDispatch();
-  const a = useAppSelector(getSignUpFields);
-  console.log(a);
+  const signUpInfo = useAppSelector(getSignUpFields);
 
   const onConfirm = async () => {
-    const signUpUser = await dispatch(signUp(todo));
+    const signUpUser = await dispatch(signUp(signUpInfo));
     console.log(signUpUser);
   };
 
