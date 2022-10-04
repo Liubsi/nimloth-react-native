@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Amplify } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,16 +21,17 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 Amplify.configure(awsconfig);
 
 const App = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   useEffect(() => {
     const bootstrapAsync = async () => {
       try {
-        const value = await AsyncStorage.getItem('@CognitoUser');
+        const value = await Auth.currentAuthenticatedUser();
         console.log(value);
         if (value) {
           setIsSignedIn(true);
         } else {
+          console.log('this user is not logged in');
           setIsSignedIn(false);
         }
       } catch (error) {

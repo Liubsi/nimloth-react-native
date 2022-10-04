@@ -12,6 +12,9 @@ export const signIn = createAsyncThunk(
         username: email,
         password,
       });
+      console.log(user);
+      console.log(Auth.currentAuthenticatedUser);
+
       return user;
     } catch (error) {
       return rejectWithValue(error);
