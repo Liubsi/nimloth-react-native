@@ -85,7 +85,7 @@ const PasswordScreen = ({
     if (validatePassword(firstPassword)) {
       setMatchesRequirement(true);
     } else {
-      setMatchesRequirement(false);
+      setMatchesRequirement(true);
     }
 
     if (firstPassword === secondPassword && firstPassword !== '') {

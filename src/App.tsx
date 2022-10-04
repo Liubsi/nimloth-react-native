@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 Amplify.configure(awsconfig);
 
 const App = () => {
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
     const bootstrapAsync = async () => {
