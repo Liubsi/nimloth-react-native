@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import {
@@ -10,6 +11,7 @@ import {
   validateEmail,
   validatePhoneNumber,
 } from '@common/rules';
+import { CognitoUser } from 'amazon-cognito-identity-js';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import {
   signUp,
@@ -23,16 +25,6 @@ import {
   setUserAddress,
 } from './signUpSlice';
 import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
-
-export type SignUpUser = {
-  firstName: string;
-  lastName: string;
-  password: string;
-  email: string; // make optional?
-  phoneNumber: string; // make optional?
-  birthdate: string;
-  address: string;
-};
 
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
@@ -292,9 +284,28 @@ const ConfirmScreen = ({
   const dispatch = useAppDispatch();
   const signUpInfo = useAppSelector(getSignUpFields);
 
+  const storeData = async (cognitoUser: any) => {
+    try {
+      AsyncStorage.setItem('@CognitoUser', cognitoUser);
+      return cognitoUser;
+    } catch (error) {
+      return error;
+    }
+  };
   const onConfirm = async () => {
-    const user = await dispatch(signUp(signUpInfo));
-    console.log(user);
+    dispatch(signUp(signUpInfo))
+      .unwrap()
+      .then((cognitoUser) => {
+        // console.log(cognitoUser.getUserAttributes(() => console.log("HELLO")));
+        // console.log(cognitoUser.getUserData(() => console.log("HELLO")))
+        // console.log(cognitoUser.getSignInUserSession());
+        const username = cognitoUser.getUsername();
+        storeData(username);
+        // console.log(cognitoUser.getSession(() => console.log("HELLO")));
+      })
+      .catch((error) => {
+        // TODO: Throw error on UI
+      });
   };
 
   return (

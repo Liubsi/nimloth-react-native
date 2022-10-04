@@ -18,7 +18,6 @@ const SignInScreen = () => {
 
   const onSignIn = async () => {
     const user = await dispatch(signIn({ email, password }));
-    console.log(user);
   };
 
   return (

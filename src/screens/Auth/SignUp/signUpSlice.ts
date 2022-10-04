@@ -2,7 +2,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Auth } from 'aws-amplify';
 import type { RootState } from 'src/store';
-import type { SignUpUser } from '.';
+
+type SignUpUser = {
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string; // make optional?
+  phoneNumber: string; // make optional?
+  birthdate: string;
+  address: string;
+};
 
 // TODO: Add more options for signUp
 // TODO: Fix: "A non-serializable value was detected in an action, in the path: `payload`."

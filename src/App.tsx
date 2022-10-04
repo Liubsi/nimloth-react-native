@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,22 +6,42 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@rneui/themed';
 import type { RootStackParamList } from '@navigation/types';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import SCREEN_NAMES from '@navigation/names';
 import AuthScreen from '@screens/Auth';
 import MainStackScreen from '@screens/Home/Main';
 import SettingsScreen from '@screens/Home/Settings';
 import loadFonts from '@common/fonts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import awsconfig from './aws-exports';
 import theme from './theme';
 import store from './store';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const isSignedIn = false;
 
 Amplify.configure(awsconfig);
 
 const App = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    const bootstrapAsync = async () => {
+      try {
+        const value = await AsyncStorage.getItem('@CognitoUser');
+        console.log(value);
+        if (value) {
+          setIsSignedIn(true);
+        } else {
+          setIsSignedIn(false);
+        }
+      } catch (error) {
+        setIsSignedIn(false);
+        console.log(`Something went wrong" ${error}`);
+      }
+    };
+
+    bootstrapAsync();
+  }, []);
+
   // TODO: replace null with a loading screen
   const loaded = loadFonts();
   if (!loaded) return null;
