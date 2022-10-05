@@ -66,6 +66,10 @@ export const signUpSlice = createSlice({
   name: 'signUp',
   initialState,
   reducers: {
+    resetState() {
+      // eslint-disable-next-line no-unused-expressions
+      initialState;
+    },
     setUserPassword(state, action) {
       state.password = action.payload;
     },
@@ -93,6 +97,7 @@ export const signUpSlice = createSlice({
 export const getSignUpFields = (state: RootState) => state.signUp;
 
 export const {
+  resetState,
   setUserPassword,
   setUserEmail,
   setUserFirstName,

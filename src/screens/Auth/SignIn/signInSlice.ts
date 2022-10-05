@@ -2,7 +2,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Auth } from 'aws-amplify';
 import type { RootState } from 'src/store';
-import type { SignInUser } from '.';
+
+type SignInUser = {
+  email: string;
+  password: string;
+};
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
@@ -12,9 +16,6 @@ export const signIn = createAsyncThunk(
         username: email,
         password,
       });
-      console.log(user);
-      console.log(Auth.currentAuthenticatedUser);
-
       return user;
     } catch (error) {
       return rejectWithValue(error);
@@ -22,9 +23,10 @@ export const signIn = createAsyncThunk(
   }
 );
 
-const initialState: SignInUser = {
+const initialState = {
   password: '',
   email: '',
+  isSignedIn: false,
 };
 
 export const signInSlice = createSlice({
@@ -37,11 +39,16 @@ export const signInSlice = createSlice({
     setUserEmail(state, action) {
       state.email = action.payload;
     },
+    setIsSignedIn(state, action) {
+      state.isSignedIn = action.payload;
+    },
   },
 });
 
 export const getSignInFields = (state: RootState) => state.signIn;
+export const isSignedIn = (state: RootState) => state.signIn.isSignedIn;
 
-export const { setUserPassword, setUserEmail } = signInSlice.actions;
+export const { setUserPassword, setUserEmail, setIsSignedIn } =
+  signInSlice.actions;
 
 export default signInSlice.reducer;

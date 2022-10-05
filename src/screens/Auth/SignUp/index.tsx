@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { Text } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { SignUpParamList, SignUpScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import {
@@ -11,8 +10,8 @@ import {
   validateEmail,
   validatePhoneNumber,
 } from '@common/rules';
-import { CognitoUser } from 'amazon-cognito-identity-js';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { setIsSignedIn } from '../SignIn/signInSlice';
 import {
   signUp,
   setUserBirthdate,
@@ -23,6 +22,7 @@ import {
   setUserFirstName,
   setUserLastName,
   setUserAddress,
+  resetState,
 } from './signUpSlice';
 import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
 
@@ -85,7 +85,7 @@ const PasswordScreen = ({
     if (validatePassword(firstPassword)) {
       setMatchesRequirement(true);
     } else {
-      setMatchesRequirement(true);
+      setMatchesRequirement(false);
     }
 
     if (firstPassword === secondPassword && firstPassword !== '') {
@@ -284,27 +284,17 @@ const ConfirmScreen = ({
   const dispatch = useAppDispatch();
   const signUpInfo = useAppSelector(getSignUpFields);
 
-  const storeData = async (cognitoUser: any) => {
-    try {
-      AsyncStorage.setItem('@CognitoUser', cognitoUser);
-      return cognitoUser;
-    } catch (error) {
-      return error;
-    }
-  };
   const onConfirm = async () => {
     dispatch(signUp(signUpInfo))
-      .unwrap()
-      .then((cognitoUser) => {
-        // console.log(cognitoUser.getUserAttributes(() => console.log("HELLO")));
-        // console.log(cognitoUser.getUserData(() => console.log("HELLO")))
-        // console.log(cognitoUser.getSignInUserSession());
-        const username = cognitoUser.getUsername();
-        storeData(username);
-        // console.log(cognitoUser.getSession(() => console.log("HELLO")));
+      .then(({ meta }) => {
+        if (meta.requestStatus === 'fulfilled') {
+          dispatch(setIsSignedIn(true));
+        } else {
+          console.warn('Something went wrong.');
+        }
       })
       .catch((error) => {
-        // TODO: Throw error on UI
+        console.warn(error);
       });
   };
 
