@@ -20,22 +20,18 @@ const AppRoute = () => {
   const signedIn = useAppSelector(isSignedIn);
   const dispatch = useAppDispatch();
 
-  console.log('isSignedIn', signedIn);
   useEffect(() => {
-    console.log('RUNNING');
     const bootstrapAsync = async () => {
       try {
         const value = await Auth.currentAuthenticatedUser();
-        console.log(value);
         if (value) {
           dispatch(setIsSignedIn(true));
         } else {
-          console.log('this user is not logged in');
           dispatch(setIsSignedIn(false));
         }
       } catch (error) {
         dispatch(setIsSignedIn(false));
-        console.log(`Something went wrong" ${error}`);
+        console.warn(`Something went wrong" ${error}`);
       }
     };
 
