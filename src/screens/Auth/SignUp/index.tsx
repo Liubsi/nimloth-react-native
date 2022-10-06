@@ -25,7 +25,7 @@ import {
   resetState,
 } from './signUpSlice';
 import { StyledInput, StyledButton, CheckIcon, XIcon } from './styles';
-
+// Joe's working on this
 // Current flow:
 // Email -> Password -> Legal Name -> Phone Number -> Date of birth -> Address
 // Add?: Citizenship, PIN, Verify PIN, Verify Phone Number/Email
