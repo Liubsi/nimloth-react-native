@@ -2,6 +2,13 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
-const { UserSignupData } = initSchema(schema);
 
-export { UserSignupData };
+
+const { AllCoins, CoinData, Coin, Wallet } = initSchema(schema);
+
+export {
+  AllCoins,
+  CoinData,
+  Coin,
+  Wallet
+};
