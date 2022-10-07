@@ -6,7 +6,7 @@ import { StyledFlatList, StyledListItemTitle } from './styles';
 
 type TouchableProps = {
   onSelectItem?: () => void;
-  setSelected: (value: React.SetStateAction<any>) => void;
+  setSelected?: (value: React.SetStateAction<any>) => void;
 };
 
 type ScrollableProps = TouchableProps & {
@@ -17,21 +17,34 @@ type ItemProps = TouchableProps & {
   item: DatumProps;
 };
 
-const TouchableListItem = ({ item, setSelected, onSelectItem }: ItemProps) => (
-  <TouchableOpacity
-    onPress={() => {
-      setSelected(item);
-      onSelectItem?.();
-    }}
-    style={{ marginBottom: 10 }}
-  >
-    <ListItem key={item.id}>
-      <ListItem.Content>
-        <StyledListItemTitle>Chicken</StyledListItemTitle>
-      </ListItem.Content>
-    </ListItem>
-  </TouchableOpacity>
-);
+const TouchableListItem = ({ item, setSelected, onSelectItem }: ItemProps) => {
+  let listItemTitle = '';
+  Object.entries(item).forEach(([key, val], i) => {
+    if (key !== 'id') {
+      if (i === 0) {
+        listItemTitle += val;
+      } else {
+        listItemTitle += ` ${val}`;
+      }
+    }
+  });
+
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        setSelected?.(item);
+        onSelectItem?.();
+      }}
+      style={{ marginBottom: 10 }}
+    >
+      <ListItem key={item.id}>
+        <ListItem.Content>
+          <StyledListItemTitle>{listItemTitle}</StyledListItemTitle>
+        </ListItem.Content>
+      </ListItem>
+    </TouchableOpacity>
+  );
+};
 
 const ScrollableList = ({
   data,
@@ -48,6 +61,7 @@ const ScrollableList = ({
 
   return (
     <StyledFlatList
+      initialNumToRender={12}
       data={data}
       renderItem={renderItem}
       keyExtractor={(item: DatumProps) => item.id}

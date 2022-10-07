@@ -6,8 +6,8 @@ import { SearchParamList, SearchScreenProps } from '@navigation/types';
 import SCREEN_NAMES from '@navigation/names';
 import MainHeader from '@components/MainHeader';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CoinInfoScreen from '@features/Home/Main/Charts/CoinInfo';
 import { DataStore } from '@aws-amplify/datastore';
+import CoinInfoScreen from './CoinInfo';
 import CoinProps from './props';
 import { Coin } from '../../../../models';
 
@@ -65,16 +65,6 @@ const SearchScreen = ({
       subscription.unsubscribe();
     };
   }, [coindata]);
-
-  // const _renderItem = ({ item }) => {
-  //   const amount = item.coinamount;
-  //   // return (
-  //   //   // <>
-  //   //   //   <CardVacancies obj={item} onPress={onScreen(check ? 'JOB_ADD' : 'JOB_DETAIL', navigation, item)} />
-  //   //   //   <Space height={20} />
-  //   //   // </>
-  //   // )
-  // }
 
   return (
     <>

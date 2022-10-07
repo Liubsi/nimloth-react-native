@@ -1,11 +1,17 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { TabView } from '@rneui/themed';
-import { TabContainerView, TabContainer, TabContainerItem } from './styles';
+import {
+  TabContainerView,
+  TabContainer,
+  TabContainerItem,
+  TabContainerItemSmall,
+} from './styles';
 
 type TabProps = {
   children: React.ReactNode[];
   tabTitles: string[];
-  fontSize?: number;
+  fontSize?: string;
 };
 
 const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
@@ -16,28 +22,13 @@ const Tabs = ({ children, tabTitles, fontSize }: TabProps) => {
   }
 
   const renderTabs = () => {
-    return tabTitles.map((title, index) => (
-      <TabContainerItem
-        // TODO: Find a better way to do assign a key
-        // eslint-disable-next-line react/no-array-index-key
-        key={index}
-        title={title}
-        titleStyle={(active) => ({
-          color: active ? '#404AFF' : '#9395A5',
-          fontFamily: 'Urbanist',
-          fontSize: fontSize || 14,
-        })}
-        buttonStyle={(active) => ({
-          borderColor: '#EBEFF1',
-          borderWidth: 8,
-          backgroundColor: active ? '#FFFFFF' : '#EBEFF1',
-          borderRadius: 50,
-          margin: 0,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        })}
-      />
-    ));
+    return tabTitles.map((title, index) =>
+      fontSize === 'small' ? (
+        <TabContainerItemSmall key={index} title={title} />
+      ) : (
+        <TabContainerItem key={index} title={title} />
+      )
+    );
   };
 
   const renderTabViews = () => {
