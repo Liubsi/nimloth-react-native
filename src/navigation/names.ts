@@ -19,6 +19,7 @@ enum SCREEN_NAMES {
   // Additional
   SEARCH_COINS = 'SearchCoins',
   COIN_INFO = 'CoinInfo',
+  PROFILE = 'Profile',
 
   // Auth
   LANDING = 'Landing',
