@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 Amplify.configure(awsconfig);
 
 const AppRoute = () => {
-  const signedIn = useAppSelector(isSignedIn);
+  const signedIn = true; // useAppSelector(isSignedIn);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

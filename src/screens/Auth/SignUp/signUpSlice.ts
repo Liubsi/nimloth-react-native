@@ -38,6 +38,7 @@ export const signUp = createAsyncThunk(
           phone_number: `+1${phoneNumber}`, // optional - E.164 number convention
           birthdate,
           name: `${firstName} ${lastName}`,
+          address,
           // other custom attributes
         },
         autoSignIn: {
