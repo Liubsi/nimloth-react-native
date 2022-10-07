@@ -61,6 +61,7 @@ const ScrollableList = ({
 
   return (
     <StyledFlatList
+      initialNumToRender={12}
       data={data}
       renderItem={renderItem}
       keyExtractor={(item: DatumProps) => item.id}

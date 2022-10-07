@@ -66,7 +66,7 @@ const CoinInfoScreen = ({
           alignItems: 'center',
         }}
       >
-        <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize={10}>
+        <Tabs tabTitles={['1D', '1W', '1Y', '5Y', 'ALL']} fontSize='small'>
           <View style={{ flex: 1, width: '90%', height: '25%' }}>
             <LineChart lineData={originalData} bottomPadding={20} />
           </View>
