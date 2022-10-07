@@ -57,6 +57,7 @@ const SearchModal = ({
               width: '90%',
               alignSelf: 'center',
               justifyContent: 'space-between',
+              marginBottom: '5%',
             }}
           >
             <TouchableOpacity onPress={() => setVisible(false)}>

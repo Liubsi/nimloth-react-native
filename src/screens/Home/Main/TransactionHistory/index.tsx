@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, FlatList, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { ListItem } from '@rneui/themed';
 import MainHeader from '@components/MainHeader';
 import SCREEN_NAMES from '@navigation/names';
 import { MainScreenProps } from '@navigation/types';
+import ScrollableList from '@components/ScrollableList';
 import { selectHistory } from './historySlice';
 
 type HistoryProps = {
@@ -36,33 +36,7 @@ const TransactionHistoryScreen = ({
           marginTop: 20,
         }}
       >
-        <FlatList
-          style={{ flex: 1 }}
-          data={historyList}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                console.log('1');
-              }}
-              style={{ marginBottom: 10 }}
-            >
-              <ListItem key={item.id}>
-                <ListItem.Content>
-                  <ListItem.Title
-                    style={{
-                      fontFamily: 'Urbanist',
-                      fontSize: 14,
-                      marginLeft: 20,
-                      marginRight: 20,
-                    }}
-                  >
-                    {item.type} {item.coin} {item.amount} {item.time}
-                  </ListItem.Title>
-                </ListItem.Content>
-              </ListItem>
-            </TouchableOpacity>
-          )}
-        />
+        <ScrollableList data={historyList} />
       </View>
     </>
   );
