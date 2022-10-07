@@ -3,7 +3,7 @@ import { TextInput, TouchableOpacity } from 'react-native';
 import { InputProps } from '@rneui/themed';
 import { XIcon, StyledInput } from './styles';
 
-type SearchBarProps = InputProps & {
+export type SearchBarProps = InputProps & {
   placeholder: string;
   onChangeText?: (value: string) => void;
   onFocus?: () => void;

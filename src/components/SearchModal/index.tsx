@@ -11,13 +11,12 @@ import {
   FriendProps,
   CoinProps,
 } from '@common/types';
-import SearchBar from '@components/SearchBar';
+import SearchBar, { SearchBarProps } from '@components/SearchBar';
 
-type SearchModalProps = InputProps & {
-  placeholder: string;
-  onChangeText: (value: string) => void;
-  searchData: DatumProps[];
-};
+type SearchModalProps = InputProps &
+  SearchBarProps & {
+    searchData: DatumProps[];
+  };
 
 type ModalProps = {
   visible: boolean;
