@@ -6,7 +6,7 @@ import { StyledFlatList, StyledListItemTitle } from './styles';
 
 type TouchableProps = {
   onSelectItem?: () => void;
-  setSelected: (value: React.SetStateAction<any>) => void;
+  setSelected?: (value: React.SetStateAction<any>) => void;
 };
 
 type ScrollableProps = TouchableProps & {
@@ -32,7 +32,7 @@ const TouchableListItem = ({ item, setSelected, onSelectItem }: ItemProps) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        setSelected(item);
+        setSelected?.(item);
         onSelectItem?.();
       }}
       style={{ marginBottom: 10 }}
