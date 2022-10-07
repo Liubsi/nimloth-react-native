@@ -1,7 +1,26 @@
 import styled from 'styled-components';
-import { Button, Input } from '@rneui/themed';
+import { Button, Input, Icon } from '@rneui/themed';
+
+export const CheckIcon = styled(Icon).attrs({
+  marginRight: 15,
+  type: 'font-awesome-5',
+  name: 'check',
+  color: '#52C41A',
+  size: 18,
+})``;
+
+export const XIcon = styled(Icon).attrs({
+  marginRight: 15,
+  type: 'font-awesome-5',
+  name: 'times',
+  color: '#FF4D4F',
+  size: 18,
+})``;
 
 export const StyledInput = styled(Input).attrs({
+  autoCapitalize: 'none',
+  autoComplete: 'off',
+  autoCorrect: false,
   inputContainerStyle: {
     borderRadius: 50,
     marginTop: 10,

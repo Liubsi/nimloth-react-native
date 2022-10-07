@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from '@rneui/themed';
 import SearchBar from '@components/SearchBar';
@@ -7,41 +7,74 @@ import SCREEN_NAMES from '@navigation/names';
 import MainHeader from '@components/MainHeader';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CoinInfoScreen from '@features/Home/Main/Charts/CoinInfo';
+import { DataStore } from '@aws-amplify/datastore';
 import CoinProps from './props';
+import { Coin } from '../../../../models';
 
 const SearchScreen = ({
   navigation,
   route,
 }: SearchScreenProps<SCREEN_NAMES.SEARCH_COINS>) => {
   const exploreCoinsData: CoinProps[] = [
-    { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '5', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '4', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '3', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '2', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '1', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '0', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '12', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '13', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '14', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '15', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '16', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '17', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '18', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '19', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '20', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '21', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '22', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '23', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '24', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
-    { id: '25', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '26', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '27', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
-    { id: '28', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '5', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '4', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '3', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '2', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '1', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '0', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '12', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '13', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '14', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '15', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '16', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '17', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '18', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '19', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '20', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '21', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '22', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '23', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '24', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
+    // { id: '25', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '26', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '27', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
+    // { id: '28', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
   ];
 
-  const [exploreCoins, setExploreCoins] =
-    useState<CoinProps[]>(exploreCoinsData);
+  const [exploreCoins, setExploreCoins] = useState<Coin[]>();
+
+  const [coindata, setcoins] = useState([]);
+
+  const updatecoins = async () => {
+    try {
+      const coindat = await (
+        await DataStore.query(Coin)
+      ).filter((c) => c.walletID === 'testuser2');
+      console.log(coindat);
+      setExploreCoins(coindat);
+    } catch (error) {
+      console.error('coindat improperly imported');
+    }
+  };
+
+  useEffect(() => {
+    updatecoins();
+    const subscription = DataStore.observe(Coin).subscribe(() => updatecoins());
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [coindata]);
+
+  // const _renderItem = ({ item }) => {
+  //   const amount = item.coinamount;
+  //   // return (
+  //   //   // <>
+  //   //   //   <CardVacancies obj={item} onPress={onScreen(check ? 'JOB_ADD' : 'JOB_DETAIL', navigation, item)} />
+  //   //   //   <Space height={20} />
+  //   //   // </>
+  //   // )
+  // }
 
   return (
     <>
