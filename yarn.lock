@@ -6168,12 +6168,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/netinfo@npm:^9.3.0":
-  version: 9.3.1
-  resolution: "@react-native-community/netinfo@npm:9.3.1"
+"@react-native-community/netinfo@npm:^9.3.6":
+  version: 9.3.6
+  resolution: "@react-native-community/netinfo@npm:9.3.6"
   peerDependencies:
     react-native: ">=0.59"
-  checksum: 73e649f34344a1811439625377cf312cc6720a69df95b017a531fe6962d57da250409e660ee8af69c9242cd5bdd9e220d511da8298f0b2220172ca2c8228e624
+  checksum: a9b0d43406b33dc99655497c5b8f9484445bdff9789afab359ccf1b575b555763e322af79131b38263ba7a6fd3a134b88beb33c1c501924f110c490334584d6a
   languageName: node
   linkType: hard
 
@@ -14005,7 +14005,7 @@ __metadata:
     "@expo/vector-icons": ^13.0.0
     "@react-native-async-storage/async-storage": ^1.17.10
     "@react-native-community/masked-view": ^0.1.11
-    "@react-native-community/netinfo": ^9.3.0
+    "@react-native-community/netinfo": ^9.3.6
     "@react-native-picker/picker": 2.4.2
     "@react-navigation/bottom-tabs": ^6.3.2
     "@react-navigation/native": ^6.0.12
