@@ -13,7 +13,7 @@
     "format": "prettier --check ./src"
   },
   "dependencies": {
-    "@aws-amplify/datastore": "^3.12.10",
+    "@aws-amplify/datastore": "^3.14.2",
     "@aws-amplify/ui-react": "^3.5.0",
     "@babel/preset-env": "^7.18.2",
     "@expo-google-fonts/inter": "^0.2.2",
