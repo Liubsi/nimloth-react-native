@@ -3564,7 +3564,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-export-namespace-from@npm:^7.17.12, @babel/plugin-proposal-export-namespace-from@npm:^7.18.9":
+"@babel/plugin-proposal-export-namespace-from@npm:^7.18.9":
   version: 7.18.9
   resolution: "@babel/plugin-proposal-export-namespace-from@npm:7.18.9"
   dependencies:
@@ -6937,13 +6937,6 @@ __metadata:
     "@types/react": "*"
     hoist-non-react-statics: ^3.3.0
   checksum: 2c0778570d9a01d05afabc781b32163f28409bb98f7245c38d5eaf082416fdb73034003f5825eb5e21313044e8d2d9e1f3fe2831e345d3d1b1d20bcd12270719
-  languageName: node
-  linkType: hard
-
-"@types/invariant@npm:^2.2.35":
-  version: 2.2.35
-  resolution: "@types/invariant@npm:2.2.35"
-  checksum: af1b624057c89789ed0917838fea3d42bb0c101cc22b829a24d8777c678be3bc79d6ae05992a13bdf607b94731262467a2e62a809602ea1f7eea5e8c2242660d
   languageName: node
   linkType: hard
 
@@ -14063,7 +14056,7 @@ __metadata:
     react-native: 0.69.6
     react-native-chart-kit: ^6.12.0
     react-native-gesture-handler: ~2.5.0
-    react-native-reanimated: ~2.9.1
+    react-native-reanimated: ~2.14.1
     react-native-safe-area-context: 4.3.1
     react-native-screens: ~3.15.0
     react-native-svg: 12.3.0
@@ -15299,14 +15292,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:~2.9.1":
-  version: 2.9.1
-  resolution: "react-native-reanimated@npm:2.9.1"
+"react-native-reanimated@npm:~2.14.1":
+  version: 2.14.1
+  resolution: "react-native-reanimated@npm:2.14.1"
   dependencies:
-    "@babel/plugin-proposal-export-namespace-from": ^7.17.12
     "@babel/plugin-transform-object-assign": ^7.16.7
     "@babel/preset-typescript": ^7.16.7
-    "@types/invariant": ^2.2.35
+    convert-source-map: ^1.7.0
     invariant: ^2.2.4
     lodash.isequal: ^4.5.0
     setimmediate: ^1.0.5
@@ -15315,7 +15307,7 @@ __metadata:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 4ec8e62c86e9ac8645e9a4a6ac9c4501d48fc15eb8884bdbde0615dfa51de0cae38e2cb63d8b7521429367e34b78e1604d38280b049b5b20b44b45b82dadc99d
+  checksum: 279ece43aa71601b8b490a7fa4350660e8f9dfc7bb760213f24e1920ef0fe649a0e2675efab0cb4085a61c65c69bff9fcb7fd743a071333256ca861488b5169e
   languageName: node
   linkType: hard
 
