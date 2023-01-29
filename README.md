@@ -15,3 +15,6 @@ To pull Amplify updates:
 
 `yarn start` to start the server
 
+EAS Build
+npm i -g expo-cli 
+npm i -g eas-cli 

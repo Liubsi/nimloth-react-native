@@ -16,55 +16,55 @@ const SearchScreen = ({
   route,
 }: SearchScreenProps<SCREEN_NAMES.SEARCH_COINS>) => {
   const exploreCoinsData: CoinProps[] = [
-    // { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '5', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '4', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '3', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '2', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '1', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '0', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '12', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '13', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '14', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '15', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '16', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '17', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '18', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '19', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '20', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '21', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '22', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '23', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '24', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
-    // { id: '25', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '26', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '27', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
-    // { id: '28', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '6', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '5', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '4', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '3', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '2', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '1', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '0', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '12', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '13', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '14', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '15', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '16', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '17', coinName: '6', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '18', coinName: '5', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '19', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '20', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '21', coinName: '2', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '22', coinName: '1', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '23', coinName: '1', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '24', coinName: '2', dollarAmount: 1000, ownedAmount: 1 },
+    { id: '25', coinName: '3', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '26', coinName: '4', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '27', coinName: '5', dollarAmount: 1400, ownedAmount: 1 },
+    { id: '28', coinName: '6', dollarAmount: 1400, ownedAmount: 1 },
   ];
 
   const [exploreCoins, setExploreCoins] = useState<Coin[]>();
 
-  const [coindata, setcoins] = useState([]);
+  // const [coindata, setcoins] = useState([]);
 
-  const updatecoins = async () => {
-    try {
-      const coindat = await (
-        await DataStore.query(Coin)
-      ).filter((c) => c.walletID === 'testuser2');
-      console.log(coindat);
-      setExploreCoins(coindat);
-    } catch (error) {
-      console.error('coindat improperly imported');
-    }
-  };
+  // const updatecoins = async () => {
+  //   try {
+  //     const coindat = await (
+  //       await DataStore.query(Coin)
+  //     ).filter((c) => c.walletID === 'testuser2');
+  //     console.log(coindat);
+  //     setExploreCoins(coindat);
+  //   } catch (error) {
+  //     console.error('coindat improperly imported');
+  //   }
+  // };
 
-  useEffect(() => {
-    updatecoins();
-    const subscription = DataStore.observe(Coin).subscribe(() => updatecoins());
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [coindata]);
+  // useEffect(() => {
+  //   updatecoins();
+  //   const subscription = DataStore.observe(Coin).subscribe(() => updatecoins());
+  //   return () => {
+  //     subscription.unsubscribe();
+  //   };
+  // }, [coindata]);
 
   return (
     <>
@@ -86,7 +86,7 @@ const SearchScreen = ({
         </View>
         <View style={{ width: '100%', marginTop: 20 }}>
           <FlatList
-            data={exploreCoins}
+            data={exploreCoinsData}
             renderItem={({ item }) => (
               <TouchableOpacity
                 onPress={() => navigation.navigate(SCREEN_NAMES.COIN_INFO)}
