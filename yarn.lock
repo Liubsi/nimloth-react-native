@@ -6289,13 +6289,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-picker/picker@npm:2.4.2":
-  version: 2.4.2
-  resolution: "@react-native-picker/picker@npm:2.4.2"
+"@react-native-picker/picker@npm:2.4.8":
+  version: 2.4.8
+  resolution: "@react-native-picker/picker@npm:2.4.8"
   peerDependencies:
-    react: 16 || 17
+    react: ">=16"
     react-native: ">=0.57"
-  checksum: 94ca5fd20a769782342f127de712e59b4895ff56038f5a0902cecf937dd8fecc6c33f71930c9138951fd02e2e59f77b430c17c4e9f6e969e5516067c5c86e37a
+  checksum: c2ac00b379a9a43188be53ce8e4eb849e6d02ad8a3afe18a88416d8d0d433ac33396eea34a6fdad27f8b4f8c88bc77b4a87fec146c99d987bd91244980762879
   languageName: node
   linkType: hard
 
@@ -14124,7 +14124,7 @@ __metadata:
     "@react-native-async-storage/async-storage": ^1.17.10
     "@react-native-community/masked-view": ^0.1.11
     "@react-native-community/netinfo": ^9.3.7
-    "@react-native-picker/picker": 2.4.2
+    "@react-native-picker/picker": 2.4.8
     "@react-navigation/bottom-tabs": ^6.3.2
     "@react-navigation/native": ^6.0.12
     "@react-navigation/native-stack": ^6.6.2
