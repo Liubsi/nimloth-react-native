@@ -6460,12 +6460,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rneui/themed@npm:^4.0.0-rc.4":
-  version: 4.0.0-rc.6
-  resolution: "@rneui/themed@npm:4.0.0-rc.6"
+"@rneui/themed@npm:^4.0.0-rc.7":
+  version: 4.0.0-rc.7
+  resolution: "@rneui/themed@npm:4.0.0-rc.7"
   peerDependencies:
-    "@rneui/base": 4.0.0-rc.6
-  checksum: 00472d71ea539f55dac57d0d0d9d36f911fdff57cf9e55b604495949e7d3dc618ecce3ce50e414e3058ea6ceb4dfbc73fbfb9da69d63ee7ee636cc22a28bf78e
+    "@rneui/base": 4.0.0-rc.7
+  checksum: 13547a1e058b4ebaf339bac317e025d06fbf7d7ab779b66af2cc4e9c6dc2a30cfcfef0a2520ba1aa2a14e5f2ae11a6f4c66707e85f539f5682220c74e9a87fe0
   languageName: node
   linkType: hard
 
@@ -14131,7 +14131,7 @@ __metadata:
     "@react-navigation/stack": ^6.2.3
     "@reduxjs/toolkit": ^1.8.5
     "@rneui/base": ^4.0.0-rc.4
-    "@rneui/themed": ^4.0.0-rc.4
+    "@rneui/themed": ^4.0.0-rc.7
     "@types/babel__core": ^7.1.19
     "@types/d3": ^7.4.0
     "@types/d3-shape": ^3.1.0
