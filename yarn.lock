@@ -10676,10 +10676,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-status-bar@npm:~1.4.0":
-  version: 1.4.0
-  resolution: "expo-status-bar@npm:1.4.0"
-  checksum: cc1ae138c33d03db43709bd1b0fc6b1e5df3c2e4d955f46be3c722ce1cc99eab29fec220ea3c26925a4074b11a5666bb47c47d7e903c8686bcafbef1dde8d217
+"expo-status-bar@npm:~1.4.4":
+  version: 1.4.4
+  resolution: "expo-status-bar@npm:1.4.4"
+  checksum: 8d36b821ff2804aed3158f339cc396f0525f365763913881b9b11e6e85e83f21ddbc3a2ede660ae8ce6d6df1a6cda825ad996c3c45f195cbc89091da7605f7e0
   languageName: node
   linkType: hard
 
@@ -14169,7 +14169,7 @@ __metadata:
     expo: ^46.0.7
     expo-font: ~10.2.0
     expo-linear-gradient: ~11.4.0
-    expo-status-bar: ~1.4.0
+    expo-status-bar: ~1.4.4
     husky: ^8.0.1
     install-peers: ^1.0.4
     lint-staged: ^13.0.2
